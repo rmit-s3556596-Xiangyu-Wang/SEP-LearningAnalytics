@@ -9,7 +9,7 @@ public class User{
 
 	@Id
 	@GeneratedValue
-	@Column(name = "id", length = 8 )
+	@Column(name = "id", length = 7)
 	private Long id;
 	
 	@Column(name = "user_name")
@@ -17,8 +17,6 @@ public class User{
 
 	@Column(name = "user_password")
 	String userPassword;
-
-
 	
 	public Long getId() {
 		return id;
