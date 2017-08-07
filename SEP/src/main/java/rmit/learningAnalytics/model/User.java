@@ -8,13 +8,14 @@ public class User{
 
 
 	@Id
-	@GeneratedValue
 	@Column(name = "id", length = 7)
 	private Long id;
 	
+	@Basic
 	@Column(name = "user_name")
 	String userName;
 
+	@Basic
 	@Column(name = "user_password")
 	String userPassword;
 	
