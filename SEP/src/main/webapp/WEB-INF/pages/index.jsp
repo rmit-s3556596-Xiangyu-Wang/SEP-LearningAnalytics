@@ -45,7 +45,7 @@
 <%
     String userid = request.getParameter("loginName");    
     String pwd = request.getParameter("password");
-    Class.forName("com.postgresql.jdbc.Driver");
+    Class.forName("org.postgresql.Driver");
     Connection con = DriverManager.getConnection("jdbc:postgresql://ec2-54-221-254-72.compute-1.amazonaws.com:dtb2d40pikkr8",
             "znnuybwdzqhavc", "872a6885f75972f76e867e38ceb6a92a27bc81aedc795dbd2e5fa1317119166e");
     Statement st = con.createStatement();
