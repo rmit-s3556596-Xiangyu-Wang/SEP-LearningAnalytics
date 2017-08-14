@@ -8,7 +8,7 @@ import rmit.learningAnalytics.repository.UserRepository;
 
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-
+import java.sql.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Map;
@@ -21,7 +21,23 @@ public class LoginController {
 	
 	@RequestMapping(value = "/index/login", method = RequestMethod.POST)
     public String userCheck() {
-        return "welcome";
+//		    String userid = request.getParameter("loginName");    
+//		    String pwd = request.getParameter("password");
+//		    Class.forName("org.postgresql.Driver");
+//		    Connection con = DriverManager.getConnection("jdbc:postgresql://ec2-54-221-254-72.compute-1.amazonaws.com:dtb2d40pikkr8",
+//		            "znnuybwdzqhavc", "872a6885f75972f76e867e38ceb6a92a27bc81aedc795dbd2e5fa1317119166e");
+//		    Statement st = con.createStatement();
+//		    ResultSet rs;
+//		    rs = st.executeQuery("select * from user where user_name='" + userid + "' and password='" + pwd + "'");
+//		    if (rs.next()) {
+//		        session.setAttribute("loginName", userid);
+//		        //out.println("welcome " + userid);
+//		        //out.println("<a href='logout.jsp'>Log out</a>");
+//		        response.sendRedirect("home.jsp");
+//		    } else {
+//		        out.println("Invalid password <a href='index.jsp'>try again</a>");
+//		    }
+        return "home";
     }
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)

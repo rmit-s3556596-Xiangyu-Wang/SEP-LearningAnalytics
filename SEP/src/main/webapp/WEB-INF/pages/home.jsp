@@ -8,5 +8,6 @@
 </head>
 <body>
 	Login successfully! Please click here<a href="main.jsp">to the main menu</a>
+	Click here<a href="index.jsp">to go back</a>
 </body>
 </html>

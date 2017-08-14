@@ -28,8 +28,8 @@
 
     <form:form class="form-signin" action="/index/login" method="post" commandName="loginuser" role="form">
         <h2 class="form-signin-heading">Please sign in first！</h2>
-        <label for="loginName">Username:</label>
-        <input type="text" id="loginName" class="form-control" placeholder="username..." required autofocus>
+        <label for="username">Username:</label>
+        <input type="text" id="username" class="form-control" placeholder="username..." required autofocus>
         <label for="password">password:</label>
         <input type="password" id="password" class="form-control" placeholder="password..." required>
         <div class="checkbox">
@@ -41,25 +41,6 @@
     </form:form>
 
 </div> <!-- /container -->
-<%@ page import ="java.sql.*" %>
-<%
-    String userid = request.getParameter("loginName");    
-    String pwd = request.getParameter("password");
-    Class.forName("org.postgresql.Driver");
-    Connection con = DriverManager.getConnection("jdbc:postgresql://ec2-54-221-254-72.compute-1.amazonaws.com:dtb2d40pikkr8",
-            "znnuybwdzqhavc", "872a6885f75972f76e867e38ceb6a92a27bc81aedc795dbd2e5fa1317119166e");
-    Statement st = con.createStatement();
-    ResultSet rs;
-    rs = st.executeQuery("select * from user where user_name='" + userid + "' and password='" + pwd + "'");
-    if (rs.next()) {
-        session.setAttribute("loginName", userid);
-        //out.println("welcome " + userid);
-        //out.println("<a href='logout.jsp'>Log out</a>");
-        response.sendRedirect("home.jsp");
-    } else {
-        out.println("Invalid password <a href='index.jsp'>try again</a>");
-    }
-%>
 
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
