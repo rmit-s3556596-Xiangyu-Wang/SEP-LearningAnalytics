@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import rmit.learningAnalytics.entites.User;
 import rmit.learningAnalytics.repository.UserRepository;
 import rmit.learningAnalytics.services.IUserLoginService;
 import rmit.learningAnalytics.services.*;
@@ -50,10 +51,12 @@ public class LoginController {
 //    }
 	
 	@RequestMapping(value="/login", method = {RequestMethod.POST})
-    public String login(@RequestParam("username") String username, @RequestParam("password") String password, Model model){
+    public String login(User user, Model model){
 //		uls = new UserLoginService();
-        if(uls.checkLogin(username,password))
+        if(uls.checkLogin(user.getUserName(),user.getPassword())) {
+        	model.addAttribute(user);
         	return "home";
+        }
         else
         	return "loginfail";
     }
