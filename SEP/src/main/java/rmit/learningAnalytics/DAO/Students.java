@@ -1,4 +1,4 @@
-package rmit.learningAnalytics.model;
+package rmit.learningAnalytics.DAO;
 
 import javax.persistence.*;
 

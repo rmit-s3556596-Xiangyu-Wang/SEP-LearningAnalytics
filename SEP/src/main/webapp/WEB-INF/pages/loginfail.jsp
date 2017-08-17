@@ -4,10 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Login successful page</title>
+<title>login fail page</title>
 </head>
 <body>
-	Login successfully! Please click here<a href="main.jsp">to the main menu</a>
-	Click here<a href="/">to go back</a>
+	login fail! please click <a href = "/">here to go back</a>
 </body>
 </html>

@@ -1,19 +1,24 @@
-package rmit.learningAnalytics.model;
+package rmit.learningAnalytics.entites;
 
 import javax.persistence.*;
+import org.hibernate.HibernateException; 
+import org.hibernate.Session; 
+import org.hibernate.Transaction;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 @Entity
 @Table(name = "user", schema = "public")
 public class User{
-
-
+	private SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+	
 	@Id
 	@Column(name = "id", length = 7)
 	private Long id;
 	
 	@Basic
 	@Column(name = "user_name")
-	String userName;
+	String username;
 
 	@Basic
 	@Column(name = "user_password")
@@ -29,11 +34,11 @@ public class User{
 	} 
 
 	public String getUserName() {
-		return userName;
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUserName(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
@@ -52,7 +57,7 @@ public class User{
         User that = (User) o;
 
         if (id != that.id) return false;
-        if (userName != null ? !userName.equals(that.userName) : that.userName != null) return false;
+        if (username != null ? !username.equals(that.username) : that.username != null) return false;
         if (password != null ? !password.equals(that.password) : that.password != null) return false;
 
         return true;
@@ -61,7 +66,7 @@ public class User{
 	@Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (userName != null ? userName.hashCode() : 0);
+        result = 31 * result + (username != null ? username.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
 
         return result;
