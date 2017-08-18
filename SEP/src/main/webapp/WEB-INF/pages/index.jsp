@@ -16,7 +16,7 @@
 <body>
 <div class="container">
 
-    <form:form class="form-signin" action="login.spring" method="post" modelAndView="user" commandName="loginuser" role="form">
+    <form:form class="form-signin" action="/login" method="post" modelAndView="user" commandName="loginuser" role="form">
         <h2 class="form-signin-heading">Please sign in first！</h2>
         <label for="username">Username:</label>
         <input type="text" name="username" id="user_name" class="form-control" placeholder="username..." required autofocus>
