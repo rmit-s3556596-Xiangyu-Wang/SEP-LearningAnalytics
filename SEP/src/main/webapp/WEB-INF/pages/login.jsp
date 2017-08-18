@@ -6,33 +6,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link href="assets/css/bootstrap-united.css" rel="stylesheet" />
 
-<style>
-.error {
-	color: #ff0000;
-	font-size: 0.9em;
-	font-weight: bold;
-}
-.errorblock {
-	color: #000;
-	background-color: #ffEEEE;
-	border: 3px solid #ff0000;
-	padding: 8px;
-	margin: 16px;
-}
-</style>
 <title>Student Enrollment Login</title>
 </head>
 <body>
-	<script src="jquery-1.8.3.js">
-		
-	</script>
-
-	<script src="bootstrap/js/bootstrap.js">
-		
-	</script>
-
 	<div class="navbar navbar-default">
 
 		<div class="navbar-header">
