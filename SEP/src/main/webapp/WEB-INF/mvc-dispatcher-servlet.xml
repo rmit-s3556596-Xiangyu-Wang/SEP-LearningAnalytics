@@ -10,9 +10,6 @@
     <!-- Enables the Spring MVC @Controller programming model <mvc:annotation-driven /> -->
     <mvc:annotation-driven />
     <context:component-scan base-package="rmit.learningAnalytics.controller"/>
-    <context:component-scan base-package="rmit.learningAnalytics.DAO"/>
-    <context:component-scan base-package="rmit.learningAnalytics.entities"/>
-    <context:component-scan base-package="rmit.learningAnalytics.services"/>
 
     <mvc:default-servlet-handler/>
     
@@ -22,6 +19,7 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 	
+    <!-- 表示JPA Repository所在的包 -->
     <jpa:repositories base-package="rmit.learningAnalytics.repository"/>
 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
