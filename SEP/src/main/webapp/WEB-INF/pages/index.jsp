@@ -19,9 +19,9 @@
     <form:form class="form-signin" action="/login" method="post" modelAndView="user" commandName="loginuser" role="form">
         <h2 class="form-signin-heading">Please sign in first！</h2>
         <label for="username">Username:</label>
-        <input type="text" name="username" id="username" class="form-control" placeholder="username..." required autofocus>
+        <input type="text" name="username" id="user.username" class="form-control" placeholder="username..." required autofocus>
         <label for="password">password:</label>
-        <input type="password" id="password" name="password" class="form-control" placeholder="password..." required>
+        <input type="password" id="password" name="user.password" class="form-control" placeholder="password..." required>
         <div class="checkbox">
             <label>
                 <input type="checkbox" value="remember-me"> Remember me

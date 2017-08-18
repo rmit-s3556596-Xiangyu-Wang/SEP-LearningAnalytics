@@ -51,10 +51,10 @@ public class LoginController {
 //    }
 	
 	@RequestMapping(value="/login", method = {RequestMethod.POST})
-    public String login(String username, String password, Model model){
+    public String login(User user, Model model){
 //		uls = new UserLoginService();
-        if(uls.checkLogin(username,password)) {
-//        	model.addAttribute(user);
+        if(uls.checkLogin(user.getUserName(),user.getPassword())) {
+        	model.addAttribute(user);
         	return "home";
         }
         else
