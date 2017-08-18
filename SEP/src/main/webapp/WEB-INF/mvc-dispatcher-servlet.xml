@@ -10,6 +10,9 @@
     <!-- Enables the Spring MVC @Controller programming model <mvc:annotation-driven /> -->
     <mvc:annotation-driven />
     <context:component-scan base-package="rmit.learningAnalytics.controller"/>
+    <context:component-scan base-package="rmit.learningAnalytics.DAO"/>
+    <context:component-scan base-package="rmit.learningAnalytics.entities"/>
+    <context:component-scan base-package="rmit.learningAnalytics.services"/>
 
     <mvc:default-servlet-handler/>
     
@@ -19,19 +22,15 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 	
-    <!-- 表示JPA Repository所在的包 -->
     <jpa:repositories base-package="rmit.learningAnalytics.repository"/>
 
-    <!-- 链接到persistence.xml -->
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
         <property name="persistenceUnitName" value="defaultPersistenceUnit"/>
     </bean>
 
-    <!-- 事务管理 -->
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
 
-    <!-- 开启事务管理注解 -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
 </beans>
