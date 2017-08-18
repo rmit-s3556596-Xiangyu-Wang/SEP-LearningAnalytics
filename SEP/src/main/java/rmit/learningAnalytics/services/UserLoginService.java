@@ -25,20 +25,24 @@ public class UserLoginService implements IUserLoginService{
 		// TODO Auto-generated method stub
 		return userDAO.getActiveUser(username);
 	}
-	@Override
-	public User findByUsername(String username) {
-		// TODO Auto-generated method stub
-		return userRepository.findByUsername(username);
-	}
 	
-	public boolean checkLogin(String username, String password) {
-		String hql = "select user.user_name , user.user_password from user where user.user_name='"+username+"' and user.user_password='"+password+"'";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		List list = query.list();
-		if (list.size()>0)
+//	public boolean checkLogin(String username, String password) {
+//		String hql = "select user.user_name , user.user_password from user where user.user_name='"+username+"' and user.user_password='"+password+"'";
+//		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+//		List list = query.list();
+//		if (list.size()>0)
+//			return true;
+//		else
+//			return false;
+//		
+//	}
+	@Override
+	public boolean findByLogin(String username, String password) {
+		// TODO Auto-generated method stub
+		User user = userRepository.findByUserName(username);
+		if(user != null && user.getPassword().equals(password))
 			return true;
 		else
 			return false;
-		
 	}
 }

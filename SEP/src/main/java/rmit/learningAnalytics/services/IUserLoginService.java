@@ -4,5 +4,5 @@ import rmit.learningAnalytics.entites.User;
 
 public interface IUserLoginService {
 	User getDataByUserName(String username);
-	User findByUsername(String username);
+	boolean findByLogin(String username, String password);
 }

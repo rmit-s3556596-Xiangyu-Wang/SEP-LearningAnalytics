@@ -2,10 +2,13 @@ package rmit.learningAnalytics.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import javax.validation.Valid;
 
 import rmit.learningAnalytics.entites.User;
 import rmit.learningAnalytics.repository.UserRepository;
@@ -22,11 +25,10 @@ import org.springframework.security.core.Authentication;
 import java.util.Map;
 
 @Controller
+@SessionAttributes("user")
 public class LoginController {
 
 	@Autowired
-	UserRepository userRepository;
-	IUserLoginService service;
 	UserLoginService uls;
 	
 //	@RequestMapping(value = "/index/login", method = RequestMethod.POST)
@@ -51,15 +53,26 @@ public class LoginController {
 //    }
 	
 	@RequestMapping(value="/login", method = {RequestMethod.POST})
-    public String login(User user, Model model){
-//		uls = new UserLoginService();
-        if(uls.checkLogin(user.getUserName(),user.getPassword())) {
-        	model.addAttribute(user);
-        	return "home";
-        }
-        else
-        	return "loginfail";
-    }
+	public String login(@Valid @ModelAttribute("user") User user, BindingResult result) {
+		if(result.hasErrors()) {
+			return "index";
+		} else {
+			boolean found = uls.findByLogin(user.getUserName(), user.getPassword());
+			if (found) {
+				return "home";
+			}
+			else return "loginfail";
+		}
+	}
+//    public String login(User user, Model model){
+////		uls = new UserLoginService();
+//        if(uls.checkLogin(user.getUserName(),user.getPassword())) {
+//        	model.addAttribute(user);
+//        	return "home";
+//        }
+//        else
+//        	return "loginfail";
+//    }
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(){
