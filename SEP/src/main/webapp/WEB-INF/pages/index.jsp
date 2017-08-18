@@ -1,38 +1,63 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login test page</title>
-    <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-    <!-- Custom styles for this template -->
-    <link href="../signin.css" rel="stylesheet">
+<link href="assets/css/bootstrap-united.css" rel="stylesheet" />
+<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" />
+<style>
+body {
+	height: 100%;
+	margin: 0;
+	background: url(assets/img/books.jpg);
+	background-size: 1440px 800px;
+	background-repeat: no-repeat;
+	display: compact;
+}
+</style>
 </head>
 <body>
-<div class="container">
+	<div class="navbar navbar-default">
 
-    <form:form class="form-signin" action="/login" method="post" modelAndView="user" commandName="loginuser" role="form">
-        <h2 class="form-signin-heading">Please sign in firstÔºÅ</h2>
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="user_name" class="form-control" placeholder="username..." required autofocus>
-        <label for="password">password:</label>
-        <input type="password" name="password" id="user_password"class="form-control" placeholder="password..." required>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    </form:form>
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target=".navbar-responsive-collapse">
+				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+		</div>
 
-</div> <!-- /container -->
+		<div class="navbar-collapse collapse navbar-responsive-collapse">
+			<form class="navbar-form navbar-right">
+				<input type="text" class="form-control" placeholder="Search">
+			</form>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="active"><a href="#">Home</a></li>
+				<li><a href="login.html">Login</a></li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown">Explore<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Contact us</a></li>
+						<li class="divider"></li>
+						<li><a href="#">Further Actions</a></li>
+					</ul></li>
+			</ul>
+		</div>
+		<!-- /.nav-collapse -->
+	</div>
+	<div class="container">
+		<div class="jumbotron">
+			<div>
+				<h1>Welcome to Learning Analytics!</h1>
+				<p>To get started, please login.</p>
+			</div>
+			 <a class="btn btn-primary" href="login.html">Login ª </a>
+		</div>
 
-<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<div></div>
+	</div>
+	<script src="jquery-1.8.3.js">
+</script>
+
+	<script src="bootstrap/js/bootstrap.js">
+</script>
+
 </body>
 </html>

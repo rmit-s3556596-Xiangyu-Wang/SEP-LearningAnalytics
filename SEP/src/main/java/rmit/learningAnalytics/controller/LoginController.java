@@ -52,6 +52,13 @@ public class LoginController {
 //        return "home";
 //    }
 	
+	@RequestMapping(value="/login", method= RequestMethod.GET)
+	public String login(Model model) {
+		User user = new User();
+		model.addAttribute(user);
+		return "login";
+	}
+	
 	@RequestMapping(value="/login", method = {RequestMethod.POST})
 	public String login(@Valid @ModelAttribute("user") User user, BindingResult result) {
 		if(result.hasErrors()) {
