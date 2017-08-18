@@ -16,12 +16,12 @@
 <body>
 <div class="container">
 
-    <form:form class="form-signin" action="/login" method="post" modelAndView="user" commandName="loginuser" role="form">
+    <form:form class="form-signin" action="login.spring" method="post" modelAndView="user" commandName="loginuser" role="form">
         <h2 class="form-signin-heading">Please sign in first！</h2>
         <label for="username">Username:</label>
-        <input type="text" name="user.username" class="form-control" placeholder="username..." required autofocus>
+        <input type="text" name="user.username" id="user_name" class="form-control" placeholder="username..." required autofocus>
         <label for="password">password:</label>
-        <input type="password" name="user.password" class="form-control" placeholder="password..." required>
+        <input type="password" name="user.password" id="user_password"class="form-control" placeholder="password..." required>
         <div class="checkbox">
             <label>
                 <input type="checkbox" value="remember-me"> Remember me

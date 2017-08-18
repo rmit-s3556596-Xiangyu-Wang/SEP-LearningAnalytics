@@ -2,6 +2,7 @@ package rmit.learningAnalytics.services;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
@@ -32,7 +33,7 @@ public class UserLoginService implements IUserLoginService{
 	
 	public boolean checkLogin(String username, String password) {
 		String hql = "select user.user_name , user.user_password from user where user.user_name='"+username+"' and user.user_password='"+password+"'";
-		org.hibernate.Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		List list = query.list();
 		if (list.size()>0)
 			return true;
