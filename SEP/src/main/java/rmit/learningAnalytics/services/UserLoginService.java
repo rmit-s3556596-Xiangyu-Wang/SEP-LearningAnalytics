@@ -40,7 +40,7 @@ public class UserLoginService implements IUserLoginService{
 	public boolean findByLogin(String username, String password) {
 		// TODO Auto-generated method stub
 		User user = userRepository.findByUserName(username);
-		if(user != null && user.getPassword().equals(password))
+		if(user != null && user.getUserPassword().equals(password))
 			return true;
 		else
 			return false;

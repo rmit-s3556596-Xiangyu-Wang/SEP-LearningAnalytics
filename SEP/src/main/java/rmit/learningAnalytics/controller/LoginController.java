@@ -57,7 +57,7 @@ public class LoginController {
 		if(result.hasErrors()) {
 			return "index";
 		} else {
-			boolean found = uls.findByLogin(user.getUserName(), user.getPassword());
+			boolean found = uls.findByLogin(user.getUserName(), user.getUserPassword());
 			if (found) {
 				return "home";
 			}
