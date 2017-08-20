@@ -83,7 +83,7 @@ public class LoginController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(){
-        return "indexlogin";
+        return "index";
     }
 //	@Autowired
 //	public LoginService loginService;
