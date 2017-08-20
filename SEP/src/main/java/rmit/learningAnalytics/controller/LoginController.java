@@ -28,7 +28,6 @@ import java.util.Map;
 @SessionAttributes("user")
 public class LoginController {
 
-	@Autowired
 	UserLoginService uls;
 	
 //	@RequestMapping(value = "/index/login", method = RequestMethod.POST)
