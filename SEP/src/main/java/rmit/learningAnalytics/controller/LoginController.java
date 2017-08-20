@@ -60,7 +60,7 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="/login", method = {RequestMethod.POST})
-	public String login(@Valid @ModelAttribute("user") User user, BindingResult result) {
+	public String login(@ModelAttribute("user") User user, BindingResult result) {
 		if(result.hasErrors()) {
 			return "index";
 		} else {
