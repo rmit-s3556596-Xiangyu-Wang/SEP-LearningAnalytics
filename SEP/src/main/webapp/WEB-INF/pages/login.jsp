@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>Student Enrollment Login</title>
+<title>System Login</title>
 </head>
 <body>
 	<div class="navbar navbar-default">

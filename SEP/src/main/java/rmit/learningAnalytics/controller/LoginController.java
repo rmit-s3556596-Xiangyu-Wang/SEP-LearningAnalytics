@@ -64,7 +64,7 @@ public class LoginController {
 		if(result.hasErrors()) {
 			return "index";
 		} else {
-			boolean found = uls.findByLogin(user.getUserName(), user.getUserPassword());
+			boolean found = uls.findByUsername(user.getUserName(), user.getUserPassword());
 			if (found) {
 				return "home";
 			}
@@ -83,7 +83,7 @@ public class LoginController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(){
-        return "index";
+        return "indexlogin";
     }
 //	@Autowired
 //	public LoginService loginService;

@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+body {
+	background-color: #ffffff;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-size: 20px;
+}
+
+h1 {
+	font-size: 30px;
+}
+
+.login {
+	border: solid 1px #000000;
+	border-radius: 15px;
+	padding: 10px;
+	width: 600px;
+	height: 400px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 600px;
+}
+
+input[type=email], input[type=password] {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	box-sizing: border-box;
+}
+
+input[type=submit] {
+	margin-top: 40px;
+	margin-right: 10px;
+	border: 2px solid #009201;
+	border-radius: 15px;
+	color: #009201;
+	font-weight: bold;
+	background: #ffffff;
+	padding: 20px;
+	font-size: 1em;
+	cursor: pointer;
+}
+
+input[type=reset] {
+	margin-top: 40px;
+	border: 2px solid #ff4911;
+	border-radius: 15px;
+	color: #ff4911;
+	font-weight: bold;
+	background: #ffffff;
+	padding: 20px;
+	font-size: 1em;
+	cursor: pointer;
+}
+
+.button {
+	text-align: center;
+}
