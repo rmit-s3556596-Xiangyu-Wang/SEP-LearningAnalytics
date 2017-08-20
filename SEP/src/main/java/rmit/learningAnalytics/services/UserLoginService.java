@@ -19,12 +19,6 @@ public class UserLoginService implements IUserLoginService{
 	private SessionFactory sessionFactory;
 	@Autowired
 	private UserRepository userRepository;
-	private UserDAO userDAO;
-	@Override
-	public User getDataByUserName(String username) {
-		// TODO Auto-generated method stub
-		return userDAO.getActiveUser(username);
-	}
 	
 	@Override
 	public boolean findByUsername(String username, String password) {
