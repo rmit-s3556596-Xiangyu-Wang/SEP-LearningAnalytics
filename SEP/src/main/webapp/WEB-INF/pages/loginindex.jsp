@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Learning Analytics Login Page</title>
-<link rel="stylesheet" type="text/css" href="login.css" />
+<link rel="stylesheet" type="text/css" href="../login.css" />
 </head>
 <body>
 	<h1>Learning Analytics Login Page</h1>
