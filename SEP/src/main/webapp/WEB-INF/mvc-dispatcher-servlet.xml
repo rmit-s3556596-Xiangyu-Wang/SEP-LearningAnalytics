@@ -27,19 +27,6 @@
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="persistenceUnitName" value="user" />
-		<property name="user" ref="user" />
-		<property name="jpaVendorAdapter">
-			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-				<property name="showSql" value="true" />
-			</bean>
-		</property>
-		<property name="jpaPropertyMap">
-			<map>
-				<entry key="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
-				<entry key="hibernate.hbm2ddl.auto" value="validate" />
-				<entry key="hibernate.format_sql" value="true" />
-			</map>
-		</property>
 	</bean>
 
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
