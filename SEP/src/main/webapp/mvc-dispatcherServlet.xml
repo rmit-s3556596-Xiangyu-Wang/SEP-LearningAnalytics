@@ -19,11 +19,25 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 	
-    <jpa:repositories base-package="rmit.learningAnalytics.repository"/>
-
-    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
-        <property name="persistenceUnitName" value="defaultPersistenceUnit"/>
-    </bean>
+    <context:annotation-config />
+	<jpa:repositories base-package="rmit.learningAnalytics.repository" />
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="user" />
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="showSql" value="true" />
+			</bean>
+		</property>
+		<property name="jpaPropertyMap">
+			<map>
+				<entry key="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+				<entry key="hibernate.hbm2ddl.auto" value="validate" />
+				<entry key="hibernate.format_sql" value="true" />
+			</map>
+		</property>
+	</bean>
 
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
