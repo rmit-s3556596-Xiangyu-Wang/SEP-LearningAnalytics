@@ -29,8 +29,6 @@ import java.util.Map;
 public class LoginController {
 
 	UserLoginService uls;
-
-	private User user;
 	
 	@Autowired
 	UserRepository userRepository;
@@ -44,7 +42,6 @@ public class LoginController {
 	
 	@RequestMapping(value="/login", method = {RequestMethod.POST})
 	public String login(@ModelAttribute("user") User user, BindingResult result) {
-		this.user = userRepository.findByUserName(user.getUserName());
 		if(result.hasErrors()) {
 			return "index";
 		} else {
