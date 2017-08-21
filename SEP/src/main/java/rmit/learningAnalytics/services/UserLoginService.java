@@ -16,21 +16,33 @@ import rmit.learningAnalytics.repository.UserRepository;
 @Service
 public class UserLoginService implements IUserLoginService{
 	
-	private SessionFactory sessionFactory;
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Override
-	public boolean findByUsername(String username, String password) {
+	public User getUserByName(String name) {
 		// TODO Auto-generated method stub
-		User user = null;
-		for (int i=0;i<userRepository.findAll().size();i++) {
-			if (userRepository.findAll().get(i).getUserName().equals(username))
-				user = userRepository.findAll().get(i);
-		}
-		if(user != null && user.getUserPassword().equals(password))
-			return true;
-		else
-			return false;
+		return userRepository.getUserByName(name);
 	}
+	
+	public boolean checkLogin(String name, String pwd, User user) {
+		if(user.getUserName().equals(name)&&user.getUserPassword().equals(pwd)) {
+			return true;
+		}
+		return false;
+	}
+//	@Override
+//	public boolean findByUsername(String username, String password) {
+//		// TODO Auto-generated method stub
+//		User user = null;
+//		for (int i=0;i<userRepository.findAll().size();i++) {
+//			if (userRepository.findAll().get(i).getUserName().equals(username))
+//				user = userRepository.findAll().get(i);
+//		}
+//		if(user != null && user.getUserPassword().equals(password))
+//			return true;
+//		else
+//			return false;
+//	}
+	
 }

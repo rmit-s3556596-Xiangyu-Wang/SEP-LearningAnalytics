@@ -27,31 +27,31 @@ import java.util.Map;
 @Controller
 @SessionAttributes("user")
 public class LoginController {
-
-	UserLoginService uls;
 	
 	@Autowired
-	UserRepository userRepository;
+	UserLoginService uls;
 	
 	@RequestMapping(value="/login", method= RequestMethod.GET)
-	public String login(Model model) {
-		User user = new User();
-		model.addAttribute(user);
-		return "login";
+	public String login(@RequestParam("name") String name, @RequestParam("password") String password,Model model) {
+		User user = uls.getUserByName(name);
+		if(user!=null && user.getUserPassword().equals(password)) {
+			return "home";
+		}
+		return "loginfail";
 	}
 	
-	@RequestMapping(value="/login", method = {RequestMethod.POST})
-	public String login(@ModelAttribute("user") User user, BindingResult result) {
-		if(result.hasErrors()) {
-			return "index";
-		} else {
-			boolean found = uls.findByUsername(user.getUserName(), user.getUserPassword());
-			if (found) {
-				return "home";
-			}
-			else return "loginfail";
-		}
-	}
+//	@RequestMapping(value="/login", method = {RequestMethod.POST})
+//	public String login(@ModelAttribute("user") User user, BindingResult result) {
+//		if(result.hasErrors()) {
+//			return "index";
+//		} else {
+//			boolean found = uls.findByUsername(user.getUserName(), user.getUserPassword());
+//			if (found) {
+//				return "home";
+//			}
+//			else return "loginfail";
+//		}
+//	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(){

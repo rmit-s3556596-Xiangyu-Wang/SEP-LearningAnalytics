@@ -7,10 +7,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import rmit.learningAnalytics.entites.*;
 
-public class UserDAO {
-
-	private HibernateTemplate hibernateTemplate;
-	public User getActiveUser(String userName) {
-		return null;
-	}
+public interface UserDAO {
+	public User getUserByName(String name);
 } 
