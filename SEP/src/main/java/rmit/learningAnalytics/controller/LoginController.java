@@ -25,7 +25,6 @@ import org.springframework.security.core.Authentication;
 import java.util.Map;
 
 @Controller
-@SessionAttributes("user")
 public class LoginController {
 	
 	@Autowired
