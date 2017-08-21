@@ -27,7 +27,6 @@ import java.util.Map;
 @Controller
 public class LoginController {
 	
-	@Autowired
 	UserLoginService uls;
 	
 	@RequestMapping(value="/login", method= RequestMethod.GET)
