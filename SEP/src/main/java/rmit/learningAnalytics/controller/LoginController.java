@@ -30,8 +30,8 @@ public class LoginController {
 	UserLoginService uls;
 	
 	@RequestMapping(value="/loginindex", method= RequestMethod.POST)
-	public String login(@RequestParam("name") String name, @RequestParam("password") String password,Model model) {
-		User user = uls.getUserByName(name);
+	public String login(@RequestParam("name") String username, @RequestParam("password") String password,Model model) {
+		User user = uls.getUserByName(username);
 		if(user!=null && user.getUserPassword().equals(password)) {
 			return "home";
 		}

@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +11,7 @@
 <body>
 	<h1>Learning Analytics Login Page</h1>
 	<div class="login">
-		<form method="post">
+		<form:form class="form-signin" method="post" role="form">
 			<p>Username:</p>
 			<div>
 				<input type="text" name="username" id="name" required autofocus placeholder="s123456">
@@ -21,7 +24,7 @@
 				<input type="submit" value="login"><input type="reset"
 					value="Clear">
 			</div>
-		</form>
+		</form:form>
 	</div>
 </body>
 </html>

@@ -26,7 +26,7 @@
 			</form>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="/index">Home</a></li>
-				<li class="active"><a href="/loginindex.jsp">Login</a></li>
+				<li class="active"><a href="/loginindex">Login</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown">Explore<b class="caret"></b></a>
 					<ul class="dropdown-menu">
