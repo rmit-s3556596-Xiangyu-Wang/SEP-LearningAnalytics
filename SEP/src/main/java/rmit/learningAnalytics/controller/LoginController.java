@@ -29,13 +29,18 @@ public class LoginController {
 	
 	UserLoginService uls;
 	
-	@RequestMapping(value="/login", method= RequestMethod.GET)
+	@RequestMapping(value="/loginindex", method= RequestMethod.POST)
 	public String login(@RequestParam("name") String name, @RequestParam("password") String password,Model model) {
 		User user = uls.getUserByName(name);
 		if(user!=null && user.getUserPassword().equals(password)) {
 			return "home";
 		}
 		return "loginfail";
+	}
+	
+	@RequestMapping(value="/loginindex", method = RequestMethod.GET)
+	public String loginPage() {
+		return "loginindex";
 	}
 	
 //	@RequestMapping(value="/login", method = {RequestMethod.POST})
