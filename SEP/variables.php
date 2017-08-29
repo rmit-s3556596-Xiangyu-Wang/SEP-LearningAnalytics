@@ -23,7 +23,7 @@ maybe not the answer:';
 <p class="author">by <?php print $author; ?></p>
 <p><?= "$description  $answer"; ?></p>
 <p>Price: $ <?= $price ?></p>
-<p>This is the second last line.</p>
+<p>This is the second last ... line.</p>
 <p>This is the last line.</p>
 </body>
 </html>
