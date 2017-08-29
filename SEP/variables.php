@@ -23,5 +23,6 @@ maybe not the answer:';
 <p class="author">by <?php print $author; ?></p>
 <p><?= "$description  $answer"; ?></p>
 <p>Price: $ <?= $price ?></p>
+<p>This is the next line.</p>
 </body>
 </html>
