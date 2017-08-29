@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript Timer</title>
+<link href="../../styles/exercises.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Continuous Script</h1>
+<p>JavaScript runs in the browser, so this timer and its associated buttons don't require further requests to the web server.</p>
+<p>The time is now <span id="curtime"></span></p>
+<button id="start">Start clock</button> <button id="stop">Stop clock</button>
+<script>
+var timer = document.getElementById('curtime'),
+    clockstart = document.getElementById('start'),
+	clockstop = document.getElementById('stop'),
+	running;
+function updateTime() {
+	var now = new Date(),
+	    hours = now.getHours(),
+		mins = now.getMinutes(),
+		secs = now.getSeconds();
+	hours = hours < 10 ? '0' + hours : hours;
+	mins = mins < 10 ? '0' + mins : mins;
+	secs = secs < 10 ? '0' + secs : secs;
+	timer.innerHTML = hours + ':' + mins + ':' + secs;
+}
+function startClock() {
+	updateTime();
+	running = setInterval(updateTime, 1000);
+}
+function stopClock() {
+	clearInterval(running);
+}
+startClock();
+clockstart.addEventListener('click', startClock, false);
+clockstop.addEventListener('click', stopClock, false);
+</script>
+</body>
+</html>
