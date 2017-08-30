@@ -1,0 +1,154 @@
+<!DOCTYPE html> 
+<html> 
+ <head> 
+  <title>Student Information Table
+  </title> 
+  <style type="text/css"> 
+    table td a:hover{ 
+
+      background-color:#FFFFFF; 
+    } 
+    .one{ 
+      background-color:#F0F8FF; 
+    } 
+    .two{ 
+      background-color:#FFFFFF; 
+    } 
+    .three{ 
+      background-color:#DCDCDC; 
+    } 
+		table{ 
+      width:1000px; 
+      height:500px; 
+      border:#400040 solid 2px; 
+      border-collapse:collapse; 
+    } 
+    
+    table td,th{ 
+      border:solid 2px; 
+    } 
+    table th{ 
+      background-color:#c0c0c0; 
+    } 
+   
+  </style> 
+  <script type="text/javascript"> 
+     
+      function loading(){ 
+        var name; 
+        var tabNode=document.getElementById("tabid"); 
+        var rows=tabNode.rows;
+        var rowslength=rows.length;
+        for(var x=1;x<rowslength;x++){
+          if(x%2==0){ 
+            rows[x].className="one"; 
+          }else{ 
+            rows[x].className="two"; 
+          } 
+
+          rows[x].onmouseover=function(){ 
+            name=this.className; 
+            this.className="three"; 
+          } 
+          rows[x].onmouseout=function(){ 
+            this.className=name; 
+          } 
+        } 
+         
+      } 
+      onload=function(){ 
+        loading(); 
+      } 
+    var flag=true; 
+    function sortID(){ 
+      var tabNode = document.getElementById("tabid"); 
+      var rows0 = tabNode.rows; 
+      var rows1 = [];  
+      for (var x = 1; x < rows0.length; x++) { 
+        rows1[x - 1] = rows0[x]; 
+      } 
+      for (var x = 0; x < rows1.length - 1; x++) {
+        for (var y = x + 1; y < rows1.length; y++) { 
+      
+          if (parseInt(rows1[x].cells[1].innerHTML) > parseInt(rows1[y].cells[1].innerHTML)) { 
+            var temp = rows1[x]; 
+            rows1[x] = rows1[y]; 
+            rows1[y] = temp; 
+          } 
+        } 
+      } 
+	
+	if (flag){ 
+        
+      for (var x = 0; x < rows1.length; x++) { 
+        rows1[x].parentNode.appendChild(rows1[x]);
+      } 
+    }else{ 
+        
+      for (var x = 1; x < rows0.length; x++) { 
+        rows0[x].parentNode.appendChild(rows0[x]); 
+      } 
+    } 
+	
+    var ageimg=document.getElementById("ageid"); 
+     
+    if (flag) { 	
+	for (var x = rows1.length-1; x >=0; x--) { 	  
+        rows1[x].parentNode.appendChild(rows1[x]); 
+      }
+      ageimg.innerHTML="ID▲";
+	  flag=!flag;
+       
+    }else{ 
+      for (var x = rows1.length-1; x >=0; x--) { 
+	  
+        rows1[x].parentNode.appendChild(rows1[x]); 
+      } 
+      ageimg.innerHTML="ID▼"; 
+	  flag=!flag;
+    }  
+    loading();
+         
+    } 
+  </script> 
+ 
+ </head> 
+  
+ <body> 
+  <table id="tabid"> 
+    	  <tr><th><a href="javascript:void(0)" onclick="sortID()" id="ageid">ID</a></th> 
+      <th>Family Name</th> 
+
+      <th>Given Name</th> 
+    </tr> 
+    <tr> 
+      <td>1111111</td> 
+      <td>Fname1</td> 
+      <td>Gname1</td> 
+    </tr> 
+    <tr> 
+      <td>2222222</td> 
+      <td>Fname2</td> 
+      <td>Gname2</td> 
+    </tr> 
+ 
+    <tr> 
+      <td>3333333</td> 
+      <td>Fname3</td> 
+      <td>Gname3</td> 
+    </tr> 
+    <tr> 
+      <td>4444444</td> 
+      <td>Fname4</td> 
+      <td>Gname4</td> 
+    </tr> 
+    <tr> 
+      <td>5555555</td> 
+      <td>Fname5</td> 
+      <td>Gname5</td> 
+    </tr> 
+   
+   
+  </table> 
+ </body> 
+</html>
