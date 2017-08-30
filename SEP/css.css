@@ -167,7 +167,7 @@ input[type=text], input[type=password], textarea, select {
 	border: 1px solid #000000;
 	font-family: inherit;
 	font-size: inherit;
-	width: 50%;
+	width: 100%;
 }
 
 textarea {
@@ -175,10 +175,14 @@ textarea {
 	overflow: auto;
 }
 
-.button, input[type=file] {
+.button, input[type=file], input[type=reset], input[type=submit] {
 	cursor: pointer;
 	font-family: inherit;
 	font-size: inherit;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    border: 1px solid #cf120f;
 }
 
 header {
@@ -209,8 +213,12 @@ footer {
 	border: 1px solid #cf120f;
 	border-radius: 10px;
 	margin: auto;
-	width: 65%;
+	width: 50%;
 	padding: 10px;
 	background-color: #ffffff;
 	box-shadow: 2px 2px 4px #000000;
+}
+
+p.center {
+	text-align: center;
 }

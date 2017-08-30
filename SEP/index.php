@@ -7,18 +7,25 @@
 </head>
 <body>
 
-<header>
-RMIT - Learning Analytics
-</header>
+	<header> RMIT - Learning Analytics </header>
 
-<main>
-<p>This is some text</p>
-<div class="login">
-This is a box.
-</div>
-</main>
+	<main>
+	<p>Login using your RMIT email and password.</p>
+	<div class="login">
+		<form>
+			<p><label for="username">Staff email:</label></p>
+			<input type="text" name="username" id="username" autofocus autocomplete="on" placeholder="@rmit.edu.au">
 
-<footer>
+			<p><label for="password">Password:</label></p>
+			<input type="password" name="password" id="password">
+			
+			<p class="center"><input type="reset" value="Clear">&nbsp<input type="submit" value="Submit"></p>
+
+		</form>
+	</div>
+	</main>
+
+	<footer>
 <?php include("footer.php"); ?>
 </footer>
 
