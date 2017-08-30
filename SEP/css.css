@@ -1,3 +1,7 @@
+html {
+	height: 100%;
+}
+
 body {
 	padding: 0;
 	font-family: "helvetica neue", helvetica, arial, sans-serif;
@@ -6,19 +10,9 @@ body {
 	line-height: 1.571em;
 	letter-spacing: normal;
 	color: #333333;
-	
-/* Start here */
-
-  background: 
-    linear-gradient(#cf120f 0%, red 90%), 
-    linear-gradient(to right, #cf120f 0%, yellow 90%), 
-    url('header.jpg') 30px,
-    url('header.jpg') 20px;
-  background-blend-mode: screen, difference, lighten;
-
-/* End here */
-
-
+	background-color: #ffffff;
+	margin: 0px;
+	height: 100%;
 }
 
 a {
@@ -105,8 +99,6 @@ label {
 h1 {
 	font: 2.5em museo300;
 	line-height: 1em;
-	color: #ffffff;
-	text-shadow: 2px 2px 4px #000000;
 }
 
 h2 {
@@ -189,10 +181,28 @@ textarea {
 	font-size: inherit;
 }
 
-p.footer {
+header {
+	font: 2.5em museo300;
+	line-height: 1em;
+	color: #ffffff;
+	text-shadow: 2px 2px 4px #000000; /* horizontal-offset vertical-offset blur shadow-colour */
+	background-image: url("header.jpg");
+	background-size: auto;
+	padding: 30px 10px 30px 10px; /* top right bottom left */
+}
+
+main {
+	padding: 10px;
+	height: 100%;
+}
+
+footer {
 	font-size: 0.5em;
 	text-align: center;
 	margin-top: 20px;
+	background-color: #f6f6f6;
+	border-top: 1px solid #919191;
+	padding: 10px;
 }
 
 .login {
@@ -201,6 +211,6 @@ p.footer {
 	margin: auto;
 	width: 65%;
 	padding: 10px;
-	/* background-color: #ffffff; */
-	/* box-shadow: 2px 2px 4px #000000; */
+	background-color: #ffffff;
+	box-shadow: 2px 2px 4px #000000;
 }

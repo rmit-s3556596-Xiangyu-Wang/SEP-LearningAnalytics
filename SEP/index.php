@@ -6,13 +6,21 @@
 <link rel="stylesheet" href="css.css" type="text/css" />
 </head>
 <body>
-<h1>RMIT - Learning Analytics</h1>
 
+<header>
+RMIT - Learning Analytics
+</header>
+
+<main>
+<p>This is some text</p>
 <div class="login">
 This is a box.
 </div>
+</main>
 
+<footer>
 <?php include("footer.php"); ?>
+</footer>
 
 </body>
 </html>
