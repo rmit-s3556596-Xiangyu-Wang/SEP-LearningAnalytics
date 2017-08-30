@@ -5,8 +5,20 @@ body {
 	font-size: 1em;
 	line-height: 1.571em;
 	letter-spacing: normal;
-	background-color: #ffffff;
 	color: #333333;
+	
+/* Start here */
+
+  background: 
+    linear-gradient(#cf120f 0%, red 90%), 
+    linear-gradient(to right, #cf120f 0%, yellow 90%), 
+    url('header.jpg') 30px,
+    url('header.jpg') 20px;
+  background-blend-mode: screen, difference, lighten;
+
+/* End here */
+
+
 }
 
 a {
@@ -93,6 +105,8 @@ label {
 h1 {
 	font: 2.5em museo300;
 	line-height: 1em;
+	color: #ffffff;
+	text-shadow: 2px 2px 4px #000000;
 }
 
 h2 {
@@ -179,4 +193,14 @@ p.footer {
 	font-size: 0.5em;
 	text-align: center;
 	margin-top: 20px;
+}
+
+.login {
+	border: 1px solid #cf120f;
+	border-radius: 10px;
+	margin: auto;
+	width: 65%;
+	padding: 10px;
+	/* background-color: #ffffff; */
+	/* box-shadow: 2px 2px 4px #000000; */
 }

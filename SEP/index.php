@@ -8,6 +8,10 @@
 <body>
 <h1>RMIT - Learning Analytics</h1>
 
+<div class="login">
+This is a box.
+</div>
+
 <?php include("footer.php"); ?>
 
 </body>
