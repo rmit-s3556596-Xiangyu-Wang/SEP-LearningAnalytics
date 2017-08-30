@@ -2,7 +2,7 @@ body {
 	padding: 0;
 	font-family: "helvetica neue", helvetica, arial, sans-serif;
 	font-weight: 400;
-	font-size: 14px;
+	font-size: 1.5em;
 	line-height: 1.571em;
 	letter-spacing: normal;
 	background-color: #ffffff;
@@ -97,32 +97,27 @@ label {
 	font-style: normal;
 }
 
-h1, .h1 {
+h1 {
 	font: 3em museo300;
 	line-height: 1em;
 }
 
-h1.display2 {
-	font: 4.286em museo500;
-	line-height: 1em;
-}
-
-h2, .h2, p.lead {
+h2 {
 	font: 1.429em museo300;
 	line-height: 1.2em;
 }
 
-h3, .h3 {
+h3 {
 	font: 1.286em museo300;
 	line-height: 1.222em;
 }
 
-h4, .h4 {
+h4 {
 	font: 1.143em museo500;
 	line-height: 1.25em;
 }
 
-h5, .h5 {
+h5 {
 	font: 1em museo500;
 	line-height: 1.286em;
 }
