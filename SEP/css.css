@@ -2,7 +2,7 @@ body {
 	padding: 0;
 	font-family: "helvetica neue", helvetica, arial, sans-serif;
 	font-weight: 400;
-	font-size: 1.5em;
+	font-size: 1em;
 	line-height: 1.571em;
 	letter-spacing: normal;
 	background-color: #ffffff;
@@ -32,16 +32,9 @@ a:hover {
 
 img {
 	vertical-align: top;
-	border: 0;
+	border: 1px solid #c4c4c4;
 	vertical-align: middle;
-}
-
-html {
-	font-family: sans-serif;
-	-webkit-text-size-adjust: 100%;
-	-ms-text-size-adjust: 100%;
-	font-size: 62.5%;
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	margin: 15px;
 }
 
 hr {
@@ -52,7 +45,7 @@ hr {
 }
 
 p {
-	margin: 0 0 10px;
+	line-height: 2;
 }
 
 fieldset {
@@ -98,7 +91,7 @@ label {
 }
 
 h1 {
-	font: 3em museo300;
+	font: 2.5em museo300;
 	line-height: 1em;
 }
 
@@ -120,4 +113,62 @@ h4 {
 h5 {
 	font: 1em museo500;
 	line-height: 1.286em;
+}
+
+pre {
+	padding: 10px;
+	border: 2px solid gray;
+	border-radius: 5px;
+	margin: 20px;
+	background-color: #efefef;
+	font-size: 1.25em;
+	background-color: #efefef;
+	margin: 20px;
+}
+
+table {
+	width: 100%;
+}
+
+th {
+	height: 50px;
+	text-align: center;
+	vertical-align: middle;
+	background-color: #cf120f;
+	color: #ffffff;
+}
+
+tr:nth-child(even) {
+	background-color: #f6f6f6;
+}
+
+tr:hover {
+	background-color: #cacaca;
+}
+
+td {
+	text-align: left;
+	vertical-align: top;
+}
+
+th, td {
+	padding: 10px;
+}
+
+input, textarea, select {
+	padding: 10px;
+	box-sizing: border-box;
+	border: 1px solid #000000;
+	font-family: inherit;
+	font-size: inherit;
+}
+
+.button {
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+}
+
+.button:hover {
+	background-color: #e4e61e;
 }
