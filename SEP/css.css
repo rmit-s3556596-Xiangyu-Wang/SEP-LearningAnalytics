@@ -155,20 +155,22 @@ th, td {
 	padding: 10px;
 }
 
-input, textarea, select {
+input[type=text], input[type=password], textarea, select {
 	padding: 10px;
 	box-sizing: border-box;
 	border: 1px solid #000000;
 	font-family: inherit;
 	font-size: inherit;
+	width: 50%;
 }
 
-.button {
-	padding: 15px 32px;
-	text-align: center;
-	text-decoration: none;
+textarea {
+	resize: vertical;
+	overflow: auto;
 }
 
-.button:hover {
-	background-color: #e4e61e;
+.button, input[type=file] {
+	cursor: pointer;
+	font-family: inherit;
+	font-size: inherit;
 }
