@@ -136,7 +136,7 @@ table {
 	width: 100%;
 }
 
-th {
+th, thead {
 	height: 50px;
 	text-align: center;
 	vertical-align: middle;
@@ -157,7 +157,7 @@ td {
 	vertical-align: top;
 }
 
-th, td {
+th, td, thead {
 	padding: 10px;
 }
 
