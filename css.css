@@ -175,7 +175,7 @@ textarea {
 	overflow: auto;
 }
 
-.button, input[type=file], input[type=reset], input[type=submit] {
+.button, input[type=file], input[type=reset], input[type=submit], input[type=upload] {
 	cursor: pointer;
 	font-family: inherit;
 	font-size: inherit;
