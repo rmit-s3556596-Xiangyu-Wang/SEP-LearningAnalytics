@@ -1,60 +1,10 @@
 <!DOCTYPE html>
+<html>
 <head>
     <meta name=”viewport” content=”width=device-width, initial-scale=1″ />
-</head>
+
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<style>
-    table,
-    td,
-    th {
-        border: 1px solid grey;
-        border-collapse: collapse;
-        padding: auto auto;
-    }
-
-    th {
-        cursor: pointer;
-        background-color: lightgrey;
-
-    }
-
-    .header {
-        background-color: white;
-        text-align: center;
-        padding: 2%;
-    }
-
-    .nav {
-        background-color: lightgrey;
-        float: left;
-        width: 15%;
-        height: 100%;
-        padding: 2%;
-    }
-
-    .section {
-        background-color: lightgoldenrodyellow;
-        width: 79%;
-        float: left;
-        padding-left: 0.5%;
-        overflow: auto;
-    }
-
-    .upload{
-        text-align: center;
-        width: 15%;
-        height: 9%;
-        font-style: italic;
-        font-size: large;
-        background-color: lightskyblue;
-    }
-
-    #fileUpload{
-
-    }
-
-
-</style>
+<link rel="stylesheet" href="css.css" type="text/css" />
 <script type="text/javascript">
     var hideColum = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28,
         29, 30, 31];
@@ -200,12 +150,22 @@
     }
 
 </script>
+</head>
+<body>
+<header> RMIT - Learning Analytics </header>
+
+
+
 <div class="header">
     <input type="file" id="fileUpload"/>
     <input type="button" class="upload" id="upload" value="Upload"/>
 </div>
+
+
+<main>
 </br>
 <hr/>
+
 <div class="nav">
     <input type="checkbox" id="c3" name="xxx" onclick="onToggle(this);" value="3"/>Academic Career <br/><br/>
     <input type="checkbox" id="c4" name="xxx" onclick="onToggle(this);" value="4"/>Acad Level(By Term) <br/><br/>
@@ -239,4 +199,7 @@
 
 </div>
 
-<div class="section"></div>
+<span class="section"></div>
+</main>
+</body>
+</html>
