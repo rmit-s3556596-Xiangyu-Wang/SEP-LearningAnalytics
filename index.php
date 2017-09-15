@@ -9,8 +9,8 @@
 		"use strict";
 		var input;
 		input = document.getElementById("email").value;
-		if (input.endsWith('@rmit.edu.au')) {
-			console.log('Email validated.');
+		if (input.endsWith("@rmit.edu.au")) {
+			console.log("Email validated.");
 			document.getElementById("warning").innerHTML = "";
 			return true;
 		} else {
