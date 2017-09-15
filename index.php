@@ -11,7 +11,7 @@
 		input = document.getElementById("email").value;
 		if (input.endsWith("@rmit.edu.au")) {
 			console.log("Email validated.");
-			document.getElementById("warning").innerHTML = "";
+			document.getElementById("warning").innerHTML = "&nbsp";
 			return true;
 		} else {
 			console.log("Incorrect email entered.");
