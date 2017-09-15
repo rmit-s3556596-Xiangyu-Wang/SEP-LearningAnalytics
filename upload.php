@@ -252,10 +252,8 @@
 
 	</table>
 
-<div style="overflow-x:auto;">
-	<span class="section"></div>
-	</div>
-	
+	<div class="section"></div>
+
 	</main>
 
 </body>
