@@ -234,3 +234,24 @@ p.center {
 	background: -moz-linear-gradient(#f8f8f8, #ffffff, #f8f8f8);	/* For Firefox 3.6 to 15 */
 	background: linear-gradient(#f8f8f8, #ffffff, #f8f8f8); /* Standard syntax */
 }
+
+table.checkboxes {
+	border: 1px solid black;
+}
+
+table.checkboxes tr:nth-child(even) {
+	background-color: #ffffff;
+}
+
+table.checkboxes tr:hover {
+	background-color: #ffffff;
+}
+
+ table.checkboxes td {
+	text-align: left;
+	vertical-align: middle;
+}
+
+table.checkboxes td, th {
+	padding: 5px;
+}
