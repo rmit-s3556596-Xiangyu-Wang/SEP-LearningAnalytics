@@ -11,11 +11,11 @@
 		input = document.getElementById("email").value;
 		if (input.endsWith('@rmit.edu.au')) {
 			console.log('Email validated.');
-			document.getElementById("Warning").innerHTML = "";
+			document.getElementById("warning").innerHTML = "";
 			return true;
 		} else {
 			console.log("Incorrect email entered.");
-			document.getElementById("Warning").innerHTML = "Email address must end with <em>@rmit.edu.au</em>";
+			document.getElementById("warning").innerHTML = "Email address must end with <em>@rmit.edu.au</em>";
 			return false;
 		}
 	}
