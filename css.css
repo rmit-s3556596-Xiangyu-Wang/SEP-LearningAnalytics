@@ -175,21 +175,23 @@ textarea {
 	overflow: auto;
 }
 
-.button, input[type=file], input[type=reset], input[type=submit], .upload {
+.button, input[type=file], input[type=reset], input[type=submit],
+	.upload {
 	cursor: pointer;
 	font-family: inherit;
 	font-size: inherit;
 }
 
 input[type=text]:focus, input[type=password]:focus {
-    border: 1px solid #cf120f;
+	border: 1px solid #cf120f;
 }
 
 header {
 	font: 2.5em museo300;
 	line-height: 1em;
 	color: #ffffff;
-	text-shadow: 2px 2px 4px #000000; /* horizontal-offset vertical-offset blur shadow-colour */
+	text-shadow: 2px 2px 4px #000000;
+	/* horizontal-offset vertical-offset blur shadow-colour */
 	background-image: url("header.jpg");
 	background-size: auto;
 	padding: 30px 10px 30px 10px; /* top right bottom left */
@@ -221,4 +223,14 @@ footer {
 
 p.center {
 	text-align: center;
+}
+
+.upload_facility {
+	text-align: center;
+	padding: 20px 0;
+	background: #f8f8f8; /* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(#f8f8f8, #ffffff, #f8f8f8);	/* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#f8f8f8, #ffffff, #f8f8f8);	/* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#f8f8f8, #ffffff, #f8f8f8);	/* For Firefox 3.6 to 15 */
+	background: linear-gradient(#f8f8f8, #ffffff, #f8f8f8); /* Standard syntax */
 }
