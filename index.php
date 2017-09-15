@@ -15,7 +15,7 @@
 			return true;
 		} else {
 			console.log("Incorrect email entered.");
-			document.getElementById("warning").innerHTML = "Email address must end with <em>@rmit.edu.au</em>";
+			document.getElementById("warning").innerHTML = "Email address must end with @rmit.edu.au";
 			return false;
 		}
 	}
@@ -29,10 +29,9 @@
 	<p>Login using your RMIT email and password.</p>
 	<div class="login">
 		<form action="upload.php" method="post"
-			onsubmit="return checkEmail();>
+			onsubmit="return checkEmail();">
 			<p>
-			
-			<label for="username">Staff email:</label>
+				<label for="username">Staff email:</label>
 			</p>
 			<input type="email" name="email" id="email" autofocus
 				autocomplete="on" placeholder="@rmit.edu.au" required
