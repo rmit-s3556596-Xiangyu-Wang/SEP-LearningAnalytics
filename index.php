@@ -15,11 +15,11 @@
 		<form>
 			<p><label for="username">Staff email:</label></p>
 			<input type="email" name="username" id="username" autofocus autocomplete="on" placeholder="@rmit.edu.au" required title="RMIT email address">
-			<p id="Warning">This</p>
+			<p id="warning">&nbsp</p>
 
 			<p><label for="password">Password:</label></p>
 			<input type="password" name="password" id="password" required title="Your password">
-			<p>&nbsp</p>
+			<p id="warning">&nbsp</p>
 			
 			<p class="center"><input type="reset" value="Clear">&nbsp<input type="submit" value="Submit"></p>
 

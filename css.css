@@ -128,8 +128,6 @@ pre {
 	margin: 20px;
 	background-color: #efefef;
 	font-size: 1.25em;
-	background-color: #efefef;
-	margin: 20px;
 }
 
 table {
@@ -161,7 +159,8 @@ th, td, thead {
 	padding: 10px;
 }
 
-input[type=text], input[type=password], input[type=email], textarea, select {
+input[type=text], input[type=password], input[type=email], textarea,
+	select {
 	padding: 10px;
 	box-sizing: border-box;
 	border: 1px solid #000000;
@@ -229,9 +228,12 @@ p.center {
 	text-align: center;
 	padding: 20px 0;
 	background: #f8f8f8; /* For browsers that do not support gradients */
-	background: -webkit-linear-gradient(#f8f8f8, #ffffff, #f8f8f8); /* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient(#f8f8f8, #ffffff, #f8f8f8); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(#f8f8f8, #ffffff, #f8f8f8); /* For Firefox 3.6 to 15 */
+	background: -webkit-linear-gradient(#f8f8f8, #ffffff, #f8f8f8);
+	/* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#f8f8f8, #ffffff, #f8f8f8);
+	/* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#f8f8f8, #ffffff, #f8f8f8);
+	/* For Firefox 3.6 to 15 */
 	background: linear-gradient(#f8f8f8, #ffffff, #f8f8f8);
 	background: #f8f8f8; /* Standard syntax */
 }
@@ -260,4 +262,12 @@ table.checkboxes td, th {
 
 .section {
 	overflow-x: auto;
+}
+
+#warning {
+	color: #ff0000;
+	font-size: 0.75;
+	font-style: italic;
+	margin: 0px;
+	text-indent: 10px;
 }
