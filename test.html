@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+	function checkEmail() {
+		"use strict";
+		var input;
+		input = document.getElementById("email").value;
+		if (input.endsWith('@rmit.edu.au')) {
+			console.log('Email validated.');
+			document.getElementById("Warning").innerHTML = "";
+			return true;
+		} else {
+			console.log("Incorrect email entered.");
+			document.getElementById("Warning").innerHTML = "Email address must end with <em>@rmit.edu.au</em>";
+			return false;
+		}
+	}
+</script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="index.php" method="post" onsubmit="return checkEmail();" />
+	<input type="email" id="email">
+	<p id="Warning"></p>
+	<button type="submit" onclick="checkEmail()">Submit</button>
+	</form>
+</body>
+</html>
