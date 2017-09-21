@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Information</title>
+
+    <style type="text/css">
+        table{
+            border:#00ffff solid 2px;
+            border-collapse:collapse;
+        }
+        td{
+            border:#8080ff solid 2px;
+            padding:10px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function createTab() {
+            var data = sessionStorage.getItem("tab");
+            var read = JSON.parse(data);
+            if (read != null) {
+                var tab = combine(read, [0, 1, 2]);
+                var table = document.createElement("table");
+                table.setAttribute("id", "table");
+                for (var i = 0; i < tab.length; i++) {
+                    var row = table.insertRow();
+                    var iRow = tab[i];
+                    for (var j = 0; j < iRow.length; j++) {
+                        var cell = row.insertCell();
+                        cell.innerHTML = iRow[j];
+                    }
+                }
+                document.getElementById("div1").appendChild(table);
+            }
+        }
+
+        function combine(rows, combArr) {
+            var stuTab = [];
+            for (var i = 0; i < rows.length; i ++){
+                var stucells = rows[i];
+                var stuinfo = [];
+                for (var j = 0; j < stucells.length; j ++){
+                    stuinfo.push(stucells[j]);
+                }
+                var set = true;
+                for (j = 0; j < combArr.length; j ++) {
+                    for (var k = 0; k < stuTab.length; k++) {
+                        if (stuinfo[0] == stuTab[k][0]) {
+                            var term = stuTab[k][combArr[j]].split(",");
+                            if (!contains(stuinfo[combArr[j]], term)) {
+                                term += ("," + stuinfo[combArr[j]]);
+                                stuTab[k][combArr[j]] = term;
+                            }
+                            set = false;
+                        }
+                    }
+                }
+                if (set){
+                    stuTab.push(stuinfo);
+                }
+            }
+            return stuTab;
+        }
+
+        function contains(value, arr) {
+            var i = arr.length;
+            while (i--){
+                if (arr[i] == value){
+                    return true;
+                }
+            }
+            return false;
+        }
+    </script>
+</head>
+<body>
+<input type="button" onclick="createTab()" value="Create Table" /><br /><br />
+<select name="program" style="width: 150px; height: 30px;">
+    <option value="moit" selected>Master Of IT</option>
+    <option value="cs">Computer Science</option>
+</select>
+<div id="div1"></div>
+</body>
+</html>
