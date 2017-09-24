@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<p lang="en" xmlns="http://www.w3.org/1999/html">
+    <head>
+        <meta charset="UTF-8">
+        <title>Course Information</title>
+
+        <style type="text/css">
+            table {
+                border: #00ffff solid 2px;
+                border-collapse: collapse;
+            }
+
+            td {
+                border: #8080ff solid 2px;
+                padding: 10px;
+            }
+
+            .table{
+                overflow: auto;
+            }
+        </style>
+
+        <script type="text/javascript">
+            var data = sessionStorage.getItem("tab");
+            var read = JSON.parse(data);
+            function createTab() {
+                document.getElementById("div1").innerHTML = '';
+                var userInput = document.getElementById("course_id").value;
+                if (read != null) {
+                    if (!userInput.length == 0) {
+                        var stuTab = [];
+                        stuTab.push(read[0]);
+                        for (var i = 1; i < read.length; i++) {
+                            var stuRow = read[i];
+                            if (stuRow[14] == userInput) {
+                                stuTab.push(stuRow);
+                            }
+                        }
+                        if (stuTab.length == 1){
+                            alert("No such course!");
+                            document.getElementById("course_id").value = '';
+                            stuTab.deleteRow();
+                            location.reload();
+                        }
+                        var tab = combine(stuTab, [12, 13, 14]);
+                        var table = document.createElement("table");
+                        table.setAttribute("id", "table");
+                        for (i = 0; i < tab.length; i++) {
+                            var row = table.insertRow();
+                            var iRow = tab[i];
+                            for (var j = 0; j < iRow.length; j++) {
+                                var cell = row.insertCell();
+                                cell.innerHTML = iRow[j];
+                            }
+                        }
+                        document.getElementById("div1").appendChild(table);
+                        document.getElementById("course_id").value = '';
+                    }else {
+                        alert("No message input!");
+                    }
+                }
+            }
+
+            function combine(rows, combArr) {
+                var stuTab = [];
+                for (var i = 0; i < rows.length; i++) {
+                    var stucells = rows[i];
+                    var stuinfo = [];
+                    for (var j = 0; j < stucells.length; j++) {
+                        stuinfo.push(stucells[j]);
+                    }
+                    var set = true;
+                    for (j = 0; j < combArr.length; j++) {
+                        for (var k = 0; k < stuTab.length; k++) {
+                            if (stuinfo[0] == stuTab[k][0]) {
+                                var term = stuTab[k][combArr[j]].split(",");
+                                if (!contains(stuinfo[combArr[j]], term)) {
+                                    term += ("," + stuinfo[combArr[j]]);
+                                    stuTab[k][combArr[j]] = term;
+                                }
+                                set = false;
+                            }
+                        }
+                    }
+                    if (set) {
+                        stuTab.push(stuinfo);
+                    }
+                }
+                return stuTab;
+            }
+
+            function contains(value, arr) {
+                var i = arr.length;
+                while (i--) {
+                    if (arr[i] == value) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        </script>
+    </head>
+    <body>
+<p style="text-align: center">
+    <input type="text" name="courseID" id="course_id" placeholder="Catalog Number Here (e.g: 1114)"
+           style="width: 300px; height: 50px; background-color: lightyellow; font-size: large; text-align: center">
+    &nbsp&nbsp&nbsp&nbsp&nbsp
+    <button type="submit" value="submit" onclick="createTab()"
+            style="height: 54px; width: 150px; background-color: lightskyblue; font-size: large; font-style: italic;">
+        Search
+    </button>
+</p>
+<br/><br/>
+
+<p style="text-align: center">
+<div id="div1" class="table"></div>
+</p>
+
+

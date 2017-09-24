@@ -84,6 +84,9 @@
                         //start
 
                         var stuTab = combine(rows, combArr);
+                        stuTab.unshift(rows[0].split(","));
+                        saveStudent(stuTab);
+                        stuTab.shift();
                         var tBody = $("<tbody/>");
                         for (var i = 0; i < stuTab.length; i++) {
                             var row = $("<tr />");
@@ -211,14 +214,24 @@
             }
             var set = true;
             for (j = 0; j < combArr.length; j ++) {
-                for (var k = 0; k < stuTab.length; k++) {
-                    if (stuinfo[0] == stuTab[k][0]) {
-                        var term = stuTab[k][combArr[j]].split(",");
-                        if (!contains(stuinfo[combArr[j]], term)) {
-                            term += ("," + stuinfo[combArr[j]]);
-                            stuTab[k][combArr[j]] = term;
+                if (combArr[j] != 24 && combArr[j] != 25 && combArr[j] != 26 &&combArr[j] != 29 && combArr[j] != 30 ) {
+                    for (var k = 0; k < stuTab.length; k++) {
+                        if (stuinfo[0] == stuTab[k][0]) {
+                            var term = stuTab[k][combArr[j]].split(",");
+                            if (!contains(stuinfo[combArr[j]], term)) {
+                                term += ("," + stuinfo[combArr[j]]);
+                                stuTab[k][combArr[j]] = term;
+                            }
+                            set = false;
                         }
-                        set = false;
+                    }
+                }else {
+                    for (k = 0; k < stuTab.length; k ++){
+                        if (stuinfo[0] == stuTab[k][0] && stuinfo[6] > stuTab[k][6]){
+                            term = stuinfo[6];
+                            stuTab[k][combArr[j]] = term;
+                            set = false;
+                        }
                     }
                 }
             }
@@ -228,7 +241,7 @@
         }
         return stuTab;
     }
-    
+
     function contains(value, arr) {
         var i = arr.length;
         while (i--){
@@ -247,7 +260,7 @@
             for (var i = 0; i < rows.length; i ++){
                 var cells = rows[i].split(",");
                 var sRow = [];
-                for (var j = 14; j > 11; j --){
+                for (var j = 0; j < cells.length; j ++){
                     sRow.push(cells[j]) ;
                 }
                 data.push(sRow);
@@ -255,10 +268,14 @@
             var sent = JSON.stringify(data);
             sessionStorage.setItem("tab", sent);
             alert("File Saved!");
-            window.open('./getData001.html');
         } else {
             alert("File Empty!")
         }
+    }
+
+    function saveStudent(table) {
+        var sentTab = JSON.stringify(table);
+        sessionStorage.setItem("stuTab", sentTab);
     }
 </script>
 <body>
