@@ -37,7 +37,7 @@
         var subWeb = document.frames ? document.frames["iframeset"].document : ifm.contentDocument;
         if(ifm != null && subWeb != null) {
             ifm.height = subWeb.body.scrollHeight;
-            ifm.width = 1425;
+            //ifm.width = 1425;
         }
     }
 </script>
@@ -45,14 +45,15 @@
 <body>
 
 <ul>
-    <li><a class="active" href="./uploadFinal.html" target="upload">Upload</a></li>
-    <li><a href="./sort_by_course.html" target="upload">Sort by course</a></li>
-    <li><a href="./sort_by_student_id.html" target="upload">Sort by student</a></li>
-    <li><a href="#about">关于</a></li>
+    <li><a class="active" href="ProgramAnalysis.html" target="upload">Program Analysis</a></li>
+    <li><a href="CourseAnalysis.html" target="upload">Course Analysis</a></li>
+    <!--<li><a href="./sort_by_student_id.html" target="upload">Sort by student</a></li>-->
+    <!--<li><a href="#about">关于</a></li>-->
 </ul>
 <br /><br />
 
-<iframe id="iframeset" name="upload" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" onLoad="iFrameHeight()"></iframe>
+<iframe id="iframeset" name="upload" src="ProgramAnalysis.html" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+        onLoad="iFrameHeight()" style="width: 100%"></iframe>
 
 </body>
 </html>
