@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>LEARNING ANALYTICS</title>
+
+    <meta name="description" content="A admin dashboard theme that will get you started with Bootstrap 4."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Codeply">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"/>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="css/styles.css"/>
+</head>
+
+<style type="text/css">
+    *{margin: 0;padding: 0;}
+    body{min-width: 700px;}
+    header,
+    footer{
+        border: 1px solid #333;
+        background: #aaa;
+        text-align: center;
+    }
+    .left,
+    .main,
+    .right{
+        float: left;
+        min-height: 130px;
+    }
+    .container{
+        border: 2px solid #fdfbff;
+        overflow: hidden;
+    }
+    container-fluid{
+        margin-left: -100%;
+        width: 200px;
+        background: #fdfbff;
+    }
+    nav-link{
+        margin-left: -220px;
+        width: 220px;
+        background: #fdfbff;
+    }
+
+
+</style>
+<body>
+<p>
+    <nav class="navbar navbar-fixed-top navbar-dark bg-primary">
+
+        <button class="navbar-toggler hidden-sm-up pull-right" type="button" data-toggle="collapse"
+                data-target="#collapsingNavbar">
+            ☰
+        </button>
+        <a class="navbar-brand" href="#">Learning Analystics</a>
+        <div class="collapse navbar-toggleable-xs" id="collapsingNavbar">
+            <ul class="nav navbar-nav pull-right">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#"> SEARCH BY PROGRAM<span class="sr-only">SEARCH BY PROGRAM</span></a>
+                    <input type="text" name="program" id="program" placeholder=" Type program code to search "
+                           style="width: 200px; height: 30px; background-color:white; font-size: small; text-align: center; padding-top: inherit">
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="SEARCH BY ST ID">SEARCH BY STUDENT ID</a>
+                    <input type="text" name="studentid" id="studentid" placeholder=" Type student id to search "
+                           style="width: 200px; height: 30px; background-color:white; font-size: small; text-align: center; padding-top: inherit">
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="SEARCH BY CATALOGUE NUMBER" data-toggle="">SEARCH BY CATALOGUE NUMBER</a>
+                    <input type="text" name="catalouge" id="catalogue" placeholder=" Type catalogue number  "
+                           style="width: 200px; height: 30px; background-color:white; font-size: small; text-align: center; padding-top: inherit">
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="" data-target="ANALYSIS" data-toggle="modal">ANALYSIS</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</p>
+    <br/>
+<p>
+<div class="container-fluid" id="main" style="padding-top: 4%">
+    <div class="row row-offcanvas row-offcanvas-left">
+        <div class="col-md-3 col-lg-2 sidebar-offcanvas" id="sidebar" role="navigation">
+            <ul class="nav nav-pills nav-stacked">
+                <button type="proanalysis" value="proanalysis" onclick="createTab()"
+                        style="height: 30px; width: 150px; background-color: #9c979c; font-size: small; color:black;padding-bottom: 10%">
+                    PROGRAM ANALYSIS
+                </button>
+                <button type="courseanalysis" value="programanalysis" onclick="createTab()"
+                        style="height: 30px; width: 150px; background-color: #9c979c; font-size: small; color:black;padding-bottom: 10%">
+                    COURSE ANALYSIS
+                </button>
+                <li class="nav-item"><a class="nav-link" href="#">ACADEMIC CAREER</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">TERM</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">PROGRAM CODE</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">ACADEMIC PLAN</a></li>
+                <li class="nav-item"><a class="nav-link" href="">ADMIT TERM</a></li>
+                <li class="nav-item"><a class="nav-link" href="">CATALOGUE NUMBER</a></li>
+                <li class="nav-item"><a class="nav-link" href="">PROGRAM CODE</a></li>
+                <li class="nav-item"><a class="nav-link" href="">TOTAL UNITS ATTEMPT</a></li>
+                <li class="nav-item"><a class="nav-link" href="">TOTAL UNITS PASS</a></li>
+                <li class="nav-item"><a class="nav-link" href="">TOTAL UNITS CREDIT</a></li>
+                <li class="nav-item"><a class="nav-link" href="">CUMULATIVE UNITS</a></li>
+                <li class="nav-item"><a class="nav-link" href="">STUDENT EMAIL ADDRESS</a></li>
+
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+
+<footer class="footer">
+    <p>RMIT - COSC2616 Software Engineering Postgraduate Project - 2017, Sem 2<br>
+        &copy 2017 <a href="mailto:nebojsa.pajkic@rmit.edu.au">Learning Analytics Team</a></p>
+</footer>
+
+
+</body>
+</html>
