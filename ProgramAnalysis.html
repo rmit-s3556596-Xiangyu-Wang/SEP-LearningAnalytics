@@ -453,6 +453,8 @@
             table = document.getElementById("stuTab");
         } else if (value == "term") {
             table = document.getElementById("termTable");
+        }else if (value == "total_unit_pass"){
+            table = document.getElementById("unitTable");
         }
 
         for (var i = 0; i < table.rows.length; i++) {
@@ -471,7 +473,7 @@
         document.getElementById("div1").innerHTML = '';
         var termNum = document.getElementById('num_of_term').value;
         if (read != null) {
-            if (!termNum == 0) {
+            if (!termNum.length == 0) {
                 var table = document.createElement("table");
                 table.setAttribute("id", "termTable");
                 for (var i = 1; i < termTab.length; i++) {
@@ -495,6 +497,41 @@
                 document.getElementById("div1").appendChild(table);
                 document.getElementById("num_of_term").value = '';
                 hideColumns("term");
+            }
+        }
+    }
+</script>
+<script type="text/javascript">
+    function createUnitPassTab() {
+        var read = sessionStorage.getItem("stuTab");
+        var unitTab = JSON.parse(read);
+        document.getElementById("div1").innerHTML = '';
+        var unit = document.getElementById("total_unit_pass").value;
+        if (read != null){
+            if (!unit.length == 0){
+                var table = document.createElement("table");
+                table.setAttribute("id", "unitTable");
+                for (var i = 1; i < unitTab.length; i++) {
+                    var stuinfo = unitTab[i];
+                    var unitPass = stuinfo[26];
+                    if (unit <= unitPass) {
+                        var row = table.insertRow();
+                        for (var j = 0; j < stuinfo.length; j++) {
+                            var cell = row.insertCell();
+                            cell.innerHTML = stuinfo[j];
+                        }
+                    }
+                }
+                var thead = table.createTHead();
+                var tRow = thead.insertRow();
+                for (i = 0; i < unitTab[0].length; i ++){
+                    var tCell = document.createElement("th");
+                    tCell.innerHTML = unitTab[0][i];
+                    tRow.appendChild(tCell);
+                }
+                document.getElementById("div1").appendChild(table);
+                document.getElementById("total_unit_pass").value = '';
+                hideColumns("total_unit_pass");
             }
         }
     }
@@ -527,6 +564,15 @@
            style="width: 300px; height: 50px; background-color: lightyellow; font-size: large; text-align: center">
     &nbsp&nbsp&nbsp&nbsp&nbsp
     <button type="submit" value="submit" onclick="createTermTab()"
+            style="height: 54px; width: 150px; background-color: lightskyblue; font-size: large; font-style: italic;">
+        Search
+    </button>
+</p>
+<p style="text-align: center">
+    <input type="text" name="num_of_term" id="total_unit_pass" placeholder="Total Unit Pass:"
+           style="width: 300px; height: 50px; background-color: lightyellow; font-size: large; text-align: center">
+    &nbsp&nbsp&nbsp&nbsp&nbsp
+    <button type="submit" value="submit" onclick="createUnitPassTab()"
             style="height: 54px; width: 150px; background-color: lightskyblue; font-size: large; font-style: italic;">
         Search
     </button>
