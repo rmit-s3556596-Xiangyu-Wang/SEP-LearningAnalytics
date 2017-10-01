@@ -57,9 +57,9 @@
 
 </style>
 <script type="text/javascript">
-        var hideColum = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28,
-            29, 30, 31];
-//    var hideColum = [4, 5, 10, 11, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 27, 28];
+    var hideColum = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28,
+        29, 30, 31];
+    //    var hideColum = [4, 5, 10, 11, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 27, 28];
     var combArr = [6, 7, 8, 9, 14, 24, 25, 26, 29, 30, 31];
     $(function () {
         $("#upload").bind("click", function () {
@@ -184,7 +184,7 @@
 
     function show(col) {
         var thead = document.getElementsByTagName('thead');
-        if(!thead.length == 0) {
+        if (!thead.length == 0) {
             var thr = thead[0];
             thr.getElementsByTagName('th')[col].style.display = 'table-cell';
             //thr.getElementsByTagName('th')[col].style.visibility='visible';
@@ -336,7 +336,7 @@
                 }
                 var thead = table.createTHead();
                 var tRow = thead.insertRow();
-                for (i = 0; i < stuTab[0].length; i ++){
+                for (i = 0; i < stuTab[0].length; i++) {
                     var tCell = document.createElement("th");
                     tCell.innerHTML = stuTab[0][i];
                     tRow.appendChild(tCell);
@@ -390,7 +390,7 @@
                 }
                 var thead = table.createTHead();
                 var tRow = thead.insertRow();
-                for (i = 0; i < tab[0].length; i ++){
+                for (i = 0; i < tab[0].length; i++) {
                     var tCell = document.createElement("th");
                     tCell.innerHTML = tab[0][i];
                     tRow.appendChild(tCell);
@@ -453,8 +453,10 @@
             table = document.getElementById("stuTab");
         } else if (value == "term") {
             table = document.getElementById("termTable");
-        }else if (value == "total_unit_pass"){
+        } else if (value == "total_unit_pass") {
             table = document.getElementById("unitTable");
+        }else if (value == "term_course"){
+            table = document.getElementById("CnTable");
         }
 
         for (var i = 0; i < table.rows.length; i++) {
@@ -489,7 +491,7 @@
                 }
                 var thead = table.createTHead();
                 var tRow = thead.insertRow();
-                for (i = 0; i < termTab[0].length; i ++){
+                for (i = 0; i < termTab[0].length; i++) {
                     var tCell = document.createElement("th");
                     tCell.innerHTML = termTab[0][i];
                     tRow.appendChild(tCell);
@@ -507,14 +509,14 @@
         var unitTab = JSON.parse(read);
         document.getElementById("div1").innerHTML = '';
         var unit = document.getElementById("total_unit_pass").value;
-        if (read != null){
-            if (!unit.length == 0){
+        if (read != null) {
+            if (!unit.length == 0) {
                 var table = document.createElement("table");
                 table.setAttribute("id", "unitTable");
                 for (var i = 1; i < unitTab.length; i++) {
                     var stuinfo = unitTab[i];
                     var unitPass = stuinfo[26];
-                    if (unit <= unitPass) {
+                    if (parseInt(unit) <= parseInt(unitPass)) {
                         var row = table.insertRow();
                         for (var j = 0; j < stuinfo.length; j++) {
                             var cell = row.insertCell();
@@ -524,7 +526,7 @@
                 }
                 var thead = table.createTHead();
                 var tRow = thead.insertRow();
-                for (i = 0; i < unitTab[0].length; i ++){
+                for (i = 0; i < unitTab[0].length; i++) {
                     var tCell = document.createElement("th");
                     tCell.innerHTML = unitTab[0][i];
                     tRow.appendChild(tCell);
@@ -534,6 +536,55 @@
                 hideColumns("total_unit_pass");
             }
         }
+    }
+</script>
+<script type="text/javascript">
+    function createTermCourseTab() {
+        var read1 = sessionStorage.getItem("tab");
+        var read2 = sessionStorage.getItem("stuTab");
+        var rowData = JSON.parse(read1);
+        var CnTable = JSON.parse(read2);
+        document.getElementById("div1").innerHTML = '';
+        var term = document.getElementById("term_number").value;
+        var catalogNum = document.getElementById("catalog_number").value;
+        var list = [];
+        for (var i = 1; i < rowData.length; i++) {
+            if (rowData[i][6] == term && rowData[i][14] == catalogNum) {
+                var stuID = rowData[i][0];
+                list.push(stuID);
+            }
+        }
+
+        var tabList = [];
+        for (i = 0; i < list.length; i++) {
+            for (var j = 1; j < CnTable.length; j++) {
+                if (list[i] == CnTable[j][0]) {
+                    tabList.push(CnTable[j]);
+                }
+            }
+        }
+
+        var table = document.createElement("table");
+        table.setAttribute("id", "CnTable");
+        for (var i = 0; i < tabList.length; i++) {
+            var stuinfo = tabList[i];
+            var row = table.insertRow();
+            for (var j = 0; j < stuinfo.length; j++) {
+                var cell = row.insertCell();
+                cell.innerHTML = stuinfo[j];
+            }
+        }
+        var thead = table.createTHead();
+        var tRow = thead.insertRow();
+        for (i = 0; i < CnTable[0].length; i++) {
+            var tCell = document.createElement("th");
+            tCell.innerHTML = CnTable[0][i];
+            tRow.appendChild(tCell);
+        }
+        document.getElementById("div1").appendChild(table);
+        document.getElementById("term_number").value = '';
+        document.getElementById("catalog_number").value = '';
+        hideColumns("term_course");
     }
 </script>
 <body>
@@ -573,6 +624,18 @@
            style="width: 300px; height: 50px; background-color: lightyellow; font-size: large; text-align: center">
     &nbsp&nbsp&nbsp&nbsp&nbsp
     <button type="submit" value="submit" onclick="createUnitPassTab()"
+            style="height: 54px; width: 150px; background-color: lightskyblue; font-size: large; font-style: italic;">
+        Search
+    </button>
+</p>
+<p style="text-align: center">
+    <input type="text" name="num_of_term" id="term_number" placeholder="Term:"
+           style="width: 300px; height: 50px; background-color: lightyellow; font-size: large; text-align: center">
+    &nbsp&nbsp&nbsp&nbsp&nbsp
+    <input type="text" name="num_of_term" id="catalog_number" placeholder="Course Catalog Number:"
+           style="width: 300px; height: 50px; background-color: lightyellow; font-size: large; text-align: center">
+    &nbsp&nbsp&nbsp&nbsp&nbsp
+    <button type="submit" value="submit" onclick="createTermCourseTab()"
             style="height: 54px; width: 150px; background-color: lightskyblue; font-size: large; font-style: italic;">
         Search
     </button>
