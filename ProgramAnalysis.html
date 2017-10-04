@@ -455,8 +455,10 @@
             table = document.getElementById("termTable");
         } else if (value == "total_unit_pass") {
             table = document.getElementById("unitTable");
-        }else if (value == "term_course"){
+        } else if (value == "term_course") {
             table = document.getElementById("CnTable");
+        }else if (value == "resetTable"){
+            table = document.getElementById("resetTable");
         }
 
         for (var i = 0; i < table.rows.length; i++) {
@@ -587,6 +589,35 @@
         hideColumns("term_course");
     }
 </script>
+<script type="text/javascript">
+    function resetTable() {
+        var read = sessionStorage.getItem("stuTab");
+        var unitTab = JSON.parse(read);
+        document.getElementById("div1").innerHTML = '';
+        if (read != null) {
+            var table = document.createElement("table");
+            table.setAttribute("id", "resetTable");
+            for (var i = 1; i < unitTab.length; i++) {
+                var stuinfo = unitTab[i];
+                var row = table.insertRow();
+                for (var j = 0; j < stuinfo.length; j++) {
+                    var cell = row.insertCell();
+                    cell.innerHTML = stuinfo[j];
+                }
+
+            }
+            var thead = table.createTHead();
+            var tRow = thead.insertRow();
+            for (i = 0; i < unitTab[0].length; i++) {
+                var tCell = document.createElement("th");
+                tCell.innerHTML = unitTab[0][i];
+                tRow.appendChild(tCell);
+            }
+            document.getElementById("div1").appendChild(table);
+            hideColumns("resetTable");
+        }
+    }
+</script>
 <body>
 <div class="header">
     <input type="file" id="fileUpload"/>
@@ -598,7 +629,7 @@
     &nbsp&nbsp&nbsp&nbsp&nbsp
     <button type="submit" value="submit" onclick="createStudentTab()"
             style="height: 54px; width: 150px; background-color: lightskyblue; font-size: large; font-style: italic;">
-        Search
+        Filter
     </button>
 </p>
 <p style="text-align: center">
@@ -607,7 +638,7 @@
     &nbsp&nbsp&nbsp&nbsp&nbsp
     <button type="submit" value="submit" onclick="createCourseTab()"
             style="height: 54px; width: 150px; background-color: lightskyblue; font-size: large; font-style: italic;">
-        Search
+        Filter
     </button>
 </p>
 <p style="text-align: center">
@@ -616,7 +647,7 @@
     &nbsp&nbsp&nbsp&nbsp&nbsp
     <button type="submit" value="submit" onclick="createTermTab()"
             style="height: 54px; width: 150px; background-color: lightskyblue; font-size: large; font-style: italic;">
-        Search
+        Filter
     </button>
 </p>
 <p style="text-align: center">
@@ -625,7 +656,7 @@
     &nbsp&nbsp&nbsp&nbsp&nbsp
     <button type="submit" value="submit" onclick="createUnitPassTab()"
             style="height: 54px; width: 150px; background-color: lightskyblue; font-size: large; font-style: italic;">
-        Search
+        Filter
     </button>
 </p>
 <p style="text-align: center">
@@ -637,7 +668,13 @@
     &nbsp&nbsp&nbsp&nbsp&nbsp
     <button type="submit" value="submit" onclick="createTermCourseTab()"
             style="height: 54px; width: 150px; background-color: lightskyblue; font-size: large; font-style: italic;">
-        Search
+        Filter
+    </button>
+</p>
+<p style="text-align: center">
+    <button type="submit" value="submit" onclick="resetTable()"
+            style="height: 54px; width: 150px; background-color: lightskyblue; font-size: large; font-style: italic;">
+        Reset
     </button>
 </p>
 <hr/>
