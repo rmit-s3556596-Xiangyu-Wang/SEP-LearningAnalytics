@@ -74,6 +74,7 @@ public class encrypt_csv extends JFrame implements ActionListener
 				line = br.readLine();
 				System.out.println(line);
 			}
+			writer.println(line);
 			line = br.readLine();
 			while(line != null)
 			{
