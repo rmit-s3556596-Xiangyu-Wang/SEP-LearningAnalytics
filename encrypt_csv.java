@@ -92,7 +92,7 @@ public class encrypt_csv extends JFrame implements ActionListener
 						ID_List.add(item[0]);
 						FName_List.add(item[1]);
 						GName_List.add(item[2]);
-						Email_List.add(item[item.length - 1]);						
+						Email_List.add(item[item.length - 1]);				
 						item[0] = cipherID(cipher_count);
 						item[1] = cipherFName(cipher_count);
 						item[2] = cipherGName(cipher_count);
@@ -102,9 +102,9 @@ public class encrypt_csv extends JFrame implements ActionListener
 					else
 					{
 						item[0] = cipherID(ID_List.indexOf(item[0]));
-						item[1] = cipherFName(ID_List.indexOf(item[1]));
-						item[2] = cipherGName(ID_List.indexOf(item[2]));
-						item[item.length - 1] = cipherEMail(ID_List.indexOf(item[item.length - 1]));
+						item[1] = cipherFName(FName_List.indexOf(item[1]));
+						item[2] = cipherGName(GName_List.indexOf(item[2]));
+						item[item.length - 1] = cipherEMail(Email_List.indexOf(item[item.length - 1]));
 					}
 						
 					for(int i = 0; i < item.length; i++)
@@ -127,7 +127,7 @@ public class encrypt_csv extends JFrame implements ActionListener
 						ID_List.add(item[0]);
 						FName_List.add(item[1]);
 						GName_List.add(item[2]);
-						Email_List.add(item[item.length - 1]);						
+						Email_List.add(item[item.length - 1]);				
 						item[0] = cipherID(cipher_count);
 						item[1] = cipherFName(cipher_count);
 						item[2] = cipherGName(cipher_count);
@@ -137,9 +137,9 @@ public class encrypt_csv extends JFrame implements ActionListener
 					else
 					{
 						item[0] = cipherID(ID_List.indexOf(item[0]));
-						item[1] = cipherFName(ID_List.indexOf(item[1]));
-						item[2] = cipherGName(ID_List.indexOf(item[2]));
-						item[item.length - 1] = cipherEMail(ID_List.indexOf(item[item.length - 1]));
+						item[1] = cipherFName(FName_List.indexOf(item[1]));
+						item[2] = cipherGName(GName_List.indexOf(item[2]));
+						item[item.length - 1] = cipherEMail(Email_List.indexOf(item[item.length - 1]));
 					}
 						
 					for(int i = 0; i < item.length; i++)
