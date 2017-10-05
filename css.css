@@ -245,6 +245,12 @@ table.checkboxes {
     border-spacing: 2px;
     text-indent: 50px;
 }
+.div1 {
+    width: 300px;
+    height: 100px;
+    border: 1px solid blue;
+    box-sizing: border-box;
+}
 
 table.checkboxes tr:nth-child(even) {
     background-color: #ffffff;
