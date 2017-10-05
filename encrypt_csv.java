@@ -20,6 +20,10 @@ public class encrypt_csv extends JFrame implements ActionListener
 {
 	// record for later compare
 	static int cipher_count = 0;
+	ArrayList<String> ID_List = new ArrayList<String>();
+	ArrayList<String> FName_List = new ArrayList<String>();
+	ArrayList<String> GName_List = new ArrayList<String>();
+	ArrayList<String> Email_List = new ArrayList<String>();
 	JButton open = null;
 	
 	public encrypt_csv()
@@ -34,18 +38,13 @@ public class encrypt_csv extends JFrame implements ActionListener
 	
 	@Override  
     public void actionPerformed(ActionEvent e)
-    {
-		ArrayList<String> ID_List = new ArrayList<String>();
-		ArrayList<String> FName_List = new ArrayList<String>();
-		ArrayList<String> GName_List = new ArrayList<String>();
-		ArrayList<String> Email_List = new ArrayList<String>();
-		
+    {	
 		JFileChooser jfc = new JFileChooser();  
-        jfc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);  
+        jfc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
         jfc.showDialog(new JLabel(), "Choose a file");
-        File selected_file = jfc.getSelectedFile();
+        File selected_file = jfc.getSelectedFile();          
         
-        String output_file_name = JOptionPane.showInputDialog("Please input the output file name");
+        String output_file_name = (String) JOptionPane.showInputDialog(null, "Please input a output file name", "Input required", JOptionPane.QUESTION_MESSAGE, null, null, "output1");
         
         File output_file = new File(output_file_name + ".csv");
 		BufferedReader br = null;
@@ -85,8 +84,8 @@ public class encrypt_csv extends JFrame implements ActionListener
 					if(item.length == 0)
 					{
 						break;
-					}						
-						
+					}
+					
 					if(ID_List.contains(item[0]) == false)
 					{
 						ID_List.add(item[0]);
@@ -154,6 +153,7 @@ public class encrypt_csv extends JFrame implements ActionListener
 			}
 			br.close();
 			writer.close();
+			
 		}
 		catch(IOException e3)
 		{
