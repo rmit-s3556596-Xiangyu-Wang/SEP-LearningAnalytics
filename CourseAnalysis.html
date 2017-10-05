@@ -1,63 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="CourseAnalysis.css" type="text/css" />
+    <meta name=”viewport” content=”width=device-width, initial-scale=1″/>
+    <title>Program Analysis</title>
 </head>
-
-<style>
-    table,
-    td,
-    th {
-        border: 1px solid grey;
-        border-collapse: collapse;
-        padding: auto auto;
-    }
-
-    th {
-        cursor: pointer;
-        background-color: lightgrey;
-
-    }
-
-    .header {
-        background-color: white;
-        text-align: center;
-        padding: 2%;
-    }
-
-    .nav {
-        background-color: lightgrey;
-        float: left;
-        width: 15%;
-        height: 100%;
-        padding: 2%;
-    }
-
-    .section {
-        background-color: lightgoldenrodyellow;
-        width: 79%;
-        float: left;
-        padding-left: 0.5%;
-        overflow: auto;
-    }
-
-    .upload {
-        text-align: center;
-        width: 15%;
-        height: 9%;
-        font-style: italic;
-        font-size: large;
-        background-color: lightskyblue;
-    }
-
-    #fileUpload {
-
-    }
-
-
-</style>
-
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
 <script type="text/javascript">
@@ -86,9 +32,7 @@
                         }
                         tHead.append(theadtr);
                         table.append(tHead);
-
                         //start
-
                         var stuTab = combine(rows, combArr);
                         stuTab.unshift(rows[0].split(","));
                         saveStudent(stuTab);
@@ -121,7 +65,97 @@
     });
 </script>
 
-<script type="text/javascript">
+<script>
+    function hideALL() {
+        var thead = document.getElementsByTagName('thead');
+        var thr = thead[0];
+        var j;
+        for (j = 0; j < 32; j++) {
+            if (hideColum.indexOf(j) >= 0) {
+                thr.getElementsByTagName('th')[j].style.display = 'none';
+                //thr.getElementsByTagName('th')[j].style.visibility='hidden';
+            }
+        }
+        var tr = document.getElementsByTagName('tr');
+        var i;
+        for (i = 1; i < tr.length; i++) {
+            var j;
+            for (j = 0; j < 32; j++) {
+                if (hideColum.indexOf(j) >= 0) {
+                    tr[i].getElementsByTagName('td')[j].style.display = 'none';
+                    //tr[i].getElementsByTagName('td')[j].style.visibility='hidden';
+                }
+            }
+        }
+    }
+    function onToggle(ckbox) {
+        if (ckbox.checked) {
+            show(ckbox.value);
+        }
+        else {
+            hide(ckbox.value);
+        }
+    }
+    function hide(col) {
+        var thead = document.getElementsByTagName('thead');
+        if (!thead.length == 0) {
+            var thr = thead[0];
+            thr.getElementsByTagName('th')[col].style.display = 'none';
+            //thr.getElementsByTagName('th')[col].style.visibility='hidden';
+        }
+        var tr = document.getElementsByTagName('tr');//��ȡ������
+        if (!tr.length == 0) {
+            var i;
+            for (i = 1; i < tr.length; i++) {
+                tr[i].getElementsByTagName('td')[col].style.display = 'none';
+                //tr[i].getElementsByTagName('td')[col].style.visibility='hidden';
+            }
+        }
+        var stuTab = document.getElementById("stuTab");
+        var courseTab = document.getElementById("courseTable");
+        for (i = 0; i < stuTab.rows.length; i++) {
+            stuTab.rows[i].cells[col].style.display = 'none';
+        }
+        for (i = 0; i < courseTab.rows.length; i++) {
+            courseTab.rows[i].cells[col].style.display = 'none';
+        }
+    }
+    function show(col) {
+        var thead = document.getElementsByTagName('thead');
+        if (!thead.length == 0) {
+            var thr = thead[0];
+            thr.getElementsByTagName('th')[col].style.display = 'table-cell';
+            //thr.getElementsByTagName('th')[col].style.visibility='visible';
+        }
+        var tr = document.getElementsByTagName('tr');
+        if (!tr.length == 0) {
+            var i;
+            for (i = 1; i < tr.length; i++) {
+                tr[i].getElementsByTagName('td')[col].style.display = 'table-cell';
+                //tr[i].getElementsByTagName('td')[col].style.visibility='visible';
+            }
+        }
+    }
+    $(document).on('click', 'th', function () {
+        var table = $(this).parents('table').eq(0);
+        var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()));
+        this.asc = !this.asc;
+        if (!this.asc) {
+            rows = rows.reverse();
+        }
+        table.children('tbody').empty().html(rows);
+    });
+    function comparer(index) {
+        return function (a, b) {
+            var valA = getCellValue(a, index),
+                valB = getCellValue(b, index);
+            return $.isNumeric(valA) && $.isNumeric(valB) ?
+                valA - valB : valA.localeCompare(valB);
+        };
+    }
+    function getCellValue(row, index) {
+        return $(row).children('td').eq(index).text();
+    }
     function combine(rows, combArr) {
         var stuTab = [];
         for (var i = 1; i < rows.length; i++) {
@@ -159,7 +193,6 @@
         }
         return stuTab;
     }
-
     function contains(value, arr) {
         var i = arr.length;
         while (i--) {
@@ -168,34 +201,6 @@
             }
         }
         return false;
-    }
-</script>
-
-<script type="text/javascript">
-    function hideALL() {
-        var thead = document.getElementsByTagName('thead');
-        var thr = thead[0];
-
-        var j;
-        for (j = 0; j < 32; j++) {
-            if (hideColum.indexOf(j) >= 0) {
-                thr.getElementsByTagName('th')[j].style.display = 'none';
-                //thr.getElementsByTagName('th')[j].style.visibility='hidden';
-            }
-        }
-
-        var tr = document.getElementsByTagName('tr');
-        var i;
-        for (i = 1; i < tr.length; i++) {
-            var j;
-            for (j = 0; j < 32; j++) {
-                if (hideColum.indexOf(j) >= 0) {
-                    tr[i].getElementsByTagName('td')[j].style.display = 'none';
-                    //tr[i].getElementsByTagName('td')[j].style.visibility='hidden';
-                }
-            }
-
-        }
     }
 </script>
 <script type="text/javascript">
@@ -217,19 +222,418 @@
             alert("File Empty!")
         }
     }
-
     function saveStudent(table) {
         var sentTab = JSON.stringify(table);
         sessionStorage.setItem("stuTab", sentTab);
     }
 </script>
+<script type="text/javascript">
+    var refresh = true;
+    function createStudentTab() {
+        var data = sessionStorage.getItem("stuTab");
+        var read = JSON.parse(data);
+        if (refresh) {
+            document.getElementById("div1").innerHTML = '';
+        }
+        var userInput = document.getElementById("student_id").value;
+        if (read != null) {
+            if (!userInput.length == 0) {
+                var stuTab = [];
+                stuTab.push(read[0]);
+                for (var i = 1; i < read.length; i++) {
+                    var stuRow = read[i];
+                    if (stuRow[0] == userInput) {
+                        stuTab.push(stuRow);
+                    }
+                }
+                if (stuTab.length == 1) {
+                    alert("No such student!");
+                    refresh = false;
+                    document.getElementById("student_id").value = '';
+                    stuTab.deleteRow();
+                    location.reload();
+                }
+                var table = document.createElement("table");
+                table.setAttribute("id", "stuTab");
+                for (i = 1; i < stuTab.length; i++) {
+                    var row = table.insertRow();
+                    var iRow = stuTab[i];
+                    for (var j = 0; j < iRow.length; j++) {
+                        var cell = row.insertCell();
+                        cell.innerHTML = iRow[j];
+                    }
+                }
+                var thead = table.createTHead();
+                var tRow = thead.insertRow();
+                for (i = 0; i < stuTab[0].length; i++) {
+                    var tCell = document.createElement("th");
+                    tCell.innerHTML = stuTab[0][i];
+                    tRow.appendChild(tCell);
+                }
+                var sent = JSON.stringify(stuTab);
+                sessionStorage.setItem("studentCKboxTab", sent);
+                document.getElementById("div1").appendChild(table);
+                document.getElementById("student_id").value = '';
+                hideColumns("student");
+                refresh = true;
+            } else {
+                alert("No message input!");
+                refresh = false;
+            }
+        }
+    }
+</script>
 
+<script type="text/javascript">
+    function createCourseTab() {
+        var data = sessionStorage.getItem("tab");
+        var read = JSON.parse(data);
+        document.getElementById("div1").innerHTML = '';
+        var userInput = document.getElementById("course_id").value;
+        if (read != null) {
+            if (!userInput.length == 0) {
+                var stuTab = [];
+                stuTab.push(read[0]);
+                for (var i = 1; i < read.length; i++) {
+                    var stuRow = read[i];
+                    if (stuRow[14] == userInput) {
+                        stuTab.push(stuRow);
+                    }
+                }
+                if (stuTab.length == 1) {
+                    alert("No such course!");
+                    document.getElementById("course_id").value = '';
+                    stuTab.deleteRow();
+                    location.reload();
+                }
+                var tab = combines(stuTab, [12, 13, 14]);
+                var table = document.createElement("table");
+                table.setAttribute("id", "courseTable");
+                for (i = 1; i < tab.length; i++) {
+                    var row = table.insertRow();
+                    var iRow = tab[i];
+                    for (var j = 0; j < iRow.length; j++) {
+                        var cell = row.insertCell();
+                        cell.innerHTML = iRow[j];
+                    }
+                }
+                var thead = table.createTHead();
+                var tRow = thead.insertRow();
+                for (i = 0; i < tab[0].length; i++) {
+                    var tCell = document.createElement("th");
+                    tCell.innerHTML = tab[0][i];
+                    tRow.appendChild(tCell);
+                }
+                var sent = JSON.stringify(tab);
+                sessionStorage.setItem("courseCKboxTab", sent);
+                document.getElementById("div1").appendChild(table);
+                document.getElementById("course_id").value = '';
+                hideColumns("course");
+            } else {
+                alert("No message input!");
+            }
+        }
+    }
+    function combines(rows, combArr) {
+        var stuTab = [];
+        for (var i = 0; i < rows.length; i++) {
+            var stucells = rows[i];
+            var stuinfo = [];
+            for (var j = 0; j < stucells.length; j++) {
+                stuinfo.push(stucells[j]);
+            }
+            var set = true;
+            for (j = 0; j < combArr.length; j++) {
+                for (var k = 0; k < stuTab.length; k++) {
+                    if (stuinfo[0] == stuTab[k][0]) {
+                        var term = stuTab[k][combArr[j]].split(",");
+                        if (!contains(stuinfo[combArr[j]], term)) {
+                            term += ("," + stuinfo[combArr[j]]);
+                            stuTab[k][combArr[j]] = term;
+                        }
+                        set = false;
+                    }
+                }
+            }
+            if (set) {
+                stuTab.push(stuinfo);
+            }
+        }
+        return stuTab;
+    }
+    function contains(value, arr) {
+        var i = arr.length;
+        while (i--) {
+            if (arr[i] == value) {
+                return true;
+            }
+        }
+        return false;
+    }
+</script>
+<script type="text/javascript">
+    function hideColumns(value) {
+        var table;
+        if (value == "course") {
+            table = document.getElementById("courseTable");
+        } else if (value == "student") {
+            table = document.getElementById("stuTab");
+        } else if (value == "term") {
+            table = document.getElementById("termTable");
+        } else if (value == "total_unit_pass") {
+            table = document.getElementById("unitTable");
+        } else if (value == "term_course") {
+            table = document.getElementById("CnTable");
+        }else if (value == "resetTable"){
+            table = document.getElementById("resetTable");
+        }
+        for (var i = 0; i < table.rows.length; i++) {
+            for (var j = 0; j < 32; j++) {
+                if (hideColum.indexOf(j) >= 0) {
+                    table.rows[i].cells[j].style.display = 'none';
+                }
+            }
+        }
+    }
+</script>
+<script type="text/javascript">
+    function createTermTab() {
+        var read = sessionStorage.getItem("stuTab");
+        var termTab = JSON.parse(read);
+        document.getElementById("div1").innerHTML = '';
+        var termNum = document.getElementById('num_of_term').value;
+        if (read != null) {
+            if (!termNum.length == 0) {
+                var table = document.createElement("table");
+                table.setAttribute("id", "termTable");
+                for (var i = 1; i < termTab.length; i++) {
+                    var stuinfo = termTab[i];
+                    var term = stuinfo[6].split(',');
+                    if (term.length == termNum) {
+                        var row = table.insertRow();
+                        for (var j = 0; j < stuinfo.length; j++) {
+                            var cell = row.insertCell();
+                            cell.innerHTML = stuinfo[j];
+                        }
+                    }
+                }
+                var thead = table.createTHead();
+                var tRow = thead.insertRow();
+                for (i = 0; i < termTab[0].length; i++) {
+                    var tCell = document.createElement("th");
+                    tCell.innerHTML = termTab[0][i];
+                    tRow.appendChild(tCell);
+                }
+                document.getElementById("div1").appendChild(table);
+                document.getElementById("num_of_term").value = '';
+                hideColumns("term");
+            }
+        }
+    }
+</script>
+<script type="text/javascript">
+    function createUnitPassTab() {
+        var read = sessionStorage.getItem("stuTab");
+        var unitTab = JSON.parse(read);
+        document.getElementById("div1").innerHTML = '';
+        var unit = document.getElementById("total_unit_pass").value;
+        if (read != null) {
+            if (!unit.length == 0) {
+                var table = document.createElement("table");
+                table.setAttribute("id", "unitTable");
+                for (var i = 1; i < unitTab.length; i++) {
+                    var stuinfo = unitTab[i];
+                    var unitPass = stuinfo[26];
+                    if (parseInt(unit) <= parseInt(unitPass)) {
+                        var row = table.insertRow();
+                        for (var j = 0; j < stuinfo.length; j++) {
+                            var cell = row.insertCell();
+                            cell.innerHTML = stuinfo[j];
+                        }
+                    }
+                }
+                var thead = table.createTHead();
+                var tRow = thead.insertRow();
+                for (i = 0; i < unitTab[0].length; i++) {
+                    var tCell = document.createElement("th");
+                    tCell.innerHTML = unitTab[0][i];
+                    tRow.appendChild(tCell);
+                }
+                document.getElementById("div1").appendChild(table);
+                document.getElementById("total_unit_pass").value = '';
+                hideColumns("total_unit_pass");
+            }
+        }
+    }
+</script>
+<script type="text/javascript">
+    function createTermCourseTab() {
+        var read1 = sessionStorage.getItem("tab");
+        var read2 = sessionStorage.getItem("stuTab");
+        var rowData = JSON.parse(read1);
+        var CnTable = JSON.parse(read2);
+        document.getElementById("div1").innerHTML = '';
+        var term = document.getElementById("term_number").value;
+        var catalogNum = document.getElementById("catalog_number").value;
+        var list = [];
+        for (var i = 1; i < rowData.length; i++) {
+            if (rowData[i][6] == term && rowData[i][14] == catalogNum) {
+                var stuID = rowData[i][0];
+                list.push(stuID);
+            }
+        }
+        var tabList = [];
+        for (i = 0; i < list.length; i++) {
+            for (var j = 1; j < CnTable.length; j++) {
+                if (list[i] == CnTable[j][0]) {
+                    tabList.push(CnTable[j]);
+                }
+            }
+        }
+        var table = document.createElement("table");
+        table.setAttribute("id", "CnTable");
+        for (var i = 0; i < tabList.length; i++) {
+            var stuinfo = tabList[i];
+            var row = table.insertRow();
+            for (var j = 0; j < stuinfo.length; j++) {
+                var cell = row.insertCell();
+                cell.innerHTML = stuinfo[j];
+            }
+        }
+        var thead = table.createTHead();
+        var tRow = thead.insertRow();
+        for (i = 0; i < CnTable[0].length; i++) {
+            var tCell = document.createElement("th");
+            tCell.innerHTML = CnTable[0][i];
+            tRow.appendChild(tCell);
+        }
+        document.getElementById("div1").appendChild(table);
+        document.getElementById("term_number").value = '';
+        document.getElementById("catalog_number").value = '';
+        hideColumns("term_course");
+    }
+</script>
+<script type="text/javascript">
+    function resetTable() {
+        var read = sessionStorage.getItem("stuTab");
+        var unitTab = JSON.parse(read);
+        document.getElementById("div1").innerHTML = '';
+        if (read != null) {
+            var table = document.createElement("table");
+            table.setAttribute("id", "resetTable");
+            for (var i = 1; i < unitTab.length; i++) {
+                var stuinfo = unitTab[i];
+                var row = table.insertRow();
+                for (var j = 0; j < stuinfo.length; j++) {
+                    var cell = row.insertCell();
+                    cell.innerHTML = stuinfo[j];
+                }
+            }
+            var thead = table.createTHead();
+            var tRow = thead.insertRow();
+            for (i = 0; i < unitTab[0].length; i++) {
+                var tCell = document.createElement("th");
+                tCell.innerHTML = unitTab[0][i];
+                tRow.appendChild(tCell);
+            }
+            document.getElementById("div1").appendChild(table);
+            hideColumns("resetTable");
+        }
+    }
+</script>
 <body>
 <div class="header">
     <input type="file" id="fileUpload"/>
     <input type="button" class="upload" id="upload" value="Upload"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </div>
+<p style="text-align: center">
+    <input type="text" name="student_id" id="student_id" placeholder="Student ID Here (e.g: 1111111)"
+        >
+    &nbsp&nbsp&nbsp&nbsp&nbsp
+    <button type="submit" value="submit" onclick="createStudentTab()"
+        >
+        Filter
+    </button>
+</p>
+<p style="text-align: center">
+    <input type="text" name="courseID" id="course_id" placeholder="Catalog Number Here (e.g: 1114)"
+        >
+    &nbsp&nbsp&nbsp&nbsp&nbsp
+    <button type="submit" value="submit" onclick="createCourseTab()"
+       >
+        Filter
+    </button>
+</p>
+<p style="text-align: center">
+    <input type="text" name="num_of_term" id="num_of_term" placeholder="Number of Terms Here:"
+           >
+    &nbsp&nbsp&nbsp&nbsp&nbsp
+    <button type="submit" value="submit" onclick="createTermTab()"
+         >
+        Filter
+    </button>
+</p>
+<p style="text-align: center">
+    <input type="text" name="num_of_term" id="total_unit_pass" placeholder="Total Unit Pass:"
+       >
+    &nbsp&nbsp&nbsp&nbsp&nbsp
+    <button type="submit" value="submit" onclick="createUnitPassTab()"
+       >
+        Filter
+    </button>
+</p>
+<p style="text-align: center">
+    <input type="text" name="num_of_term" id="term_number" placeholder="Term:"
+        >
+    &nbsp&nbsp&nbsp&nbsp&nbsp
+    <input type="text" name="num_of_term" id="catalog_number" placeholder="Course Catalog Number:"
+         >
+    &nbsp&nbsp&nbsp&nbsp&nbsp
+    <button type="submit" value="submit" onclick="createTermCourseTab()"
+     >
+        Filter
+    </button>
+</p>
+<p style="text-align: center">
+    <button type="submit" value="submit" onclick="resetTable()"
+  >
+        Reset
+    </button>
+</p>
+<hr/>
+<div class="nav">
+    <input type="checkbox" id="c3" name="xxx" onclick="onToggle(this);" value="3"/>Academic Career <br/><br/>
+    <!--<input type="checkbox" id="c4" name="xxx" onclick="onToggle(this);" value="4"/>Acad Level(By Term) <br/><br/>-->
+    <!--<input type="checkbox" id="c5" name="xxx" onclick="onToggle(this);" value="5"/>Program Campus <br/><br/>-->
+    <input type="checkbox" id="c6" name="xxx" onclick="onToggle(this);" value="6"/>Term <br/><br/>
+    <input type="checkbox" id="c7" name="xxx" onclick="onToggle(this);" value="7"/>Program Code <br/><br/>
+    <input type="checkbox" id="c8" name="xxx" onclick="onToggle(this);" value="8"/>Academic Plan <br/><br/>
+    <input type="checkbox" id="c9" name="xxx" onclick="onToggle(this);" value="9"/>Admit Term <br/><br/>
+    <!--<input type="checkbox" id="c10" name="xxx" onclick="onToggle(this);" value="10"/>Course Owner <br/><br/>-->
+    <!--<input type="checkbox" id="c11" name="xxx" onclick="onToggle(this);" value="11"/>Course Id <br/><br/>-->
+    <!--<input type="checkbox" id="c12" name="xxx" onclick="onToggle(this);" value="12"/>Course Description <br/><br/>-->
+    <!--<input type="checkbox" id="c13" name="xxx" onclick="onToggle(this);" value="13"/>Subject Id <br/><br/>-->
+    <input type="checkbox" id="c14" name="xxx" onclick="onToggle(this);" value="14"/>Catalogue Number <br/><br/>
+    <!--<input type="checkbox" id="c15" name="xxx" onclick="onToggle(this);" value="15"/>Class Number <br/><br/>-->
+    <!--<input type="checkbox" id="c16" name="xxx" onclick="onToggle(this);" value="16"/>Session Code <br/><br/>-->
+    <!--<input type="checkbox" id="c17" name="xxx" onclick="onToggle(this);" value="17"/>Section Code <br/><br/>-->
+    <!--<input type="checkbox" id="c18" name="xxx" onclick="onToggle(this);" value="18"/>Class Campus <br/><br/>-->
+    <!--<input type="checkbox" id="c19" name="xxx" onclick="onToggle(this);" value="19"/>Grade Entered <br/><br/>-->
+    <!--<input type="checkbox" id="c20" name="xxx" onclick="onToggle(this);" value="20"/>Grade Official <br/><br/>-->
+    <!--<input type="checkbox" id="c21" name="xxx" onclick="onToggle(this);" value="21"/>Grade Roster Input <br/><br/>-->
+    <!--<input type="checkbox" id="c22" name="xxx" onclick="onToggle(this);" value="22"/>Grade In Roster Status <br/><br/>-->
+    <!--<input type="checkbox" id="c23" name="xxx" onclick="onToggle(this);" value="23"/>Term GPA <br/><br/>-->
+    <input type="checkbox" id="c24" name="xxx" onclick="onToggle(this);" value="24"/>Program GPA <br/><br/>
+    <input type="checkbox" id="c25" name="xxx" onclick="onToggle(this);" value="25"/>Total Units Attempt <br/><br/>
+    <input type="checkbox" id="c26" name="xxx" onclick="onToggle(this);" value="26"/>Total Units Pass <br/><br/>
+    <!--<input type="checkbox" id="c27" name="xxx" onclick="onToggle(this);" value="27"/>Funding Source <br/><br/>-->
+    <!--<input type="checkbox" id="c28" name="xxx" onclick="onToggle(this);" value="28"/>TACADPR Comments <br/><br/>-->
+    <input type="checkbox" id="c29" name="xxx" onclick="onToggle(this);" value="29"/>Total Units Credit <br/><br/>
+    <input type="checkbox" id="c30" name="xxx" onclick="onToggle(this);" value="30"/>Cumulative Units <br/><br/>
+    <input type="checkbox" id="c31" name="xxx" onclick="onToggle(this);" value="31"/>Student Email Address
+
+</div>
 
 <div id="div1" class="section"></div>
+
 </body>
-</html>
