@@ -153,7 +153,7 @@ public class encrypt_csv extends JFrame implements ActionListener
 			}
 			br.close();
 			writer.close();
-			
+			JOptionPane.showMessageDialog(null, output_file.getAbsolutePath(), "The output file directory is", JOptionPane.INFORMATION_MESSAGE);
 		}
 		catch(IOException e3)
 		{
