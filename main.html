@@ -40,6 +40,20 @@
             //ifm.width = 1425;
         }
     }
+
+    function reinitIframe() {
+        var iframe = document.getElementById("iframeset");
+        try
+        {
+            var bHeight = iframe.contentWindow.document.body.scrollHeight;
+            /*
+                               var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+                               var height = Math.max(bHeight, dHeight);
+                                iframe.height = height;                */
+            iframe.height = bHeight;
+        }
+        catch (ex) {}
+    }
 </script>
 
 <body>
@@ -53,7 +67,7 @@
 <br /><br />
 
 <iframe id="iframeset" name="upload" src="ProgramAnalysis.html" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-        onLoad="iFrameHeight()" style="width: 100%"></iframe>
+        onLoad="iFrameHeight()" style="width: 100%;"></iframe>
 
 </body>
 </html>
