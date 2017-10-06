@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+
+    <link rel="stylesheet" href="maincss.css" type="text/css" />
+    <script type="text/javascript" language="javascript">
+        function iFrameHeight() {
+            var ifm= document.getElementById("iframeset");
+            var subWeb = document.frames ? document.frames["iframeset"].document : ifm.contentDocument;
+            if(ifm != null && subWeb != null) {
+                ifm.height = subWeb.body.scrollHeight;
+                //ifm.width = 1425;
+            }
+        }
+    </script>
+</head>
+<body>
+<header> RMIT - Learning Analytics </header>
+
+<main>
+    <div class="main">
+        <ul id="optionbar">
+            <div><a class="active" style="color: #4f4f4f; padding-top: 50%" href="upload.html" target="upload "> Program Analysis </a>
+            </div>
+            <div><a href="CourseAnalysis.html" style="color:#5b5b5b" ;target="upload">Course Analysis</a>
+            </div>
+
+            <!--<li><a href="./sort_by_student_id.html" target="upload">Sort by student</a></li>-->
+            <!--<li><a href="#about">关于</a></li>-->
+        </ul>
+    </div>
+    <br /><br />
+
+
+
+</main>
+
+<footer>
+    <p>RMIT - COSC2616 Software Engineering Postgraduate Project - 2017, Sem 2<br>
+        &copy 2017 <a href="mailto:nebojsa.pajkic@rmit.edu.au">Learning Analytics Team</a></p>
+</footer>
+
+</body>
+</html>
