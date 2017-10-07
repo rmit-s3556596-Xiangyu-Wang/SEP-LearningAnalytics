@@ -37,12 +37,12 @@
         padding: 2%;
     }
 
-    .table1 {
+    .section {
         background-color: lightgoldenrodyellow;
-        width: 100%;
+        width: 79%;
+        float: left;
+        padding-left: 0.5%;
         overflow: scroll;
-        padding-left: 5px;
-        padding-right: 5px;
     }
 
     .upload {
@@ -54,9 +54,7 @@
         background-color: lightskyblue;
     }
 
-    #fileUpload {
 
-    }
 
 </style>
 
@@ -148,7 +146,7 @@
 //                            $("#div1").append(tables[i]);
 //                        }
                         //alert(rows);
-                        //hideALL();
+                        hideALL();
                         //saveFile(rows);
                     }
 //                    reader.readAsText($("#fileUpload")[0].files[0]);
@@ -163,11 +161,36 @@
 </script>
 
 <script type="text/javascript">
+    $(document).on('click', 'th', function () {
+        var table = $(this).parents('table').eq(0);
+        var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()));
+        this.asc = !this.asc;
+        if (!this.asc) {
+            rows = rows.reverse();
+        }
+        table.children('tbody').empty().html(rows);
+    });
+
+    function comparer(index) {
+        return function (a, b) {
+            var valA = getCellValue(a, index),
+                valB = getCellValue(b, index);
+            return $.isNumeric(valA) && $.isNumeric(valB) ?
+                valA - valB : valA.localeCompare(valB);
+        };
+    }
+
+    function getCellValue(row, index) {
+        return $(row).children('td').eq(index).text();
+    }
+</script>
+
+<script type="text/javascript">
     function drawProgramTable(pTable) {
         var table = document.createElement("table");
         table.setAttribute("id", "pTab");
         for (var i = 0; i < pTable.length; i ++){
-            for (var j = 0; j < pTable[i].length; j ++){
+            for (var j = 1; j < pTable[i].length; j ++){
                 var row = table.insertRow();
                 var stuinfo = pTable[i][j];
                 for (var k = 0; k < stuinfo.length; k ++){
@@ -176,12 +199,19 @@
                 }
             }
         }
+        var pthead = table.createTHead();
+        var ptRow = pthead.insertRow();
+        for (i = 0; i < pTable[0][0].length; i ++){
+            var ptcell = document.createElement("th");
+            ptcell.innerHTML = pTable[0][0][i];
+            ptRow.appendChild(ptcell);
+        }
         document.getElementById("div1").appendChild(table);
     }
     
     function combine(rows, combArr) {
         var stuTab = [];
-        for (var i = programFile; i < rows.length; i++) {
+        for (var i = 0; i < rows.length; i++) {
             var stucells = rows[i];
             var stuinfo = [];
             for (var j = 0; j < stucells.length; j++) {

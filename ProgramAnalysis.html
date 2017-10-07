@@ -4,8 +4,6 @@
     <title>Program Analysis</title>
 </head>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <style>
     table,
     td,
@@ -52,9 +50,6 @@
         background-color: lightskyblue;
     }
 
-    #fileUpload {
-
-    }
 
 
 </style>
@@ -63,7 +58,6 @@
         29, 30, 31];
     //    var hideColum = [4, 5, 10, 11, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 27, 28];
     var combArr = [6, 7, 8, 9, 14, 24, 25, 26, 29, 30, 31];
-    var pieChart = [];
     $(function () {
         $("#upload").bind("click", function () {
             var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
@@ -89,7 +83,6 @@
                         //start
 
                         var stuTab = combine(rows, combArr);
-                        pieChart = saveToChart(stuTab);                        //delete after test
                         stuTab.unshift(rows[0].split(","));
                         saveStudent(stuTab);
                         stuTab.shift();
@@ -122,60 +115,9 @@
 </script>
 
 <script>
-    $(document).ready(function(){
-        $(".btn").click(function(){
-
-            google.load("visualization", "1", {packages:["corechart"], "callback": drawChart});
-            google.setOnLoadCallback(drawChart);
-
-            function drawChart() {
-
-                var data = new google.visualization.DataTable();
-                data.addColumn('string', 'name');
-                data.addColumn('number', 'numbers');
-                data.addRows(pieChart);
-
-
-                var options = {
-
-                    chartArea: {width:'100%',height:'100%'},
-
-                    forceIFrame: 'false',
-
-                    is3D: 'true',
-
-                    pieSliceText: 'value',
-
-                    sliceVisibilityThreshold: 1/20, // Only > 5% will be shown.
-
-                    titlePosition: 'none'
-
-                };
-
-
-                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-                chart.draw(data, options);
-            }
-
-
-        });
-    });
-    /*
-    delete after test
-     */
-    function saveToChart(array) {
-        var result = new Array();
-        for (var i = 0; i < array.length; i ++){
-            result[i] = new Array(array[i][1], parseFloat(array[i][24]));
-        }
-        return result;
-    }
-
     function hideALL() {
         var thead = document.getElementsByTagName('thead');
         var thr = thead[0];
-
         var j;
         for (j = 0; j < 32; j++) {
             if (hideColum.indexOf(j) >= 0) {
@@ -766,8 +708,5 @@
 </div>
 
 <div id="div1" class="section"></div>
-
-<button class="btn">Plot chart!</button>
-<div id="piechart" style="width: 900px; height: 500px;">The chart would be plotted here.</div>
 
 </body>
