@@ -176,11 +176,30 @@ textarea {
 }
 
 .button, input[type=file], input[type=reset], input[type=submit],
-.upload {
-    cursor: pointer;
-    font-family: inherit;
-    font-size: inherit;
+
+
+.upload{
+    background-color:#c69a31;
+    padding:10px;
+    position:relative;
+    font-family: 'Open Sans', sans-serif;
+    font-size:12px;
+    text-decoration:none;
+    color:#fff;
+    background-image: linear-gradient(bottom, rgb(100,170,30) 0%, rgb(129,212,51) 100%);
+    box-shadow: inset 0px 1px 0px #7a5500, 0px 6px 0px #7a5500;
+    border-radius: 5px;
 }
+
+.upload:active {
+    top:7px;
+    background-image: linear-gradient(bottom, rgb(100,170,30) 100%, rgb(129,212,51) 0%);
+    box-shadow: inset 0px 1px 0px #70561c, inset 0px -1px 0px #70561c;
+    color: #ffffff;
+    text-shadow: 0px 1px 1px rgba(255,0,0,0.3);
+    background: rgb(122, 85, 0);
+}
+
 
 input[type=text]:focus, input[type=password]:focus {
     border: 1px solid #cf120f;
