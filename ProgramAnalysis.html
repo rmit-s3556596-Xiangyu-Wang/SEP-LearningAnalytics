@@ -86,6 +86,7 @@
                         //start
 
                         var stuTab = combine(rows, combArr);
+                        var pieChart = saveToChart(stuTab);                        //delete after test
                         stuTab.unshift(rows[0].split(","));
                         saveStudent(stuTab);
                         stuTab.shift();
@@ -118,6 +119,20 @@
 </script>
 
 <script>
+    /*
+    delete after test
+     */
+    function saveToChart(array) {
+        var result = [];
+        var stuinfo = [];
+        for (var i = 0; i < array.length; i ++){
+            stuinfo.push(array[i][1]);
+            stuinfo.push(array[i][24]);
+            result.push(stuinfo);
+        }
+        return result;
+    }
+
     function hideALL() {
         var thead = document.getElementsByTagName('thead');
         var thr = thead[0];
