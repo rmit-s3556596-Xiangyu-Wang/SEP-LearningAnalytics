@@ -10,7 +10,7 @@ body {
     line-height: 1.571em;
     letter-spacing: normal;
     color: #333333;
-    background-color: #ffffff;
+    background-color: #fffff0;
     margin: 0px;
     height: 100%;
 }
@@ -129,7 +129,11 @@ pre {
     background-color: #efefef;
     font-size: 1.25em;
 }
-
+.sidebar{
+    float:left;
+    padding-right:15px;
+    border-right:1px solid  #dddddd;
+}
 table {
     width: 80%;
 }
@@ -201,6 +205,9 @@ textarea {
 }
 
 
+
+
+
 input[type=text]:focus, input[type=password]:focus {
     border: 1px solid #cf120f;
 }
@@ -259,7 +266,7 @@ p.center {
 }
 
 table.checkboxes {
-    border-top: 1px solid #919191;
+
     font-size: 0.80em;
     margin-bottom: 20px;
     border-spacing: 2px;
