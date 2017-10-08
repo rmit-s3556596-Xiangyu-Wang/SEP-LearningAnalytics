@@ -5,6 +5,8 @@
     <title>Program Analysis</title>
 </head>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
 
 <script type="text/javascript">
     var hideColum = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28,
@@ -35,6 +37,7 @@
                         table.append(tHead);
                         //start
                         var stuTab = combine(rows, combArr);
+                        pieChart = calGPA(stuTab); 
                         stuTab.unshift(rows[0].split(","));
                         saveStudent(stuTab);
                         stuTab.shift();
@@ -138,6 +141,7 @@
                 ['GPA=4',parseInt(e)]];
         return gpa;
     }
+    
     /*
     delete after test
      */
