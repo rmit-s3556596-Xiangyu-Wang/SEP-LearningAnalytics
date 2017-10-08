@@ -10,7 +10,7 @@ body {
     line-height: 1.571em;
     letter-spacing: normal;
     color: #333333;
-    background-color: #fffff0;
+    background-color: #ffffff;
     margin: 0px;
     height: 100%;
 }
@@ -123,7 +123,7 @@ h5 {
 
 pre {
     padding: 10px;
-    border: 2px solid gray;
+
     border-radius: 5px;
     margin: 20px;
     background-color: #efefef;
@@ -135,9 +135,8 @@ table {
 }
 
 th, thead {
-
     height: 40px;
-    text-align: right;
+    text-align: center;
     vertical-align: middle;
     background-color: #cf120f;
     color: #ffffff;
@@ -164,7 +163,7 @@ input[type=text], input[type=password], input[type=email], textarea,
 select {
     padding: 10px;
     box-sizing: border-box;
-    border: 1px solid #000000;
+
     font-family: inherit;
     font-size: inherit;
     width: 100%;
@@ -176,30 +175,16 @@ textarea {
 }
 
 .button, input[type=file], input[type=reset], input[type=submit],
-.upload{
-    background-color:#c69a31;
-    padding:10px;
-    position:relative;
-    font-family: 'Open Sans', sans-serif;
-    font-size:12px;
-    text-decoration:none;
-    color:#fff;
-    background-image: linear-gradient(bottom, rgb(100,170,30) 0%, rgb(129,212,51) 100%);
-    box-shadow: inset 0px 1px 0px #7a5500, 0px 6px 0px #7a5500;
-    border-radius: 5px;
-}
-
-.upload:active {
-    top:7px;
-    background-image: linear-gradient(bottom, rgb(100,170,30) 100%, rgb(129,212,51) 0%);
-    box-shadow: inset 0px 1px 0px #70561c, inset 0px -1px 0px #70561c;
-    color: #ffffff;
-    text-shadow: 0px 1px 1px rgba(255,0,0,0.3);
-    background: rgb(122, 85, 0);
+.upload {
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
 }
 
 input[type=text]:focus, input[type=password]:focus {
-    border: 1px solid #cf120f;
+
+
+
 }
 
 header {
@@ -215,11 +200,11 @@ header {
 
 main {
     padding: 10px;
-    height: 100%;
+    height: 80%;
 }
 
 footer {
-    font-size: 0.5em;
+    font-size: 0.7em;
     text-align: center;
     margin-top: 20px;
     background-color: #f6f6f6;
@@ -228,6 +213,7 @@ footer {
 }
 
 .login {
+    position: absolute;
     border: 1px solid #cf120f;
     border-radius: 10px;
     margin: auto;
@@ -253,7 +239,6 @@ p.center {
     /* For Firefox 3.6 to 15 */
     background: linear-gradient(#f8f8f8, #ffffff, #f8f8f8);
     background: #f8f8f8; /* Standard syntax */
-    background-color: #fffff0;
 }
 
 table.checkboxes {
@@ -309,14 +294,14 @@ table.checkboxes td, th {
     clear: right;
     float: left;
     width:30%;
+
 }
 .sidebar{
+    border-right:1px solid #cacaca;
     float: left;
     margin:0.5%;
     width:200px;
     font-size: small;
-    padding-right:15px;
-    border-right:1px solid  #dddddd;
 }
 
 .ficoulmn{
@@ -346,4 +331,10 @@ table.checkboxes td, th {
     clear: right;
     float: left;
     width:30%;
+}
+.piechart{
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    position: fixed;
 }

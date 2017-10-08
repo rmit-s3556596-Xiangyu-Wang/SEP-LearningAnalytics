@@ -200,9 +200,9 @@ header {
 
 
 footer {
-    position: absolute;
+    position: fixed;
     clear: both;
-    font-size: 0.5em;
+    font-size: 0.7em;
     text-align: center;
     margin-top: 20px;
     background-color: #f6f6f6;
@@ -227,7 +227,18 @@ p.center {
     text-align: center;
 }
 
-.upload_facility {
+
+
+
+.section {
+    overflow-x: auto;
+}
+
+.upload{
+    text-align: center;
+    margin-top: 2%;
+}
+.courseupload {
     text-align: center;
     padding: 20px 0;
     background: #f8f8f8; /* For browsers that do not support gradients */
@@ -240,34 +251,16 @@ p.center {
     background: linear-gradient(#f8f8f8, #ffffff, #f8f8f8);
     background: #f8f8f8; /* Standard syntax */
 }
+#div1{
+    align-content: center;
 
-table.checkboxes {
-    border-top: 1px solid #919191;
-    font-size: 0.80em;
-    margin-bottom: 20px;
-    border-spacing: 2px;
-    text-indent: 50px;
 }
-
-table.checkboxes tr:nth-child(even) {
-    background-color: #ffffff;
+#div2{
+    align-content: left;
 }
+#text{
 
-table.checkboxes tr:hover {
-    background-color: #ffffff;
-}
+   background-color: #efefef;
 
-table.checkboxes td, th {
-    text-align: left;
-    vertical-align: middle;
-    padding: 0px;
-}
 
-.section {
-    overflow-x: auto;
-}
-
-.upload{
-    text-align: center;
-    margin-top: 2%;
 }
