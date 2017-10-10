@@ -663,57 +663,42 @@
                 <input type="checkbox" id="c31" name="xxx" onclick="onToggle(this);" value="31"/>Student Email Address
             </div>
         </div>
-    </table>
-    <div class="sidebar">
-        <p style="text-align: left">
-            <input type="text" name="student_id" id="student_id" placeholder="Student ID Here (e.g: 1111111)"
-                   style="width: 100px; height: 20px; background-color: #ffffff; font-size: xx-small; text-align: left">
-            &nbsp&nbsp&nbsp&nbsp&nbsp
-            <button type="submit" value="submit" onclick="createStudentTab()"
-                    style="height: 25px; width: 40px; background-color: #e2e2e2; font-size: x-small; font-style: normal;">
-                Filter
-            </button>
-        </p>
-        <p style="text-align: left">
-            <input type="text" name="courseID" id="course_id" placeholder="Catalog Number Here (e.g: 1114)"
-                   style="width: 100px; height: 20px; background-color: #ffffff; font-size: xx-small; text-align: left">
-            &nbsp&nbsp&nbsp&nbsp&nbsp
-            <button type="submit" value="submit" onclick="createCourseTab()"
-                    style="height: 25px; width: 40px; background-color: #e2e2e2; font-size: x-small; font-style: normal;">
-                Filter
-            </button>
-        </p>
-        <p style="text-align: left">
-            <input type="text" name="num_of_term" id="num_of_term" placeholder="Number of Terms Here:"
-                   style="width: 100px; height: 20px; background-color: #ffffff; font-size: xx-small; text-align: left">
-            &nbsp&nbsp&nbsp&nbsp&nbsp
-            <button type="submit" value="submit" onclick="createTermTab()"
-                    style="height: 25px; width: 40px; background-color: #e2e2e2; font-size: x-small; font-style: normal;">
-                Filter
-            </button>
-        </p>
-        <p style="text-align: left">
-            <input type="text" name="num_of_term" id="total_unit_pass" placeholder="Total Unit Pass:"
-                   style="width: 100px; height: 20px; background-color: #ffffff; font-size: xx-small; text-align: left">
-            &nbsp&nbsp&nbsp&nbsp&nbsp
-            <button type="submit" value="submit" onclick="createUnitPassTab()"
-                    style="height: 25px; width: 40px; background-color: #e2e2e2; font-size: x-small; font-style: normal;">
-                Filter
-            </button>
-        </p>
-        <p style="text-align: left">
-            <input type="text" name="num_of_term" id="term_number" placeholder="Term:"
-                   style="width: 100px; height: 20px; background-color: #ffffff; font-size: xx-small; text-align: left">
-            &nbsp&nbsp&nbsp&nbsp&nbsp
-            <input type="text" name="num_of_term" id="catalog_number" placeholder="Course Catalog Number:"
-                   style="width: 100px; height: 20px; background-color: #ffffff; font-size: xx-small; text-align: left">
-            &nbsp&nbsp&nbsp&nbsp&nbsp
-            <button type="submit" value="submit" onclick="createTermCourseTab()"
-                    style="height: 25px; width: 40px; background-color: #e2e2e2; font-size: x-small; font-style: normal;">
-                Filter
-            </button>
-        </p>
-        <button class="btn "style="height: 40px;width: 70px;background-color: #e2e2e2;font-size: x-small;font-style: normal;margin-left: 100px ; text-align: center">GPA Distribution</button>
+        <div class="sidebar">
+            <p style="text-align: left">
+                <input type="text" name="num_of_term" id="num_of_term" placeholder="Number of Terms Here:"
+                       style="width: 150px; height: 30px; background-color: #ffffff; font-size: xx-small; text-align: left">
+                &nbsp&nbsp&nbsp&nbsp&nbsp
+                <button type="submit" value="submit" onclick="createTermTab()"
+                        style="height: 25px; width: 40px; background-color: #e2e2e2; font-size: x-small; font-style: normal;">
+                    Filter
+                </button>
+            </p>
+            <p style="text-align: left">
+                <input type="text" name="num_of_term" id="total_unit_pass" placeholder="Total Unit Pass:"
+                       style="width: 150px; height: 30px; background-color: #ffffff; font-size: xx-small; text-align: left">
+                &nbsp&nbsp&nbsp&nbsp&nbsp
+                <button type="submit" value="submit" onclick="createUnitPassTab()"
+                        style="height: 25px; width: 40px; background-color: #e2e2e2; font-size: x-small; font-style: normal;">
+                    Filter
+                </button>
+            </p>
+            <p style="text-align: left">
+                <input type="text" name="num_of_term" id="term_number" placeholder="Term:"
+                       style="width: 150px; height: 30px; background-color: #ffffff; font-size: xx-small; text-align: left">
+                &nbsp&nbsp&nbsp&nbsp&nbsp
+                <input type="text" name="num_of_term" id="catalog_number" placeholder="Course Catalog Number:"
+                       style="width: 150px; height: 30px; background-color: #ffffff; font-size: xx-small; text-align: left">
+                &nbsp&nbsp&nbsp&nbsp&nbsp
+                <button type="submit" value="submit" onclick="createTermCourseTab()"
+                        style="height: 25px; width: 40px; background-color: #e2e2e2; font-size: x-small; font-style: normal;">
+                    Filter
+                </button>
+            </p>
+
+        </div>
+        <div class="GPAandRESET">
+        <button class="btn "style=" ;height: 40px;width: 70px;background-color: #e2e2e2;font-size: x-small;font-style: normal; ">GPA Distribution</button>
+
         <div class="reset">
             <p style="text-align: left">
                 <button type="submit" value="submit" onclick="resetTable()"
@@ -722,8 +707,9 @@
                 </button>
         </div>
         </p>
-
     </div>
+    </table>
+
 
 
     <hr/>
