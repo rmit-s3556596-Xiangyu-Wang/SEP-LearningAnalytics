@@ -208,14 +208,6 @@
                 //tr[i].getElementsByTagName('td')[col].style.visibility='hidden';
             }
         }
-        var stuTab = document.getElementById("stuTab");
-        var courseTab = document.getElementById("courseTable");
-        for (i = 0; i < stuTab.rows.length; i++) {
-            stuTab.rows[i].cells[col].style.display = 'none';
-        }
-        for (i = 0; i < courseTab.rows.length; i++) {
-            courseTab.rows[i].cells[col].style.display = 'none';
-        }
     }
     function show(col) {
         var thead = document.getElementsByTagName('thead');
@@ -372,6 +364,7 @@
                 document.getElementById("div1").appendChild(table);
                 document.getElementById("student_id").value = '';
                 hideColumns("student");
+                uncheckAll();
                 refresh = true;
             } else {
                 alert("No message input!");
@@ -426,6 +419,7 @@
                 document.getElementById("div1").appendChild(table);
                 document.getElementById("course_id").value = '';
                 hideColumns("course");
+                uncheckAll();
             } else {
                 alert("No message input!");
             }
@@ -524,6 +518,7 @@
                 document.getElementById("div1").appendChild(table);
                 document.getElementById("num_of_term").value = '';
                 hideColumns("term");
+                uncheckAll();
             }
         }
     }
@@ -559,6 +554,7 @@
                 document.getElementById("div1").appendChild(table);
                 document.getElementById("total_unit_pass").value = '';
                 hideColumns("total_unit_pass");
+                uncheckAll();
             }
         }
     }
@@ -608,6 +604,7 @@
         document.getElementById("term_number").value = '';
         document.getElementById("catalog_number").value = '';
         hideColumns("term_course");
+        uncheckAll();
     }
 </script>
 <script type="text/javascript">
@@ -636,6 +633,28 @@
             }
             document.getElementById("div1").appendChild(table);
             hideColumns("resetTable");
+            uncheckAll();
+        }
+    }
+</script>
+<script type="text/javascript">
+    function ckboxAll(ckbox) {
+        //var checkboxes = document.getElementsByName("xxx");
+        for (var i = 0; i < combArr.length; i ++){
+            var checkbox = document.getElementById("c" + combArr[i]);
+            checkbox.checked = ckbox.checked;
+            if (ckbox.checked){
+                show(checkbox.value);
+            }else {
+                hide(checkbox.value);
+            }
+        }
+    }
+
+    function uncheckAll() {
+        var checkboxes = document.getElementsByName("xxx");
+        for (var i = 0; i < checkboxes.length; i ++){
+            checkboxes[i].checked = false;
         }
     }
 </script>
@@ -689,7 +708,8 @@
                 <!--<input type="checkbox" id="c28" name="xxx" onclick="onToggle(this);" value="28"/>TACADPR Comments <br/><br/>-->
                 <input type="checkbox" id="c29" name="xxx" onclick="onToggle(this);" value="29"/>Total Units Credit <br/><br/>
                 <input type="checkbox" id="c30" name="xxx" onclick="onToggle(this);" value="30"/>Cumulative Units <br/><br/>
-                <input type="checkbox" id="c31" name="xxx" onclick="onToggle(this);" value="31"/>Student Email Address
+                <input type="checkbox" id="c31" name="xxx" onclick="onToggle(this);" value="31"/>Student Email Address <br/><br/>
+                <input type="checkbox" id="selectAll" name="xxx" onclick="ckboxAll(this);" value="All"/>Select All
             </div>
         </div>
         <div class="sidebar">

@@ -306,14 +306,6 @@
                 //tr[i].getElementsByTagName('td')[col].style.visibility='hidden';
             }
         }
-        var stuTab = document.getElementById("stuTab");
-        var courseTab = document.getElementById("courseTable");
-        for (i = 0; i < stuTab.rows.length; i++) {
-            stuTab.rows[i].cells[col].style.display = 'none';
-        }
-        for (i = 0; i < courseTab.rows.length; i++) {
-            courseTab.rows[i].cells[col].style.display = 'none';
-        }
     }
 
     function show(col) {
@@ -557,6 +549,26 @@
         sessionStorage.setItem("stuTab", sentTab);
     }
 </script>
+<script type="text/javascript">
+    function ckboxAll(ckbox) {
+        var checkboxes = document.getElementsByName("xxx");
+        for (var i = 0; i < checkboxes.length; i ++){
+            checkboxes[i].checked = ckbox.checked;
+            if (ckbox.checked){
+                show(checkboxes[i].value);
+            }else {
+                hide(checkboxes[i].value);
+            }
+        }
+    }
+
+    function uncheckAll() {
+        var checkboxes = document.getElementsByName("xxx");
+        for (var i = 0; i < checkboxes.length; i ++){
+            checkboxes[i].checked = false;
+        }
+    }
+</script>
 <body>
 <header> RMIT - Learning Analytics </header>
 <main>
@@ -612,7 +624,8 @@
                 <input type="checkbox" id="c29" name="xxx" onclick="onToggle(this);" value="29"/>Total Units Credit
                 <br/><br/>
                 <input type="checkbox" id="c30" name="xxx" onclick="onToggle(this);" value="30"/>Cumulative Units <br/><br/>
-                <input type="checkbox" id="c31" name="xxx" onclick="onToggle(this);" value="31"/>Student Email Address
+                <input type="checkbox" id="c31" name="xxx" onclick="onToggle(this);" value="31"/>Student Email Address <br/><br/>
+                <input type="checkbox" id="selectAll" name="xxx" onclick="ckboxAll(this);" value="All"/>Select All
             </div>
         </div>
         <div class="graph">
