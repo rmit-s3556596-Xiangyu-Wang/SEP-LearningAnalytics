@@ -75,7 +75,7 @@
 
 <script>
     $(document).ready(function(){
-        $(".btn").click(function(){
+        $("#GPAPie").click(function(){
             google.load("visualization", "1", {packages:["corechart"], "callback": drawChart});
             google.setOnLoadCallback(drawChart);
             function drawChart() {
@@ -97,6 +97,29 @@
             }
         });
     });
+
+    $(document).ready(function(){
+        $("#GPABar").click(function(){
+            google.load("visualization", "1", {packages:["corechart"], "callback": drawChart});
+            google.setOnLoadCallback(drawChart);
+            function drawChart() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'GPA allocation');
+                data.addColumn('number', 'statistics');
+                data.addRows(pieChart);
+                var options = {
+                    chartArea: {width:'60%',height:'60%'},
+                    forceIFrame: 'false',
+//                    sliceVisibilityThreshold: 1/20, // Only > 5% will be shown.
+                    title: 'Program GPA allocation' ,
+                    titlePosition: 'none'
+                };
+                var chart = new google.visualization.ColumnChart(document.getElementById('piechart'));
+                chart.draw(data, options);
+            }
+        });
+    });
+
     function calGPA(array) {
         var a = 0;
         var b = 0;
@@ -622,6 +645,7 @@
     <div class="upload_facility">
         <input type="file" id="fileUpload" />
         <input type="button" class="upload" id="upload" value="Upload" style="visibility: hidden"/>
+        Go To:&nbsp;<input type="button" value="Course Analysis" onclick="window.open('courseanalysis.html')"/>
     </div>
     <table width="100%" class="checkboxes">
         <div class="clickbar">
@@ -669,41 +693,66 @@
             </div>
         </div>
         <div class="sidebar">
+            </p>
             <p style="text-align: left">
-                <input type="text" name="num_of_term" id="num_of_term" placeholder="Number of Terms Here:"
+                <input type="text" name="courseID" id="course_id" placeholder="Course Number Here (e.g;1114)"
                        style="width: 100px; height: 20px; background-color: #ffffff; font-size: xx-small; text-align: left">
                 &nbsp&nbsp&nbsp&nbsp&nbsp
-                <button type="submit" value="submit" onclick="createTermTab()"
+                <button type="submit" value="submit" onclick="createCourseTab()"
                         style="height: 25px; width: 40px; background-color: #e2e2e2; font-size: x-small; font-style: normal;">
                     Filter
                 </button>
-            </p>
-            <p style="text-align: left">
-                <input type="text" name="num_of_term" id="total_unit_pass" placeholder="Total Unit Pass:"
-                       style="width: 100px; height: 20px; background-color: #ffffff; font-size: xx-small; text-align: left">
-                &nbsp&nbsp&nbsp&nbsp&nbsp
-                <button type="submit" value="submit" onclick="createUnitPassTab()"
-                        style="height: 25px; width: 40px; background-color: #e2e2e2; font-size: x-small; font-style: normal;">
-                    Filter
-                </button>
-            </p>
-            <p style="text-align: left">
-                <input type="text" name="num_of_term" id="term_number" placeholder="Term:"
-                       style="width: 100px; height: 20px; background-color: #ffffff; font-size: xx-small; text-align: left">
-                &nbsp&nbsp&nbsp&nbsp&nbsp
-                <input type="text" name="num_of_term" id="catalog_number" placeholder="Course Catalog Number:"
-                       style="width: 100px; height: 20px; background-color: #ffffff; font-size: xx-small; text-align: left">
-                &nbsp&nbsp&nbsp&nbsp&nbsp
-                <button type="submit" value="submit" onclick="createTermCourseTab()"
-                        style="height: 25px; width: 40px; background-color: #e2e2e2; font-size: x-small; font-style: normal;">
-                    Filter
-                </button>
-            </p>
+                <div class="particularcourse">
+            <p>Students who took particular course</p>
+        </div>
+        </p>
+        <p style="text-align: left">
+            <input type="text" name="num_of_term" id="num_of_term" placeholder="Number of Terms"
+                   style="width: 100px; height: 20px; background-color: #ffffff; font-size: xx-small; text-align: left">
+            &nbsp&nbsp&nbsp&nbsp&nbsp
+            <button type="submit" value="submit" onclick="createTermTab()"
+                    style="height: 25px; width: 40px; background-color: #e2e2e2; font-size: x-small; font-style: normal;">
+                Filter
+            </button>
+            <div class="numberofterm">
+        <p>Students who studied over a particular number of terms greater or equal to</p>
+        </div>
+        </p>
+        <p style="text-align: left">
+            <input type="text" name="num_of_term" id="total_unit_pass" placeholder="Number of total Unit Pass:"
+                   style="width: 100px; height: 20px; background-color: #ffffff; font-size: xx-small; text-align: left">
+            &nbsp&nbsp&nbsp&nbsp&nbsp
+            <button type="submit" value="submit" onclick="createUnitPassTab()"
+                    style="height: 25px; width: 40px; background-color: #e2e2e2; font-size: x-small; font-style: normal;">
+                Filter
+            </button>
+            <div class="totalunitpass">
+        <p>Students who passed a number of units greater or equal to</p>
+        </div>
+        </p>
 
         </div>
         <div class="GPAandRESET">
-            <button class="btn "style=" ;height: 40px;width: 70px;background-color: #e2e2e2;font-size: x-small;font-style: normal; ">GPA Distribution</button>
-
+            <div class="tandc">
+                <p style="text-align: left">
+                    <input type="text" name="num_of_term" id="term_number" placeholder="Term(e.g;1150):"
+                           style="width: 100px; height: 20px; background-color: #ffffff; font-size: xx-small; text-align: left">
+                    &nbsp&nbsp&nbsp&nbsp&nbsp
+                    <input type="text" name="num_of_term" id="catalog_number" placeholder="Course Catalog Number:"
+                           style="width: 100px; height: 20px; background-color: #ffffff; font-size: xx-small; text-align: left">
+                    &nbsp&nbsp&nbsp&nbsp&nbsp
+                    <button type="submit" value="submit" onclick="createTermCourseTab()"
+                            style="height: 25px; width: 40px; background-color: #e2e2e2; font-size: x-small; font-style: normal;">
+                        Filter
+                    </button>
+                    <div class="courseofterm">
+                <p>Students who took a particular course of a particular term</p>
+            </div>
+            </p>
+            <div class="graph">
+                <button id="GPAPie" class="btn" style="height: 40px;width: 70px;background-color: #e2e2e2;font-size: x-small;font-style: normal">GPA Pie Chart</button>&nbsp;
+                <button id="GPABar" class="btn" style="height: 40px;width: 70px;background-color: #e2e2e2;font-size: x-small;font-style: normal">GPA Bar Chart</button>
+            </div>
             <div class="reset">
                 <p style="text-align: left">
                     <button type="submit" value="submit" onclick="resetTable()"
@@ -713,10 +762,13 @@
             </div>
             </p>
         </div>
+
+        </div>
     </table>
 
     <hr/>
     <div id="div1" class="section"></div>
+    <hr />
     <div id="piechart"></div>
 </main>
 <footer style="text-align: center;background-color: #f6f6f6;font-size: xx-small;margin-top:30%;bottom: 0px;">

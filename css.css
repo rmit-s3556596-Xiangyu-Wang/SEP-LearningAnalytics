@@ -130,7 +130,7 @@ pre {
 }
 
 table {
-    width: 80%;
+    width: 100%;
 
 }
 
@@ -236,7 +236,7 @@ p.center {
 .upload_facility {
 
     text-align: left;
-    width: 55%;
+    width: 42%;
     padding: 20px 0;
     background: #f8f8f8; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(#f8f8f8, #ffffff, #f8f8f8);
@@ -286,14 +286,14 @@ table.checkboxes td, th {
     line-height: normal;
     font-size: small;
     clear: right;
-    width: 20%;
+    width: 15%;
     float: left;
 }
 .second-column{
     line-height: normal;
     font-size: small;
     clear: right;
-    width:20%;
+    width:15%;
     float: left;
 }
 .third-colum{
@@ -301,44 +301,39 @@ table.checkboxes td, th {
     font-size: small;
     clear: right;
     float: left;
-    width:20%;
+    width:15%;
 
 }
+.particularcourse{
+    font-size: xx-small;
+
+ }
+.numberofterm{
+    font-size: xx-small;
+    width: 170px;
+}
+.totalunitpass{
+    font-size: xx-small;
+    width: 170px;
+}
+.courseofterm{
+    font-size: xx-small;
+    width: 200px;
+}
+.tandc{
+    width: 200px;
+    float: left;
+}
 .sidebar{
-margin-top: -70px;
+padding-left: 1%;
+    border-left: 1px solid #cacaca;
+    margin-top: -70px;
     float: left;
     width:200px;
     font-size: small;
+
 }
 
-.ficoulmn{
-    line-height: normal;
-    font-size: small;
-    clear: right;
-    width: 30%;
-    float: left;
-}
-.secolumn{
-    line-height: normal;
-    font-size: small;
-    clear: right;
-    width:30%;
-    float: left;
-}
-.thcoulmn{
-    line-height: normal;
-    font-size: small;
-    clear: right;
-    float: left;
-    width:30%;
-}
-.foucolumn{
-    line-height: normal;
-    font-size: small;
-    clear: right;
-    float: left;
-    width:30%;
-}
 #piechart{
 
     width: 100%;
@@ -346,10 +341,22 @@ margin-top: -70px;
 
 }
 .GPAandRESET{
-    margin-top: -55px;
+    margin-top: -80px;
     float: left;
-    align-content: center;
+    align-content: left;
 }
-.btn{
+#gpapie{
     float: left;
+}
+#gpabar{
+
+    float: right;
+  padding-left: 50px;
+}
+.reset{
+    padding-left:20%;
+    margin-top: -8px;
+    float: left;
+    margin-left: 40%;
+    margin-top: 1%;
 }

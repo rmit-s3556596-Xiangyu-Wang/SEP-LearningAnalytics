@@ -4,14 +4,14 @@
     <link rel="stylesheet" href="coursecss.css" type="text/css" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
-          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <title>Course Analysis</title>
+    <title>Test Course</title>
 </head>
+
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
 <script type="text/javascript">
-    var hideColum = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 27, 28,
+    var hideColum = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28,
         29, 30, 31];
     //    var hideColum = [4, 5, 10, 11, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 27, 28];
     var combArr = [6, 7, 8, 9, 14, 24, 25, 26, 29, 30, 31];
@@ -21,17 +21,25 @@
     var tablesRows = [];
     var tableRows = [];
     var tableCells = [];
-    var pTables = []
-    var cTables = []
+
+    var pTables = [];
+    var cTables = [];
+
+    var chartsData;
+
     $(function () {
-        $("#upload").bind("click", function () {
+        $("#file1").on('change', function () {
+            $('#upload1').click();
+        });
+
+        $("#upload1").bind("click", function () {
             var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
             if (regex.test($("#file1").val().toLowerCase())) {
                 if (typeof (FileReader) != "undefined") {
                     //alert("Success!");
-                    var reader = new FileReader();
-                    reader.readAsText($("#file" + fileNum)[0].files[0]);
-                    reader.onload = function (e) {
+                    var preader = new FileReader();
+                    preader.readAsText($("#file1")[0].files[0]);
+                    preader.onload = function (e) {
                         var table = $("<table id=fileNum />");
                         var rows = e.target.result.split("\n");
                         var tHead = $("<thead/>");
@@ -47,10 +55,7 @@
                         table.append(tHead);
                         tableRows.push(tableCells);
                         tableCells = [];
-//                        var stuTab = combine(rows, combArr);
-//                        stuTab.unshift(rows[0].split(","));
-//                        saveStudent(stuTab);
-//                        stuTab.shift();
+
                         var tBody = $("<tbody/>");
                         for (var i = 1; i < rows.length - 1; i++) {
                             var row = $("<tr />");
@@ -66,30 +71,112 @@
                             tableCells = [];
                         }
                         table.append(tBody);
-                        alert("Tables length: " + tables.length);
+//                        alert("Tables length: " + tables.length);
                         if (!containsTable(tableRows, tablesRows)) {
-                            if (tableRows[0].length == 32){
+                            if (tableRows[0].length == 32) {
                                 var programTable = combine(tableRows, combArr);
                                 programFile = 1;
                                 pTables.push(programTable);
-                            }else {
-                                if (cTables.length == 0) {
-                                    cTables.push(tableRows);
-                                }else {
-                                    alert("Course file reach the maximum number: 1");
-                                }
-//                                calculate(pTables, cTables);
+                                tablesRows.push(tableRows);
+                                tableRows = [];
+                            } else {
+                                tableRows = [];
+                                alert("Program file should contain 32 columns!")
                             }
-                            tablesRows.push(tableRows);
-                            tableRows = [];
+//                            tablesRows.push(tableRows);
+//                            tableRows = [];
                             tables.push(table);
-                            alert("table added!");
+//                            alert("table added!");
                         } else {
                             tableRows = [];
                             alert("File already exist!");
                         }
                         $("#div1").html('');
+//                        alert("pTable length: " + pTables.length);
                         drawProgramTable(pTables);
+//                        alert("cTable length: " + cTables.length);
+                        calculate(cTables);
+                        hideALL();
+                    }
+                } else {
+                    alert("This browser does not support HTML5.");
+                }
+            } else {
+                alert("Please upload a valid CSV file.");
+            }
+        });
+    });
+
+    $(function () {
+        $("#file2").on('change', function () {
+            $('#upload2').click();
+        });
+
+        $("#upload2").bind("click", function () {
+            var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
+            if (regex.test($("#file2").val().toLowerCase())) {
+                if (typeof (FileReader) != "undefined") {
+                    var creader = new FileReader();
+                    creader.readAsText($("#file2")[0].files[0]);
+                    creader.onload = function (e) {
+                        var table = $("<table/>");
+                        var rows = e.target.result.split("\n");
+                        var tHead = $("<thead/>");
+                        var theadtr = $("<tr />");
+                        var thcells = rows[0].split(",");
+                        for (var i = 0; i < thcells.length; i++) {
+                            var cell = $("<th />");
+                            cell.html(thcells[i]);
+                            tableCells.push(thcells[i]);
+                            theadtr.append(cell);
+                        }
+                        tHead.append(theadtr);
+                        table.append(tHead);
+                        tableRows.push(tableCells);
+                        tableCells = [];
+
+                        var tBody = $("<tbody/>");
+                        for (var i = 1; i < rows.length - 1; i++) {
+                            var row = $("<tr />");
+                            var cells = rows[i].split(",");
+                            for (var j = 0; j < cells.length; j++) {
+                                var cell = $("<td />");
+                                cell.html(cells[j]);
+                                tableCells.push(cells[j]);
+                                row.append(cell);
+                            }
+                            tBody.append(row);
+                            tableRows.push(tableCells);
+                            tableCells = [];
+                        }
+                        table.append(tBody);
+//                        alert("Tables length: " + tables.length);
+//                        if (!containsTable(tableRows, tablesRows)) {
+                        if (tableRows[0].length == 34) {
+                            if (cTables.length == 0) {
+                                cTables.push(tableRows);
+                                tablesRows.push(tableRows);
+                                tableRows = [];
+                            } else {
+                                tableRows = [];
+                                alert("Course file reach the maximum number: 1");
+                            }
+                        } else {
+                            tableRows = [];
+                            alert("Course file should contain 34 columns!")
+                        }
+//                            tablesRows.push(tableRows);
+//                            tableRows = [];
+                        tables.push(table);
+//                            alert("table added!");
+//                        } else {
+//                            tableRows = [];
+//                            alert("File already exist!");
+//                        }
+                        $("#div1").html('');
+//                        alert("pTable length: " + pTables.length);
+                        drawProgramTable(pTables);
+//                        alert("cTable length: " + cTables.length);
                         calculate(cTables);
                         hideALL();
                     }
@@ -104,6 +191,148 @@
 </script>
 
 <script type="text/javascript">
+    $(document).ready(function(){
+        $("#GPA_Pie").click(function(){
+            google.load("visualization", "1", {packages:["corechart"], "callback": drawChart});
+            google.setOnLoadCallback(drawChart);
+            function drawChart() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'GPA allocation');
+                data.addColumn('number', 'statistics');
+                data.addRows(chartsData);
+                var options = {
+                    chartArea: {width:'100%',height:'100%'},
+                    forceIFrame: 'false',
+                    is3D: 'true',
+                    pieSliceText: 'value',
+//                    sliceVisibilityThreshold: 1/20, // Only > 5% will be shown.
+                    title: 'Program GPA allocation' ,
+                    titlePosition: 'none'
+                };
+                var chart = new google.visualization.PieChart(document.getElementById("piechart"));
+                chart.draw(data, options);
+            }
+        });
+    });
+
+    $(document).ready(function(){
+        $("#GPA_Bar").click(function(){
+            google.load("visualization", "1", {packages:["corechart"], "callback": drawChart});
+            google.setOnLoadCallback(drawChart);
+            function drawChart() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'GPA allocation');
+                data.addColumn('number', 'statistics');
+                data.addRows(chartsData);
+                var options = {
+                    chartArea: {width:'60%',height:'60%'},
+                    forceIFrame: 'false',
+//                    sliceVisibilityThreshold: 1/20, // Only > 5% will be shown.
+                    title: 'Program GPA allocation' ,
+                    titlePosition: 'none'
+                };
+                var chart = new google.visualization.ColumnChart(document.getElementById("piechart"));
+                chart.draw(data, options);
+            }
+        });
+    });
+
+    function calGPA(array) {
+        var a = 0;
+        var b = 0;
+        var c = 0;
+        var d = 0;
+        var e = 0;
+        var f = 0;
+        var zero = 0;
+        for (var i = 0; i < array.length; i ++){
+            if(parseFloat(array[i][24])<1.0) {
+                a++;
+            }
+            if(1.0<=parseFloat(array[i][24]) && parseFloat(array[i][24])<2.0) {
+                b++;
+            }
+            if(2.0<=parseFloat(array[i][24]) && parseFloat(array[i][24])<3.0) {
+                c++;
+            }
+            if(3.0<=parseFloat(array[i][24]) && parseFloat(array[i][24])<4.0) {
+                d++;
+            }
+            if(parseFloat(array[i][24])==4.0) {
+                e++;
+            }
+            if (array[i][24] == ''){
+                f++;
+            }
+            if (parseFloat(array[i][24]) == 0.0){
+                zero++;
+            }
+        }
+        var gpa = [
+//            ['GPA=0',parseInt(zero)],
+            ['GPA < 1',parseInt(a)],
+            ['1 <= GPA < 2',parseInt(b)],
+            ['2 <= GPA < 3',parseInt(c)],
+            ['3 <= GPA < 4',parseInt(d)],
+            ['GPA = 4',parseInt(e)],
+//            ['no GPA currently',parseInt(f)]
+        ];
+        return gpa;
+    }
+</script>
+
+<script type="text/javascript">
+    function onToggle(ckbox) {
+        if (ckbox.checked) {
+            show(ckbox.value);
+        }
+        else {
+            hide(ckbox.value);
+        }
+    }
+
+    function hide(col) {
+        var thead = document.getElementsByTagName('thead');
+        if (!thead.length == 0) {
+            var thr = thead[0];
+            thr.getElementsByTagName('th')[col].style.display = 'none';
+            //thr.getElementsByTagName('th')[col].style.visibility='hidden';
+        }
+        var tr = document.getElementsByTagName('tr');//��ȡ������
+        if (!tr.length == 0) {
+            var i;
+            for (i = 1; i < tr.length; i++) {
+                tr[i].getElementsByTagName('td')[col].style.display = 'none';
+                //tr[i].getElementsByTagName('td')[col].style.visibility='hidden';
+            }
+        }
+        var stuTab = document.getElementById("stuTab");
+        var courseTab = document.getElementById("courseTable");
+        for (i = 0; i < stuTab.rows.length; i++) {
+            stuTab.rows[i].cells[col].style.display = 'none';
+        }
+        for (i = 0; i < courseTab.rows.length; i++) {
+            courseTab.rows[i].cells[col].style.display = 'none';
+        }
+    }
+
+    function show(col) {
+        var thead = document.getElementsByTagName('thead');
+        if (!thead.length == 0) {
+            var thr = thead[0];
+            thr.getElementsByTagName('th')[col].style.display = 'table-cell';
+            //thr.getElementsByTagName('th')[col].style.visibility='visible';
+        }
+        var tr = document.getElementsByTagName('tr');
+        if (!tr.length == 0) {
+            var i;
+            for (i = 1; i < tr.length; i++) {
+                tr[i].getElementsByTagName('td')[col].style.display = 'table-cell';
+                //tr[i].getElementsByTagName('td')[col].style.visibility='visible';
+            }
+        }
+    }
+
     $(document).on('click', 'th', function () {
         var table = $(this).parents('table').eq(0);
         var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()));
@@ -113,6 +342,7 @@
         }
         table.children('tbody').empty().html(rows);
     });
+
     function comparer(index) {
         return function (a, b) {
             var valA = getCellValue(a, index),
@@ -121,6 +351,7 @@
                 valA - valB : valA.localeCompare(valB);
         };
     }
+
     function getCellValue(row, index) {
         return $(row).children('td').eq(index).text();
     }
@@ -128,13 +359,16 @@
 
 <script type="text/javascript">
     function drawProgramTable(pTable) {
+        if (pTable.length == 0) {
+            return;
+        }
         var table = document.createElement("table");
         table.setAttribute("id", "pTab");
-        for (var i = 0; i < pTable.length; i ++){
-            for (var j = 1; j < pTable[i].length; j ++){
+        for (var i = 0; i < pTable.length; i++) {
+            for (var j = 1; j < pTable[i].length; j++) {
                 var row = table.insertRow();
                 var stuinfo = pTable[i][j];
-                for (var k = 0; k < stuinfo.length; k ++){
+                for (var k = 0; k < stuinfo.length; k++) {
                     var cell = row.insertCell();
                     cell.innerHTML = stuinfo[k];
                 }
@@ -142,43 +376,57 @@
         }
         var pthead = table.createTHead();
         var ptRow = pthead.insertRow();
-        for (i = 0; i < pTable[0][0].length; i ++){
+        for (i = 0; i < pTable[0][0].length; i++) {
             var ptcell = document.createElement("th");
             ptcell.innerHTML = pTable[0][0][i];
             ptRow.appendChild(ptcell);
         }
         document.getElementById("div1").appendChild(table);
     }
+
     function calculate(courseTab) {
-        if (courseTab.length == 0){
+        if (courseTab.length == 0) {
             return;
         }
         var exist = false;
         var programTab = document.getElementById("pTab");
-        for (var i = 1; i < programTab.rows.length; i ++){
-            for (var j = 1; j < courseTab[0].length; j ++){
-                if (programTab.rows[i].cells[0].innerHTML == courseTab[0][j][0]){
+        for (var i = 1; i < programTab.rows.length; i++) {
+            for (var j = 1; j < courseTab[0].length; j++) {
+                if (programTab.rows[i].cells[0].innerHTML == courseTab[0][j][0]) {
                     exist = true;
 //                    alert(exist);
                     break;
                 }
             }
-            if (!exist){
+            if (!exist) {
                 programTab.deleteRow(i);
                 i--;
 //                alert("program table length: " + programTab.rows.length);
-            }else {
+            } else {
                 courseTab[0].splice(j, 1);
 //                alert("course table length: " + courseTab.length);
             }
             exist = false;
         }
+        chartsData = calGPA(getChartData(programTab));
         var message = "<br />" + "Following students are not in program: ";
-        for (i = 1; i < courseTab[0].length; i ++){
+        for (i = 1; i < courseTab[0].length; i++) {
             message += ("<br />" + courseTab[0][i][0] + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + courseTab[0][i][1] +
                 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + courseTab[0][i][2]);
         }
         document.getElementById("text").innerHTML = message;
+    }
+
+    function getChartData(table) {
+        var charData = [];
+        for (var i = 1; i < table.rows.length; i ++){
+            var stuinfo = [];
+            for (var j = 0; j < table.rows[i].cells.length; j ++){
+                stuinfo.push(table.rows[i].cells[j].innerHTML);
+            }
+            charData.push(stuinfo);
+        }
+        return charData;
     }
 
     function combine(rows, combArr) {
@@ -218,6 +466,7 @@
         }
         return stuTab;
     }
+
     function contains(value, arr) {
         var i = arr.length;
         while (i--) {
@@ -227,6 +476,7 @@
         }
         return false;
     }
+
     function containsTable(table, tables) {
         var result = true;
         var file_not_equal = 0;
@@ -259,6 +509,7 @@
     function hideALL() {
         var thead = document.getElementsByTagName('thead');
         var thr = thead[0];
+
         var j;
         for (j = 0; j < 32; j++) {
             if (hideColum.indexOf(j) >= 0) {
@@ -266,6 +517,7 @@
                 //thr.getElementsByTagName('th')[j].style.visibility='hidden';
             }
         }
+
         var tr = document.getElementsByTagName('tr');
         var i;
         for (i = 1; i < tr.length; i++) {
@@ -276,6 +528,7 @@
                     //tr[i].getElementsByTagName('td')[j].style.visibility='hidden';
                 }
             }
+
         }
     }
 </script>
@@ -298,61 +551,92 @@
             alert("File Empty!")
         }
     }
+
     function saveStudent(table) {
         var sentTab = JSON.stringify(table);
         sessionStorage.setItem("stuTab", sentTab);
     }
 </script>
-<script type="text/javascript">
-    function addFile() {
-        fileNum += 1;
-        var section = document.getElementById("uploadFile");
-        var br1 = document.createElement("br");
-        var br2 = document.createElement("br");
-        var fileUp = document.createElement("input");
-//        var button1 = document.createElement("input");
-//        button1.setAttribute("type", "button");
-//        button1.setAttribute("id", "upload" + fileNum);
-//        button1.setAttribute("class", "upload");
-//        button1.setAttribute("value", "Upload");
-        var button2 = document.createElement("input");
-        button2.setAttribute("type", "button");
-        button2.setAttribute("class", "upload");
-        button2.setAttribute("value", "add");
-        //button2.style.marginLeft = "35px";
-        fileUp.setAttribute("type", "file");
-        fileUp.setAttribute("id", "file" + fileNum);
-        alert(fileUp.id);
-        section.appendChild(br1);
-        section.appendChild(br2);
-        section.appendChild(fileUp);
-        //section.appendChild(button1);
-        //section.appendChild(button2);
-    }
-</script>
 <body>
 <header> RMIT - Learning Analytics </header>
-<div id="uploadFile" class="courseupload">
-    <input type="file" id="file1"/>
-    <input type="button" class="upload" id="upload" value="Upload"/>
-    <input type="button" class="upload" id="add" value="add" onclick="addFile()">
-</div>
+<main>
+    <div id="uploadFile" class="uploadbutton">
+        Program File:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="file" id="file1"/>
+        <!--<input type="button" class="upload" id="add" value="add" onclick="addFile()">-->
+        <input type="button" id="upload1" value="Upload" style="visibility: hidden"/>
+        Course File:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="file" id="file2"/>
+        <input type="button" id="upload2" value="Upload" style="visibility: hidden"/>
+        Go To:&nbsp;<input type="button" value="Program Analysis" onclick="window.open('programanalysis.html')"/>
+    </div>
+    <table width="100%" class="checkboxes">
+        <div class="clickbar">
+            <div class="first-column">
+                <input type="checkbox" id="c3" name="xxx" onclick="onToggle(this);" value="3"/>Academic Career <br/><br/>
+                <!--<input type="checkbox" id="c4" name="xxx" onclick="onToggle(this);" value="4"/>Acad Level(By Term) <br/><br/>-->
+                <!--<input type="checkbox" id="c5" name="xxx" onclick="onToggle(this);" value="5"/>Program Campus <br/><br/>-->
+                <input type="checkbox" id="c6" name="xxx" onclick="onToggle(this);" value="6"/>Term <br/><br/>
+                <input type="checkbox" id="c7" name="xxx" onclick="onToggle(this);" value="7"/>Program Code <br/><br/>
+                <input type="checkbox" id="c8" name="xxx" onclick="onToggle(this);" value="8"/>Academic Plan <br/><br/>
+            </div>
 
-<div id="div1" class="table1" align="center"></div>
-<div id="div2" align="center"><span id="text"></span></div>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
-        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
-        integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
-        crossorigin="anonymous"></script>
-</body>
-<footer>
+            <div class="second-column">
+                <input type="checkbox" id="c9" name="xxx" onclick="onToggle(this);" value="9"/>Admit Term <br/><br/>
+
+
+                <!--<input type="checkbox" id="c10" name="xxx" onclick="onToggle(this);" value="10"/>Course Owner <br/><br/>-->
+                <!--<input type="checkbox" id="c11" name="xxx" onclick="onToggle(this);" value="11"/>Course Id <br/><br/>-->
+                <!--<input type="checkbox" id="c12" name="xxx" onclick="onToggle(this);" value="12"/>Course Description <br/><br/>-->
+                <!--<input type="checkbox" id="c13" name="xxx" onclick="onToggle(this);" value="13"/>Subject Id <br/><br/>-->
+                <input type="checkbox" id="c14" name="xxx" onclick="onToggle(this);" value="14"/>Catalogue Number <br/><br/>
+                <!--<input type="checkbox" id="c15" name="xxx" onclick="onToggle(this);" value="15"/>Class Number <br/><br/>-->
+                <!--<input type="checkbox" id="c16" name="xxx" onclick="onToggle(this);" value="16"/>Session Code <br/><br/>-->
+                <!--<input type="checkbox" id="c17" name="xxx" onclick="onToggle(this);" value="17"/>Section Code <br/><br/>-->
+                <!--<input type="checkbox" id="c18" name="xxx" onclick="onToggle(this);" value="18"/>Class Campus <br/><br/>-->
+                <!--<input type="checkbox" id="c19" name="xxx" onclick="onToggle(this);" value="19"/>Grade Entered <br/><br/>-->
+                <!--<input type="checkbox" id="c20" name="xxx" onclick="onToggle(this);" value="20"/>Grade Official <br/><br/>-->
+
+                <!--<input type="checkbox" id="c21" name="xxx" onclick="onToggle(this);" value="21"/>Grade Roster Input <br/><br/>-->
+                <!--<input type="checkbox" id="c22" name="xxx" onclick="onToggle(this);" value="22"/>Grade In Roster Status <br/><br/>-->
+                <!--<input type="checkbox" id="c23" name="xxx" onclick="onToggle(this);" value="23"/>Term GPA <br/><br/>-->
+                <input type="checkbox" id="c24" name="xxx" onclick="onToggle(this);" value="24"/>Program GPA <br/><br/>
+                <input type="checkbox" id="c25" name="xxx" onclick="onToggle(this);" value="25"/>Total Units Attempt
+                <br/><br/>
+            </div>
+
+            <div class="third-colum">
+                <input type="checkbox" id="c26" name="xxx" onclick="onToggle(this);" value="26"/>Total Units Pass <br/><br/>
+
+                <!--<input type="checkbox" id="c27" name="xxx" onclick="onToggle(this);" value="27"/>Funding Source <br/><br/>-->
+                <!--<input type="checkbox" id="c28" name="xxx" onclick="onToggle(this);" value="28"/>TACADPR Comments <br/><br/>-->
+                <input type="checkbox" id="c29" name="xxx" onclick="onToggle(this);" value="29"/>Total Units Credit
+                <br/><br/>
+                <input type="checkbox" id="c30" name="xxx" onclick="onToggle(this);" value="30"/>Cumulative Units <br/><br/>
+                <input type="checkbox" id="c31" name="xxx" onclick="onToggle(this);" value="31"/>Student Email Address
+            </div>
+        </div>
+        <div class="graph">
+            <button id="GPA_Pie" class="btn "
+                    style=" ;height: 40px;width: 70px;background-color: #e2e2e2;font-size: x-small;font-style: normal; ">GPA
+                Pie Chart
+            </button>&nbsp;
+            <button id="GPA_Bar" class="btn "
+                    style=" ;height: 40px;width: 70px;background-color: #e2e2e2;font-size: x-small;font-style: normal; ">GPA
+                Bar Chart
+            </button>
+        </div>
+    </table>
+
+    <hr />
+    <div id="div1"></div>
+    <div id="div2"><span id="text"></span></div>
+    <hr />
+    <div id="piechart"></div>
+
+</main>
+<footer style="text-align: center;background-color: #f6f6f6;font-size: xx-small;margin-top:30%;bottom: 0px;">
     <p>RMIT - COSC2616 Software Engineering Postgraduate Project - 2017, Sem 2<br>
         &copy 2017 <a href="mailto:nebojsa.pajkic@rmit.edu.au">Learning Analytics Team</a></p>
 </footer>
+</body>
 </html>
