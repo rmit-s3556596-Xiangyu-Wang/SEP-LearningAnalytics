@@ -14,6 +14,7 @@
     //    var hideColum = [4, 5, 10, 11, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 27, 28];
     var combArr = [3, 6, 7, 8, 9, 14, 24, 25, 26, 29, 30, 31];
     var pieChart = [];
+    var description = "Click the first row of each column to sort by order";
     $(function () {
         $("#fileUpload").on('change', function () {
             $('#upload').click();
@@ -23,7 +24,6 @@
             var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
             if (regex.test($("#fileUpload").val().toLowerCase())) {
                 if (typeof (FileReader) != "undefined") {
-                    alert("Success!");
                     var reader = new FileReader();
                     reader.readAsText($("#fileUpload")[0].files[0]);
                     reader.onload = function (e) {
@@ -58,6 +58,7 @@
                         }
                         table.append(tBody);
                         $(".section").html('');
+                        $(".section").html(description);
                         $(".section").append(table);
                         hideALL();
                         saveFile(rows);
@@ -306,9 +307,6 @@
             }
             var sent = JSON.stringify(data);
             sessionStorage.setItem("tab", sent);
-            alert("File Saved!");
-        } else {
-            alert("File Empty!")
         }
     }
     function saveStudent(table) {
@@ -416,6 +414,7 @@
                 }
                 var sent = JSON.stringify(tab);
                 sessionStorage.setItem("courseCKboxTab", sent);
+                document.getElementById("div1").append(description);
                 document.getElementById("div1").appendChild(table);
                 document.getElementById("course_id").value = '';
                 hideColumns("course");
@@ -515,6 +514,7 @@
                     tCell.innerHTML = termTab[0][i];
                     tRow.appendChild(tCell);
                 }
+                document.getElementById("div1").append(description);
                 document.getElementById("div1").appendChild(table);
                 document.getElementById("num_of_term").value = '';
                 hideColumns("term");
@@ -551,6 +551,7 @@
                     tCell.innerHTML = unitTab[0][i];
                     tRow.appendChild(tCell);
                 }
+                document.getElementById("div1").append(description);
                 document.getElementById("div1").appendChild(table);
                 document.getElementById("total_unit_pass").value = '';
                 hideColumns("total_unit_pass");
@@ -600,6 +601,7 @@
             tCell.innerHTML = CnTable[0][i];
             tRow.appendChild(tCell);
         }
+        document.getElementById("div1").append(description);
         document.getElementById("div1").appendChild(table);
         document.getElementById("term_number").value = '';
         document.getElementById("catalog_number").value = '';
@@ -631,6 +633,7 @@
                 tCell.innerHTML = unitTab[0][i];
                 tRow.appendChild(tCell);
             }
+            document.getElementById("div1").append(description);
             document.getElementById("div1").appendChild(table);
             hideColumns("resetTable");
             uncheckAll();
@@ -664,48 +667,27 @@
     <div class="upload_facility">
         <input type="file" id="fileUpload" />
         <input type="button" class="upload" id="upload" value="Upload" style="visibility: hidden"/>
-        Go To:&nbsp;<input type="button" value="Course Analysis" onclick="window.open('courseanalysis.html')"/>
+         Go To:&nbsp;<input type="button" class="turntocourse" value="Course Analysis" onclick="window.open('courseanalysis.html')"/>
+
     </div>
     <table width="100%" class="checkboxes">
         <div class="clickbar">
             <div class="first-column">
                 <input type="checkbox" id="c3" name="xxx" onclick="onToggle(this);" value="3"/>Academic Career <br/><br/>
-                <!--<input type="checkbox" id="c4" name="xxx" onclick="onToggle(this);" value="4"/>Acad Level(By Term) <br/><br/>-->
-                <!--<input type="checkbox" id="c5" name="xxx" onclick="onToggle(this);" value="5"/>Program Campus <br/><br/>-->
                 <input type="checkbox" id="c6" name="xxx" onclick="onToggle(this);" value="6"/>Term <br/><br/>
                 <input type="checkbox" id="c7" name="xxx" onclick="onToggle(this);" value="7"/>Program Code <br/><br/>
                 <input type="checkbox" id="c8" name="xxx" onclick="onToggle(this);" value="8"/>Academic Plan <br/><br/>
             </div>
 
-
             <div class="second-column">
                 <input type="checkbox" id="c9" name="xxx" onclick="onToggle(this);" value="9"/>Admit Term <br/><br/>
-
-
-                <!--<input type="checkbox" id="c10" name="xxx" onclick="onToggle(this);" value="10"/>Course Owner <br/><br/>-->
-                <!--<input type="checkbox" id="c11" name="xxx" onclick="onToggle(this);" value="11"/>Course Id <br/><br/>-->
-                <!--<input type="checkbox" id="c12" name="xxx" onclick="onToggle(this);" value="12"/>Course Description <br/><br/>-->
-                <!--<input type="checkbox" id="c13" name="xxx" onclick="onToggle(this);" value="13"/>Subject Id <br/><br/>-->
                 <input type="checkbox" id="c14" name="xxx" onclick="onToggle(this);" value="14"/>Catalogue Number <br/><br/>
-                <!--<input type="checkbox" id="c15" name="xxx" onclick="onToggle(this);" value="15"/>Class Number <br/><br/>-->
-                <!--<input type="checkbox" id="c16" name="xxx" onclick="onToggle(this);" value="16"/>Session Code <br/><br/>-->
-                <!--<input type="checkbox" id="c17" name="xxx" onclick="onToggle(this);" value="17"/>Section Code <br/><br/>-->
-                <!--<input type="checkbox" id="c18" name="xxx" onclick="onToggle(this);" value="18"/>Class Campus <br/><br/>-->
-                <!--<input type="checkbox" id="c19" name="xxx" onclick="onToggle(this);" value="19"/>Grade Entered <br/><br/>-->
-                <!--<input type="checkbox" id="c20" name="xxx" onclick="onToggle(this);" value="20"/>Grade Official <br/><br/>-->
-
-                <!--<input type="checkbox" id="c21" name="xxx" onclick="onToggle(this);" value="21"/>Grade Roster Input <br/><br/>-->
-                <!--<input type="checkbox" id="c22" name="xxx" onclick="onToggle(this);" value="22"/>Grade In Roster Status <br/><br/>-->
-                <!--<input type="checkbox" id="c23" name="xxx" onclick="onToggle(this);" value="23"/>Term GPA <br/><br/>-->
                 <input type="checkbox" id="c24" name="xxx" onclick="onToggle(this);" value="24"/>Program GPA <br/><br/>
                 <input type="checkbox" id="c25" name="xxx" onclick="onToggle(this);" value="25"/>Total Units Attempt <br/><br/>
             </div>
 
             <div class="third-colum" >
                 <input type="checkbox" id="c26" name="xxx" onclick="onToggle(this);" value="26"/>Total Units Pass <br/><br/>
-
-                <!--<input type="checkbox" id="c27" name="xxx" onclick="onToggle(this);" value="27"/>Funding Source <br/><br/>-->
-                <!--<input type="checkbox" id="c28" name="xxx" onclick="onToggle(this);" value="28"/>TACADPR Comments <br/><br/>-->
                 <input type="checkbox" id="c29" name="xxx" onclick="onToggle(this);" value="29"/>Total Units Credit <br/><br/>
                 <input type="checkbox" id="c30" name="xxx" onclick="onToggle(this);" value="30"/>Cumulative Units <br/><br/>
                 <input type="checkbox" id="c31" name="xxx" onclick="onToggle(this);" value="31"/>Student Email Address <br/><br/>
