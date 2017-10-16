@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -762,7 +761,7 @@
 							<p class="singles">
 								Start by uploading a file: <input type="file" id="fileUpload" />
 								<input type="button" class="upload" id="upload" value="Upload"
-									style="visibility: hidden" /> | <a href="courseanalysis.php">Go
+									style="visibility: hidden; width: 1em" /> | <a href="courseanalysis.php">Go
 									to Course Analysis</a>
 							</p>
 						</div>

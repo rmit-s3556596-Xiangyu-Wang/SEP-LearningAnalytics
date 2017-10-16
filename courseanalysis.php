@@ -606,43 +606,83 @@
 							<p class="singles">
 								Upload a program file: <input type="file" id="file1" /> <input
 									type="button" id="upload1" value="Upload"
-									style="visibility: hidden" /> | Upload a course file: <input
-									type="file" id="file2" /> <input type="button" id="upload2"
-									value="Upload" style="visibility: hidden" /> |<a
-									href="programalysis.php">Go to Program Analysis</a>
+									style="visibility: hidden; width: 1em" /> Upload a course file:
+								<input type="file" id="file2" /> <input type="button"
+									id="upload2" value="Upload"
+									style="visibility: hidden; width: 1em" /> | <a
+									href="programanalysis.php">Go to Program Analysis</a>
 							</p>
 						</div>
 					</div>
 				</div>
 
-
-
-
-				<!-- 
-					<div class="graph">
-						<button id="GPA_Pie" class="btn "
-							style="height: 40px; width: 70px; background-color: #e2e2e2; font-size: x-small; font-style: normal;">GPA
-							Pie Chart</button>
-						&nbsp;
-						<button id="GPA_Bar" class="btn "
-							style="height: 40px; width: 70px; background-color: #e2e2e2; font-size: x-small; font-style: normal;">GPA
-							Bar Chart</button>
+				<div class="top_display">
+					<div class="row">
+						<div class="cell40">
+							<p class="singles">Select which columns to display:</p>
+							<div class="checkboxes">
+								<div class="row">
+									<div class="cell33">
+										<input type="checkbox" id="c3" name="xxx"
+											onclick="onToggle(this);" value="3" />Academic Career <br />
+										<br /> <input type="checkbox" id="c6" name="xxx"
+											onclick="onToggle(this);" value="6" />Term <br /> <br /> <input
+											type="checkbox" id="c7" name="xxx" onclick="onToggle(this);"
+											value="7" />Program Code <br /> <br /> <input type="checkbox"
+											id="c8" name="xxx" onclick="onToggle(this);" value="8" />Academic
+										Plan <br /> <br /> <input type="checkbox" id="selectAll"
+											name="xxx" onclick="ckboxAll(this);" value="All" /><em>Select
+											All</em>
+									</div>
+									<div class="cell33">
+										<input type="checkbox" id="c9" name="xxx"
+											onclick="onToggle(this);" value="9" />Admit Term <br /> <br />
+										<input type="checkbox" id="c14" name="xxx"
+											onclick="onToggle(this);" value="14" />Catalogue Number <br />
+										<br /> <input type="checkbox" id="c24" name="xxx"
+											onclick="onToggle(this);" value="24" />Program GPA <br /> <br />
+										<input type="checkbox" id="c25" name="xxx"
+											onclick="onToggle(this);" value="25" />Total Units Attempted
+									</div>
+									<div class="cell33">
+										<input type="checkbox" id="c26" name="xxx"
+											onclick="onToggle(this);" value="26" />Total Units Passed <br />
+										<br /> <input type="checkbox" id="c29" name="xxx"
+											onclick="onToggle(this);" value="29" />Total Units Credit <br />
+										<br /> <input type="checkbox" id="c30" name="xxx"
+											onclick="onToggle(this);" value="30" />Cumulative Units <br />
+										<br /> <input type="checkbox" id="c31" name="xxx"
+											onclick="onToggle(this);" value="31" />Student Email Address
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="cell30">
+							<p class="singles">Visualise data:</p>
+							<input type="button" id="GPA_Pie" value="GPA pie chart">
+						</div>
+						<div class="cell30">
+							<p class="singles">&nbsp;</p>
+							<input type="button" id="GPA_Bar" value="GPA bar chart">
+						</div>
 					</div>
+				</div>
 
+				<p></p>
 				<div id="div1"></div>
 				<div id="div2">
 					<span id="text"></span>
-				</div><p></p>
+				</div>
+				<p></p>
 				<div id="piechart"></div>
-				
-				 -->
+
 
 
 
 
 			</div>
 		</section>
+		<footer> <?php include("footer.php"); ?></footer>
 	</div>
-
 </body>
 </html>
