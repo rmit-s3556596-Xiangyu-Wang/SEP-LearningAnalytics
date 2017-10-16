@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="coursecss.css" type="text/css" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Course Analysis</title>
+    <title>Test Course</title>
 </head>
 
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -21,17 +21,13 @@
     var tablesRows = [];
     var tableRows = [];
     var tableCells = [];
-
     var pTables = [];
     var cTables = [];
-
     var chartsData;
-
     $(function () {
         $("#file1").on('change', function () {
             $('#upload1').click();
         });
-
         $("#upload1").bind("click", function () {
             var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
             if (regex.test($("#file1").val().toLowerCase())) {
@@ -55,7 +51,6 @@
                         table.append(tHead);
                         tableRows.push(tableCells);
                         tableCells = [];
-
                         var tBody = $("<tbody/>");
                         for (var i = 1; i < rows.length - 1; i++) {
                             var row = $("<tr />");
@@ -106,12 +101,10 @@
             }
         });
     });
-
     $(function () {
         $("#file2").on('change', function () {
             $('#upload2').click();
         });
-
         $("#upload2").bind("click", function () {
             var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
             if (regex.test($("#file2").val().toLowerCase())) {
@@ -134,7 +127,6 @@
                         table.append(tHead);
                         tableRows.push(tableCells);
                         tableCells = [];
-
                         var tBody = $("<tbody/>");
                         for (var i = 1; i < rows.length - 1; i++) {
                             var row = $("<tr />");
@@ -214,7 +206,6 @@
             }
         });
     });
-
     $(document).ready(function(){
         $("#GPA_Bar").click(function(){
             google.load("visualization", "1", {packages:["corechart"], "callback": drawChart});
@@ -236,7 +227,6 @@
             }
         });
     });
-
     function calGPA(array) {
         var a = 0;
         var b = 0;
@@ -290,7 +280,6 @@
             hide(ckbox.value);
         }
     }
-
     function hide(col) {
         var thead = document.getElementsByTagName('thead');
         if (!thead.length == 0) {
@@ -307,7 +296,6 @@
             }
         }
     }
-
     function show(col) {
         var thead = document.getElementsByTagName('thead');
         if (!thead.length == 0) {
@@ -324,7 +312,6 @@
             }
         }
     }
-
     $(document).on('click', 'th', function () {
         var table = $(this).parents('table').eq(0);
         var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()));
@@ -334,7 +321,6 @@
         }
         table.children('tbody').empty().html(rows);
     });
-
     function comparer(index) {
         return function (a, b) {
             var valA = getCellValue(a, index),
@@ -343,7 +329,6 @@
                 valA - valB : valA.localeCompare(valB);
         };
     }
-
     function getCellValue(row, index) {
         return $(row).children('td').eq(index).text();
     }
@@ -375,7 +360,6 @@
         }
         document.getElementById("div1").appendChild(table);
     }
-
     function calculate(courseTab) {
         if (courseTab.length == 0) {
             return;
@@ -408,7 +392,6 @@
         }
         document.getElementById("text").innerHTML = message;
     }
-
     function getChartData(table) {
         var charData = [];
         for (var i = 1; i < table.rows.length; i ++){
@@ -420,7 +403,6 @@
         }
         return charData;
     }
-
     function combine(rows, combArr) {
         var stuTab = [];
         for (var i = 0; i < rows.length; i++) {
@@ -458,7 +440,6 @@
         }
         return stuTab;
     }
-
     function contains(value, arr) {
         var i = arr.length;
         while (i--) {
@@ -468,7 +449,6 @@
         }
         return false;
     }
-
     function containsTable(table, tables) {
         var result = true;
         var file_not_equal = 0;
@@ -501,7 +481,6 @@
     function hideALL() {
         var thead = document.getElementsByTagName('thead');
         var thr = thead[0];
-
         var j;
         for (j = 0; j < 32; j++) {
             if (hideColum.indexOf(j) >= 0) {
@@ -509,7 +488,6 @@
                 //thr.getElementsByTagName('th')[j].style.visibility='hidden';
             }
         }
-
         var tr = document.getElementsByTagName('tr');
         var i;
         for (i = 1; i < tr.length; i++) {
@@ -520,7 +498,6 @@
                     //tr[i].getElementsByTagName('td')[j].style.visibility='hidden';
                 }
             }
-
         }
     }
 </script>
@@ -543,7 +520,6 @@
             alert("File Empty!")
         }
     }
-
     function saveStudent(table) {
         var sentTab = JSON.stringify(table);
         sessionStorage.setItem("stuTab", sentTab);
@@ -561,7 +537,6 @@
             }
         }
     }
-
     function uncheckAll() {
         var checkboxes = document.getElementsByName("xxx");
         for (var i = 0; i < checkboxes.length; i ++){
