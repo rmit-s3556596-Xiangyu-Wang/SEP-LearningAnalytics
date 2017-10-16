@@ -21,10 +21,10 @@
 		<section class="content">
 			<div class="main">
 				<div class="middle">
-					<p class="titles">
+					<h1>
 						Enter <a href="programanalysis.php">Program Analysis</a> or <a
 							href="courseanalysis.php">Course Analysis</a> page
-					</p>
+					</h1>
 				</div>
 			</div>
 		</section>
