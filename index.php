@@ -17,25 +17,20 @@
 </head>
 <body>
 	<div class="container">
-		<header>RMIT - Learning Analytics</header>
+		<header><?php include("header.php"); ?></header>
 
 		<section class="content">
 			<div class="main">
 				<div class="middle">
 					<p class="titles">
-						Enter <a href="programanalysis.html" target="upload">Program
-							Analysis</a> or <a href="courseanalysis.html" target="_blank">Course
-							Analysis</a> page
+						Enter <a href="programanalysis.php">Program Analysis</a> or <a
+							href="courseanalysis.php">Course Analysis</a> page
 					</p>
 				</div>
 			</div>
 		</section>
 		<footer>
-			<p>
-				RMIT - COSC2616 Software Engineering Postgraduate Project - 2017,
-				Sem 2<br> &copy 2017 <a href="mailto:nebojsa.pajkic@rmit.edu.au">Learning
-					Analytics Team</a>
-			</p>
+		<?php include("footer.php"); ?>
 		</footer>
 	</div>
 </body>
