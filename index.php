@@ -13,7 +13,6 @@
             }
         }
     </script>
-<meta http-equiv="refresh" content="5">
 </head>
 <body>
 	<div class="container">
