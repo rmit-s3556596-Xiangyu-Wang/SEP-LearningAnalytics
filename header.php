@@ -1,1 +1,1 @@
-RMIT - Learning Analytics TEST
+RMIT - Learning Analytics
