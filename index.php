@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>WELCOME</title>
-<link rel="stylesheet" href="maincss.css" type="text/css" />
+<title>RMIT - Learning Analytics</title>
+<link rel="stylesheet" href="css.css" type="text/css" />
 <script type="text/javascript" language="javascript">
         function iFrameHeight() {
             var ifm= document.getElementById("iframeset");
@@ -16,7 +16,7 @@
 </head>
 <body>
 
-	<header> RMIT - Learning Analytics </header>
+	<header>RMIT - Learning Analytics</header>
 
 	<main>
 	<div class="main">
@@ -35,14 +35,6 @@
 
 
 	</main>
-
-	<footer>
-		<p>
-			RMIT - COSC2616 Software Engineering Postgraduate Project - 2017, Sem
-			2<br> &copy 2017 <a href="mailto:nebojsa.pajkic@rmit.edu.au">Learning
-				Analytics Team</a>
-		</p>
-	</footer>
 
 </body>
 </html>
