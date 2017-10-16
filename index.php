@@ -20,20 +20,9 @@
 
 	<main>
 	<div class="main">
-		<ul id="optionbar">
-			<div>
-				<a href="programanalysis.html" ;target="upload">Program Analysis</a>
-			</div>
-			<div>
-				<a href="courseanalysis.html" ; target="_blank">Course Analysis</a>
-			</div>
-		</ul>
+		<a href="programanalysis.html" target="upload">Program Analysis</a>
+		<a href="courseanalysis.html" target="_blank">Course Analysis</a>
 	</div>
-	<br />
-	<br />
-
-
-
 	</main>
 
 </body>
