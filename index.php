@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>RMIT - Learning Analytics</title>
+<title><?php include("header.php"); ?></title>
 <link rel="stylesheet" href="css.css" type="text/css" />
 <script type="text/javascript" language="javascript">
         function iFrameHeight() {
