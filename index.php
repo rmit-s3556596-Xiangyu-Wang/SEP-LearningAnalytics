@@ -3,7 +3,7 @@
 <head>
 <title><?php include("header.php"); ?></title>
 <link rel="stylesheet" href="css.css" type="text/css" />
-<script type="text/javascript" language="javascript">
+<script>
         function iFrameHeight() {
             var ifm= document.getElementById("iframeset");
             var subWeb = document.frames ? document.frames["iframeset"].document : ifm.contentDocument;
