@@ -12,7 +12,6 @@
                 //ifm.width = 1425;
             }
         }
-        // test
     </script>
 </head>
 <body>
