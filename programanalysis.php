@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+<html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="css.css" type="text/css" />
-<title>Program Analysis</title>
-</head>
+<title><?php include("header.php"); ?> - Program Analysis</title>
+
 <script type="text/javascript"
 	src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -16,7 +17,7 @@
     var combArr = [3, 6, 7, 8, 9, 14, 24, 25, 26, 29, 30, 31];
     var pieChart = [];
     var TUPChart =[];
-    var description = "Click the first row of each column to sort by order";
+    var description = "Click on the column title to sort by that column";
     $(function () {
         $("#fileUpload").on('change', function () {
             $('#upload').click();
@@ -286,7 +287,7 @@
             thr.getElementsByTagName('th')[col].style.display = 'none';
             //thr.getElementsByTagName('th')[col].style.visibility='hidden';
         }
-        var tr = document.getElementsByTagName('tr');//��ȡ������
+        var tr = document.getElementsByTagName('tr');
         if (!tr.length == 0) {
             var i;
             for (i = 1; i < tr.length; i++) {
@@ -474,7 +475,7 @@
                     }
                 }
                 if (stuTab.length == 1) {
-                    alert("No such course!");
+                    alert("Course ID not found!");
                     document.getElementById("course_id").value = '';
                     stuTab.deleteRow();
                     location.reload();
@@ -505,7 +506,7 @@
                 hideColumns("course");
                 uncheckAll();
             } else {
-                alert("No message input!");
+                alert("Please enter some text!");
             }
         }
     }
@@ -746,112 +747,55 @@
     }
 </script>
 
-
+</head>
 
 <body>
-	<header> RMIT - Learning Analytics </header>
-	<main>
-	<div class="upload_facility">
-		<input type="file" id="fileUpload" /> <input type="button"
-			class="upload" id="upload" value="Upload" style="visibility: hidden" />
-		Go To:&nbsp;<input type="button" class="turntocourse"
-			value="Course Analysis" onclick="window.open('courseanalysis.html')" />
+	<div class="container">
+		<header><?php include("header.php"); ?> - Program Analysis</header>
+		<section class="content">
+			<div class="main">
 
-	</div>
-	<table width="100%" class="checkboxes">
-		<div class="clickbar">
-			<div class="first-column">
-				<input type="checkbox" id="c3" name="xxx" onclick="onToggle(this);"
-					value="3" />Academic Career <br />
-				<br /> <input type="checkbox" id="c6" name="xxx"
-					onclick="onToggle(this);" value="6" />Term <br />
-				<br /> <input type="checkbox" id="c7" name="xxx"
-					onclick="onToggle(this);" value="7" />Program Code <br />
-				<br /> <input type="checkbox" id="c8" name="xxx"
-					onclick="onToggle(this);" value="8" />Academic Plan <br />
-				<br />
-			</div>
-
-			<div class="second-column">
-				<input type="checkbox" id="c9" name="xxx" onclick="onToggle(this);"
-					value="9" />Admit Term <br />
-				<br /> <input type="checkbox" id="c14" name="xxx"
-					onclick="onToggle(this);" value="14" />Catalogue Number <br />
-				<br /> <input type="checkbox" id="c24" name="xxx"
-					onclick="onToggle(this);" value="24" />Program GPA <br />
-				<br /> <input type="checkbox" id="c25" name="xxx"
-					onclick="onToggle(this);" value="25" />Total Units Attempt <br />
-				<br />
-			</div>
-
-			<div class="third-colum">
-				<input type="checkbox" id="c26" name="xxx" onclick="onToggle(this);"
-					value="26" />Total Units Pass <br />
-				<br /> <input type="checkbox" id="c29" name="xxx"
-					onclick="onToggle(this);" value="29" />Total Units Credit <br />
-				<br /> <input type="checkbox" id="c30" name="xxx"
-					onclick="onToggle(this);" value="30" />Cumulative Units <br />
-				<br /> <input type="checkbox" id="c31" name="xxx"
-					onclick="onToggle(this);" value="31" />Student Email Address <br />
-				<br /> <input type="checkbox" id="selectAll" name="xxx"
-					onclick="ckboxAll(this);" value="All" />Select All
-			</div>
-		</div>
-		<div class="sidebar">
-			</p>
-			<p style="text-align: left">
-				<input type="text" name="courseID" id="course_id"
-					placeholder="Course Number Here (e.g;1114)"
-					style="width: 150px; height: 20px; background-color: #ffffff; font-size: xx-small; text-align: left">
-				&nbsp&nbsp&nbsp&nbsp&nbsp
-				<button class="courseID" type="submit" value="submit"
-					onclick="createCourseTab()">Filter</button>
-			<div class="particularcourse">
-				<p>Students who took particular course</p>
-			</div>
-			</p>
-			<p style="text-align: left">
-				<input type="text" name="num_of_term" id="num_of_term"
-					placeholder="Number of Terms"
-					style="width: 150px; height: 20px; background-color: #ffffff; font-size: xx-small; text-align: left">
-				&nbsp&nbsp&nbsp&nbsp&nbsp
-				<button class="term" type="submit" value="submit"
-					onclick="createTermTab()">Filter</button>
-			<div class="numberofterm">
-				<p>Students who studied over a particular number of terms
-					greater or equal to</p>
-			</div>
-			</p>
-			<p style="text-align: left">
-				<input type="text" name="num_of_term" id="total_unit_pass"
-					placeholder="Number of total Unit Pass:"
-					style="width: 150px; height: 20px; background-color: #ffffff; font-size: xx-small; text-align: left">
-				&nbsp&nbsp&nbsp&nbsp&nbsp
-				<button class="unitpassbutton" type="submit" value="submit"
-					onclick="createUnitPassTab()">Filter</button>
-			<div class="totalunitpass">
-				<p>Students who passed a number of units greater or equal to</p>
-			</div>
-			</p>
-
-		</div>
-		<div class="GPAandRESET">
-			<div class="tandc">
-				<p style="text-align: left">
-					<input type="text" name="num_of_term" id="term_number"
-						placeholder="Term(e.g;1150):"
-						style="width: 120px; height: 20px; background-color: #ffffff; font-size: xx-small; text-align: left">
-					&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text" name="num_of_term"
-						id="catalog_number" placeholder="Course Catalog Number:"
-						style="width: 120px; height: 20px; background-color: #ffffff; font-size: xx-small; text-align: left">
-					&nbsp&nbsp&nbsp&nbsp&nbsp
-					<button class="cataloguebutton" type="submit" value="submit"
-						onclick="createTermCourseTab()">
-						Filter</button>
-				<div class="courseofterm">
-					<p>Students who took a particular course of a particular term</p>
+				<div class="checkboxes">
+					<div class="row">
+						<div class="cell">
+							<input type="checkbox" id="c3" name="xxx"
+								onclick="onToggle(this);" value="3" />Academic Career <br /> <br />
+							<input type="checkbox" id="c6" name="xxx"
+								onclick="onToggle(this);" value="6" />Term <br /> <br /> <input
+								type="checkbox" id="c7" name="xxx" onclick="onToggle(this);"
+								value="7" />Program Code <br /> <br /> <input type="checkbox"
+								id="c8" name="xxx" onclick="onToggle(this);" value="8" />Academic
+							Plan <br />
+							<br /> <input type="checkbox" id="selectAll" name="xxx"
+								onclick="ckboxAll(this);" value="All" /><em>Select All</em>
+						</div>
+						<div class="cell">
+							<input type="checkbox" id="c9" name="xxx"
+								onclick="onToggle(this);" value="9" />Admit Term <br /> <br /> <input
+								type="checkbox" id="c14" name="xxx" onclick="onToggle(this);"
+								value="14" />Catalogue Number <br /> <br /> <input
+								type="checkbox" id="c24" name="xxx" onclick="onToggle(this);"
+								value="24" />Program GPA <br /> <br /> <input type="checkbox"
+								id="c25" name="xxx" onclick="onToggle(this);" value="25" />Total
+							Units Attempted
+						</div>
+						<div class="cell">
+							<input type="checkbox" id="c26" name="xxx"
+								onclick="onToggle(this);" value="26" />Total Units Pass <br /> <br />
+							<input type="checkbox" id="c29" name="xxx"
+								onclick="onToggle(this);" value="29" />Total Units Credit <br />
+							<br /> <input type="checkbox" id="c30" name="xxx"
+								onclick="onToggle(this);" value="30" />Cumulative Units <br /> <br />
+							<input type="checkbox" id="c31" name="xxx"
+								onclick="onToggle(this);" value="31" />Student Email Address
+						</div>
+					</div>
 				</div>
-				</p>
+
+
+
+
+				Second table
 				<div class="graph">
 					<!--<button id="GPAPie" class="btn" style="height: 40px;width: 70px;background-color: #e2e2e2;font-size: x-small;font-style: normal">GPA Pie Chart</button>&nbsp;-->
 					<!--<button id="GPABar" class="btn" style="height: 40px;width: 70px;background-color: #e2e2e2;font-size: x-small;font-style: normal">GPA Bar Chart</button>-->
@@ -861,37 +805,105 @@
 					<!--</select>-->
 					<!--<button id="DrawChart" class="btn" style="height: 40px;width: 70px;background-color: #e2e2e2;font-size: x-small;font-style: normal">Plot Chart</button>-->
 					<select id="content">
-						<option value="Units">Total Units Pass</option>
+						<option value="Units">Total Units Passed</option>
 						<option value="GPA">GPA</option>
 					</select> <select id="chartType">
-						<option value="PieChart">PieChart</option>
-						<option value="BarChart">BarChart</option>
+						<option value="PieChart">Pie Chart</option>
+						<option value="BarChart">Bar Chart</option>
 					</select>
 					<button id="DrawChart" class="btn">Plot Chart</button>
 				</div>
 				<div class="reset">
-					<p style="text-align: left">
-						<button class="resetbutton" type="submit" value="submit"
-							id="lowbound" onclick="resetTable()"">
-							Reset</button>
+					<button class="resetbutton" type="submit" value="submit"
+						id="lowbound" onclick="resetTable()">Reset</button>
 				</div>
-				</p>
+
+
+				<div class="upload_facility">
+					<input type="file" id="fileUpload" /> <input type="button"
+						class="upload" id="upload" value="Upload"
+						style="visibility: hidden" /> Go To:&nbsp;<input type="button"
+						class="turntocourse" value="Course Analysis"
+						onclick="window.open('courseanalysis.php')" />
+
+				</div>
+				<table width="100%" class="checkboxes">
+					<div class="clickbar"></div>
+					<div class="sidebar">
+						</p>
+						<p style="text-align: left">
+							<input type="text" name="courseID" id="course_id"
+								placeholder="Course Number Here (e.g;1114)"
+								style="width: 150px; height: 20px; background-color: #ffffff; font-size: xx-small; text-align: left">
+							&nbsp&nbsp&nbsp&nbsp&nbsp
+							<button class="courseID" type="submit" value="submit"
+								onclick="createCourseTab()">Filter</button>
+						
+						
+						<div class="particularcourse">
+							<p>Students who took particular course</p>
+						</div>
+						</p>
+						<p style="text-align: left">
+							<input type="text" name="num_of_term" id="num_of_term"
+								placeholder="Number of Terms"
+								style="width: 150px; height: 20px; background-color: #ffffff; font-size: xx-small; text-align: left">
+							&nbsp&nbsp&nbsp&nbsp&nbsp
+							<button class="term" type="submit" value="submit"
+								onclick="createTermTab()">Filter</button>
+						
+						
+						<div class="numberofterm">
+							<p>Students who studied over a particular number of terms greater
+								or equal to</p>
+						</div>
+						</p>
+						<p style="text-align: left">
+							<input type="text" name="num_of_term" id="total_unit_pass"
+								placeholder="Number of total Unit Pass:"
+								style="width: 150px; height: 20px; background-color: #ffffff; font-size: xx-small; text-align: left">
+							&nbsp&nbsp&nbsp&nbsp&nbsp
+							<button class="unitpassbutton" type="submit" value="submit"
+								onclick="createUnitPassTab()">Filter</button>
+						
+						
+						<div class="totalunitpass">
+							<p>Students who passed a number of units greater or equal to</p>
+						</div>
+						</p>
+
+					</div>
+					<div class="GPAandRESET">
+						<div class="tandc">
+							<p style="text-align: left">
+								<input type="text" name="num_of_term" id="term_number"
+									placeholder="Term(e.g;1150):"
+									style="width: 120px; height: 20px; background-color: #ffffff; font-size: xx-small; text-align: left">
+								&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text" name="num_of_term"
+									id="catalog_number" placeholder="Course Catalog Number:"
+									style="width: 120px; height: 20px; background-color: #ffffff; font-size: xx-small; text-align: left">
+								&nbsp&nbsp&nbsp&nbsp&nbsp
+								<button class="cataloguebutton" type="submit" value="submit"
+									onclick="createTermCourseTab()">Filter</button>
+							
+							
+							<div class="courseofterm">
+								<p>Students who took a particular course in a particular term</p>
+							</div>
+							</p>
+
+						</div>
+
+					</div>
+				</table>
+
+				<hr />
+				<div id="div1" class="section"></div>
+				<hr />
+				<div id="piechart"></div>
 			</div>
-
-		</div>
-	</table>
-
-	<hr />
-	<div id="div1" class="section"></div>
-	<hr />
-	<div id="piechart"></div>
-	</main>
-	<footer
-		style="text-align: center; background-color: #f6f6f6; font-size: xx-small; margin-top: 30%; bottom: 0px;">
-		<p>
-			RMIT - COSC2616 Software Engineering Postgraduate Project - 2017, Sem
-			2<br> &copy 2017 <a href="mailto:nebojsa.pajkic@rmit.edu.au">Learning
-				Analytics Team</a>
-		</p>
-	</footer>
+		</section>
+		<footer> <?php include("footer.php"); ?></footer>
+	</div>
 </body>
+</html>
