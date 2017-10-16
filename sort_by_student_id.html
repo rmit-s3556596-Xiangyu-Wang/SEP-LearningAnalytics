@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<p lang="en" xmlns="http://www.w3.org/1999/html">
+    <head>
+        <meta charset="UTF-8">
+        <title>Course Information</title>
+
+        <style type="text/css">
+            table {
+                border: #00ffff solid 2px;
+                border-collapse: collapse;
+            }
+
+            td {
+                border: #8080ff solid 2px;
+                padding: 10px;
+            }
+
+            .table{
+                overflow: auto;
+            }
+        </style>
+
+        <script type="text/javascript">
+            var data = sessionStorage.getItem("stuTab");
+            var read = JSON.parse(data);
+            function createTab() {
+                document.getElementById("div1").innerHTML = '';
+                var userInput = document.getElementById("student_id").value;
+                if (read != null) {
+                    if (!userInput.length == 0) {
+                        var stuTab = [];
+                        stuTab.push(read[0]);
+                        for (var i = 1; i < read.length; i++) {
+                            var stuRow = read[i];
+                            if (stuRow[0] == userInput) {
+                                stuTab.push(stuRow);
+                            }
+                        }
+                        if (stuTab.length == 1){
+                            alert("No such student!");
+                            document.getElementById("student_id").value = '';
+                            stuTab.deleteRow();
+                            location.reload();
+                        }
+                        var table = document.createElement("table");
+                        table.setAttribute("id", "stuTab");
+                        for (i = 0; i < stuTab.length; i++) {
+                            var row = table.insertRow();
+                            var iRow = stuTab[i];
+                            for (var j = 0; j < iRow.length; j++) {
+                                var cell = row.insertCell();
+                                cell.innerHTML = iRow[j];
+                            }
+                        }
+                        document.getElementById("div1").appendChild(table);
+                        document.getElementById("student_id").value = '';
+                    }else {
+                        alert("No message input!");
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+<p style="text-align: center">
+    <input type="text" name="student_id" id="student_id" placeholder="Student ID Here (e.g: 1111111)"
+           style="width: 300px; height: 50px; background-color: lightyellow; font-size: large; text-align: center">
+    &nbsp&nbsp&nbsp&nbsp&nbsp
+    <button type="submit" value="submit" onclick="createTab()"
+            style="height: 54px; width: 150px; background-color: lightskyblue; font-size: large; font-style: italic;">
+        Search
+    </button>
+</p>
+<br/><br/>
+
+<p style="text-align: center">
+<div id="div1" class="table"></div>
+</p>
+
+

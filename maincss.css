@@ -1,0 +1,39 @@
+body{
+
+}
+header {
+
+    font: 2.5em museo300;
+    line-height: 1em;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px #000000;
+    /* horizontal-offset vertical-offset blur shadow-colour */
+    background-image: url("header.jpg");
+    background-size: auto;
+    padding: 30px 10px 30px 10px; /* top right bottom left */
+}
+.main{
+    width: 100%;
+    height:100%;
+}
+#optionbar{
+    background-image: url("background.jpg") ;
+    background-size:100% 100%;
+    padding: 100px 100px 400px 100px; /* top right bottom left */
+    font-style: normal ;
+    text-align: center;
+    font-size: large;
+}
+footer {
+    position: absolute;
+    clear: both;
+    font-size: 0.7em;
+    text-align: center;
+    margin-top: 20px;
+    background-color: #f6f6f6;
+    border-top: 1px solid #919191;
+    padding: 10px;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+}

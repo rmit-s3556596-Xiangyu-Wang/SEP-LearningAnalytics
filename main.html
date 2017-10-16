@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Main</title>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #111;
+        }
+    </style>
+</head>
+
+
+<script type="text/javascript" language="javascript">
+    function iFrameHeight() {
+        var ifm= document.getElementById("iframeset");
+        var subWeb = document.frames ? document.frames["iframeset"].document : ifm.contentDocument;
+        if(ifm != null && subWeb != null) {
+            ifm.height = subWeb.body.scrollHeight;
+            //ifm.width = 1425;
+        }
+    }
+
+    function reinitIframe() {
+        var iframe = document.getElementById("iframeset");
+        try
+        {
+            var bHeight = iframe.contentWindow.document.body.scrollHeight;
+            /*
+                               var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+                               var height = Math.max(bHeight, dHeight);
+                                iframe.height = height;                */
+            iframe.height = bHeight;
+        }
+        catch (ex) {}
+    }
+</script>
+
+<body>
+
+<ul>
+    <li><a class="active" href="programanalysis.html" target="upload">Program Analysis</a></li>
+    <li><a href="courseanalysis.html" target="_blank">Course Analysis</a></li>
+    <!--<li><a href="./sort_by_student_id.html" target="upload">Sort by student</a></li>-->
+    <!--<li><a href="#about">关于</a></li>-->
+</ul>
+<br /><br />
+
+<iframe id="iframeset" name="upload" src="ProgramAnalysis.html" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+        onLoad="iFrameHeight()" style="width: 100%;"></iframe>
+
+</body>
+</html>
