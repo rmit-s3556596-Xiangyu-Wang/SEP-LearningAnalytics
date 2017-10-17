@@ -185,6 +185,15 @@ pre {
 	font-size: 1.25em;
 }
 
+#file_header {
+	padding: 10px;
+	border: 2px solid gray;
+	border-radius: 5px;
+	margin: 20px;
+	background-color: #efefef;
+	font-size: 1.25em;
+}
+
 table {
 	width: 100%;
 }
