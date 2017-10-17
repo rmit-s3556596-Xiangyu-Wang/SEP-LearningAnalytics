@@ -783,6 +783,18 @@
         }
     </script>
 
+<script language="JavaScript">
+// show or hide header
+    function toggle(id) {
+        var state = document.getElementById(id).style.display;
+            if (state == 'block') {
+                document.getElementById(id).style.display = 'none';
+            } else {
+                document.getElementById(id).style.display = 'block';
+            }
+        }
+</script>
+
 </head>
 
 <body>
@@ -907,8 +919,16 @@
 				<p></p>
 				<div class="chartarea" id="piechart"></div>
 				<p></p>
-				<div id="file_header"></div>
 				<div id="div1" class="section"></div>
+				<p></p>
+				<div id="show_header">
+					<p>
+						<input type="button" onclick="toggle('file_header')"
+							value="Toggle header">
+						<!-- <a href="#" onclick="toggle('file_header');">Show/hide header</a>  -->
+					</p>
+				</div>
+				<div id="file_header"></div>
 			</div>
 		</section>
 		<footer id="footer">
