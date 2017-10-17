@@ -238,14 +238,14 @@
             var gpa = [
                 //            ['GPA=0',parseInt(zero)],
                 ['TUP < 48',parseInt(a)],
-                ['48 <= GPA < 96',parseInt(b)],
-                ['96 <= GPA < 144',parseInt(c)],
-                ['144 <= GPA < 192',parseInt(d)],
-                ['192 <= GPA < 240',parseInt(e)],
-                ['240 <= GPA < 288',parseInt(f)],
-                ['288 <= GPA < 336',parseInt(g)],
-                ['336 <= GPA < 384',parseInt(h)],
-                ['GPA = 384',parseInt(aa)],
+                ['48 <= TUP < 96',parseInt(b)],
+                ['96 <= TUP < 144',parseInt(c)],
+                ['144 <= TUP < 192',parseInt(d)],
+                ['192 <= TUP < 240',parseInt(e)],
+                ['240 <= TUP < 288',parseInt(f)],
+                ['288 <= TUP < 336',parseInt(g)],
+                ['336 <= TUP < 384',parseInt(h)],
+                ['TUP = 384',parseInt(aa)],
                 //            ['no GPA currently',parseInt(f)]
             ];
             return gpa;
