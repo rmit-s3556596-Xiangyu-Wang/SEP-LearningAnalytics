@@ -92,7 +92,7 @@
                 function drawTUPChart() {
                     var data = new google.visualization.DataTable();
                     data.addColumn('string', 'TUP allocation');
-                    data.addColumn('number', 'statistics');
+                    data.addColumn('number', 'Count');
                     data.addRows(TUPChart);
                     //                var content = document.getElementById('content');
                     //                var chartType = document.getElementById('chartType');
@@ -123,7 +123,7 @@
                 function drawGPAChart() {
                     var data = new google.visualization.DataTable();
                     data.addColumn('string', 'GPA allocation');
-                    data.addColumn('number', 'statistics');
+                    data.addColumn('number', 'Count');
                     data.addRows(pieChart);
                     //                var content = document.getElementById('content');
                     //                var chartType = document.getElementById('chartType');
@@ -184,6 +184,7 @@
                     zero++;
                 }
             }
+            var signs = '&gt;';
             var gpa = [
                 //            ['GPA=0',parseInt(zero)],
                 ['GPA < 1',parseInt(a)],

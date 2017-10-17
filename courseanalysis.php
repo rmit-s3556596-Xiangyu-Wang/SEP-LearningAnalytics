@@ -210,7 +210,7 @@
                                     data.addColumn('string',
                                         'GPA allocation');
                                     data.addColumn('number',
-                                        'statistics');
+                                        'Count');
                                     data.addRows(chartsData);
                                     var options = {
                                         chartArea : {
@@ -247,7 +247,7 @@
                                     data.addColumn('string',
                                         'GPA allocation');
                                     data.addColumn('number',
-                                        'statistics');
+                                        'Count');
                                     data.addRows(chartsData);
                                     var options = {
                                         chartArea : {
