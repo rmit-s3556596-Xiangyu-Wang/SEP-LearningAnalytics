@@ -17,6 +17,8 @@
         var combArr = [3, 6, 7, 8, 9, 14, 24, 25, 26, 29, 30, 31];
         var pieChart = [];
         var TUPChart =[];
+        var file_header = [];
+        var hr_line = document.createElement("hr");
         var description = " Sort columns by clicking on the desired column title";
         $(function () {
             $("#fileUpload").on('change', function () {
@@ -33,15 +35,35 @@
                             var rows = e.target.result.split("\n");
                             var tHead = $("<thead/>");
                             var theadtr = $("<tr />");
-                            var thcells = rows[0].split(",");
+                            var thcells = rows[5].split(",");
                             for (var i = 0; i < thcells.length; i++) {
                                 var cell = $("<th />");
                                 cell.html(thcells[i]);
                                 theadtr.append(cell);
+//                                if (i == 14){
+//                                    cell = $("<th />");
+//                                    cell.html("Bull Shit");
+//                                    theadtr.append(cell);
+//                                }
                             }
                             tHead.append(theadtr);
                             table.append(tHead);
                             //start
+                            for (i = 0; i < 5; i ++){
+                                var line = rows[i].split(",");
+                                var header_line = [];
+                                for (j = 0; j < line.length; j ++){
+                                    header_line.push(line[j]);
+                                }
+                                file_header.push(header_line);
+                            }
+                            for (i = 0; i < 5; i ++){
+                                rows.shift();
+                            }
+                            var text = getFileHeader(file_header);
+                            document.getElementById("file_header").innerHTML = text;
+                            document.getElementById("file_header").append(hr_line);
+                            file_header = [];
                             var stuTab = combine(rows, combArr);
                             pieChart = calGPA(stuTab);
                             TUPChart = calUnits(stuTab);
@@ -76,6 +98,19 @@
                 }
             });
         });
+    </script>
+
+    <script type="text/javascript">
+        function getFileHeader(array) {
+            var message = "<br />";
+            for (var i = 0; i < array.length; i ++){
+                for (var j = 0; j < array[i].length; j ++){
+                    message += (array[i][j].toString() + "&nbsp;");
+                }
+                message += "<br />";
+            }
+            return message;
+        }
     </script>
 
     <script>
@@ -586,7 +621,7 @@
                     for (var i = 1; i < termTab.length; i++) {
                         var stuinfo = termTab[i];
                         var term = stuinfo[6].split(',');
-                        if (term.length == termNum) {
+                        if (term.length >= termNum) {
                             var row = table.insertRow();
                             for (var j = 0; j < stuinfo.length; j++) {
                                 var cell = row.insertCell();
@@ -763,7 +798,7 @@
                             Start by uploading a file: <input type="file" id="fileUpload" />
                             <input type="button" class="upload" id="upload" value="Upload"
                                    style="visibility: hidden; width: 1em" /> | <a href="courseanalysis.php">Go
-                            to Course Analysis</a>
+                                to Course Analysis</a>
                         </p>
                     </div>
                 </div>
@@ -785,7 +820,7 @@
                                                                                       id="c8" name="xxx" onclick="onToggle(this);" value="8" />Academic
                                     Plan <br /> <br /> <input type="checkbox" id="selectAll"
                                                               name="xxx" onclick="ckboxAll(this);" value="All" /><em>Select
-                                    All</em>
+                                        All</em>
                                 </div>
                                 <div class="cell33">
                                     <input type="checkbox" id="c9" name="xxx"
@@ -834,8 +869,8 @@
                             particular term:</p>
                         <input type="text" name="num_of_term" id="catalog_number"
                                placeholder="Course number (e.g., 1114)">&nbsp;<input type="text"
-                                                                                name="num_of_term" id="term_number"
-                                                                                placeholder="Term number (e.g., 1150):">&nbsp; <input
+                                                                                     name="num_of_term" id="term_number"
+                                                                                     placeholder="Term number (e.g., 1150):">&nbsp; <input
                             type="submit" value="Filter" onclick="createTermCourseTab()">
                         <p></p>
                         <p></p>
@@ -872,6 +907,7 @@
             <p></p>
             <div class="chartarea" id="piechart"></div>
             <p></p>
+            <div id="file_header"></div>
             <div id="div1" class="section"></div>
         </div>
     </section>
