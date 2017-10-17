@@ -176,31 +176,15 @@ h5 {
 	line-height: 1.286em;
 }
 
-pre {
-	padding: 10px;
-	border: 2px solid gray;
-	border-radius: 5px;
-	margin: 20px;
-	background-color: #efefef;
-	font-size: 1.25em;
-}
-
-#file_header {
-	padding: 10px;
-	border: 2px solid gray;
-	border-radius: 5px;
-	margin: 20px;
-	background-color: #efefef;
-	font-size: 1.25em;
-}
-
 .file_header {
 	padding: 10px;
-	border: 2px solid gray;
+	border: 1px solid gray;
 	border-radius: 5px;
 	margin: 20px;
 	background-color: #efefef;
-	font-size: 1.25em;
+	font-size: 0.75em;
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter",
+		"Lucida Typewriter", monospace;
 }
 
 table {
