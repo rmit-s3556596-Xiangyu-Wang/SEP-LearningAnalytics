@@ -236,7 +236,7 @@
                     aa++;
                 }
             }
-            var gpa = [
+            var tup = [
                 //            ['GPA=0',parseInt(zero)],
                 ['TUP < 48',parseInt(a)],
                 ['48 <= TUP < 96',parseInt(b)],
@@ -247,9 +247,9 @@
                 ['288 <= TUP < 336',parseInt(g)],
                 ['336 <= TUP < 384',parseInt(h)],
                 ['TUP = 384',parseInt(aa)],
-                //            ['no GPA currently',parseInt(f)]
+                //            ['no TUP currently',parseInt(f)]
             ];
-            return gpa;
+            return tup;
         }
         function hideALL() {
             var thead = document.getElementsByTagName('thead');
