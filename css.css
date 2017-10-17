@@ -187,6 +187,17 @@ h5 {
 		"Lucida Typewriter", monospace;
 }
 
+#file_header {
+	padding: 10px;
+	border: 1px solid gray;
+	border-radius: 5px;
+	margin: 20px;
+	background-color: #efefef;
+	font-size: 0.75em;
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter",
+		"Lucida Typewriter", monospace;
+}
+
 table {
 	width: 100%;
 }
