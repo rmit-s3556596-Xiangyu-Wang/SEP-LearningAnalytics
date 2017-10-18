@@ -210,10 +210,10 @@ span.monospace {
 	border-radius: 5px;
 	margin: 20px;
 	background-color: #efefef;
-	font-size: 0.5em;
+	font-size: 1em;
 	font-family: "Courier New", Courier, "Lucida Sans Typewriter",
 		"Lucida Typewriter", monospace;
-	display: none;
+	/* display: none; */
 }
 
 table {
