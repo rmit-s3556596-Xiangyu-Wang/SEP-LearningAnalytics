@@ -723,7 +723,7 @@
 								type="button" id="GPA_Bar" value="GPA bar chart">
 						</div>
 						<div class="cell30">
-							<p class="singles">&nbsp;</p>
+							<p class="singles">Reset views</p>
 							<input type="submit" value="Reset filters" id="lowbound"
 								onclick="resetTable()">
 						</div>
