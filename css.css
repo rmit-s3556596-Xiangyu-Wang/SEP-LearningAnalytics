@@ -289,6 +289,11 @@ p.center {
 	text-align: center;
 }
 
+p.center_bold {
+	text-align: center;
+	font-weight: bold;
+}
+
 p.singles {
 	margin: 0;
 	font-weight: bold;
