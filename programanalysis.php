@@ -19,7 +19,7 @@
         var TUPChart =[];
         var file_header = [];
         var hr_line = document.createElement("hr");
-        var description = " Sort columns by clicking on the desired column title";
+        var description = "&nbsp;Sort columns by clicking on the desired column title";
         $(function () {
             $("#fileUpload").on('change', function () {
                 $('#upload').click();
@@ -950,12 +950,12 @@
 						<!-- <a href="#" onclick="toggle('file_header');">Show/hide header</a>  -->
 					</p>
 				</div>
-				<div id="file_header"></div>
 				<p></p>
 				<div class="chartarea" id="piechart"></div>
 				<p></p>
 				<div id="div1" class="section"></div>
 				<p></p>
+				<div id="file_header"></div>
 			</div>
 		</section>
 		<footer id="footer">
