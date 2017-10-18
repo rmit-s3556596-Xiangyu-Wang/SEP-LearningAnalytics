@@ -68,6 +68,7 @@
 
 				</div>
 				<p></p>
+				<hr>
 				<p class="center_bold">End of document.<br />
 					Click <a href="javascript:history.back()">here</a> to go back.
 				</p>
