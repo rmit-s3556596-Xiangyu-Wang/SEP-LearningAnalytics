@@ -109,6 +109,10 @@ p {
 	line-height: 2;
 }
 
+.indent_text {
+	margin-left: 30px;
+}
+
 fieldset {
 	padding: 0;
 	margin: 0;
@@ -130,7 +134,7 @@ legend {
 label {
 	display: inline-block;
 	margin-bottom: 5px;
-	font-weight: bold;
+	font-weight: 500;
 }
 
 @font-face {
@@ -186,6 +190,14 @@ h5 {
 	font-family: "Courier New", Courier, "Lucida Sans Typewriter",
 		"Lucida Typewriter", monospace;
 	display: none;
+}
+
+span.monospace {
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter",
+		"Lucida Typewriter", monospace;
+	font-weight: 600;
+	font-variant: small-caps;
+	background-color: #f6f6f6;
 }
 
 #file_header {
@@ -291,12 +303,12 @@ p.center {
 
 p.center_bold {
 	text-align: center;
-	font-weight: bold;
+	font-weight: 600;
 }
 
 p.singles {
 	margin: 0;
-	font-weight: bold;
+	font-weight: 600;
 }
 
 table.checkboxes {
@@ -319,10 +331,6 @@ table.checkboxes td, th {
 	text-align: left;
 	vertical-align: middle;
 	padding: 0px;
-}
-
-.section {
-	
 }
 
 #warning {
