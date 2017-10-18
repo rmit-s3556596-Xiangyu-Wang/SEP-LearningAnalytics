@@ -945,16 +945,15 @@
 				<p></p>
 				<div class="chartarea" id="piechart"></div>
 				<p></p>
-				<div id="div1" class="section"></div>
-				<p></p>
 				<div id="show_header">
 					<p>
 						<input type="button" onclick="toggle('file_header')"
-							value="Toggle header">
-						<!-- <a href="#" onclick="toggle('file_header');">Show/hide header</a>  -->
+							value="Show or hide header of the uploaded file">
 					</p>
 				</div>
 				<div id="file_header"></div>
+				<p></p>
+				<div id="div1" class="section"></div>
 			</div>
 		</section>
 		<footer id="footer">

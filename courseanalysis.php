@@ -748,19 +748,18 @@
 				<p></p>
 				<div id="piechart"></div>
 				<p></p>
+				<div id="show_header">
+					<p>
+						<input type="button" onclick="toggle('file_header')"
+							value="Show or hide header of the uploaded file">
+					</p>
+				</div>
+				<div id="file_header"></div>
+				<p></p>
 				<div id="div1"></div>
 				<div id="div2">
 					<span id="text"></span>
 				</div>
-				<p></p>
-				<div id="show_header">
-					<p>
-						<input type="button" onclick="toggle('file_header')"
-							value="Toggle header">
-						<!-- <a href="#" onclick="toggle('file_header');">Show/hide header</a>  -->
-					</p>
-				</div>
-				<div id="file_header"></div>
 			</div>
 		</section>
 		<footer id="footer">
