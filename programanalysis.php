@@ -917,10 +917,6 @@
 				</div>
 
 				<p></p>
-				<div class="chartarea" id="piechart"></div>
-				<p></p>
-				<div id="div1" class="section"></div>
-				<p></p>
 				<div id="show_header">
 					<p>
 						<input type="button" onclick="toggle('file_header')"
@@ -929,6 +925,11 @@
 					</p>
 				</div>
 				<div id="file_header"></div>
+				<p></p>
+				<div class="chartarea" id="piechart"></div>
+				<p></p>
+				<div id="div1" class="section"></div>
+				<p></p>
 			</div>
 		</section>
 		<footer id="footer">
