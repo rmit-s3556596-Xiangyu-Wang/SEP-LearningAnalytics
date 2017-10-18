@@ -719,11 +719,11 @@
 						</div>
 						<div class="cell30">
 							<p class="singles">Visualise data:</p>
-							<input type="button" id="GPA_Pie" value="GPA pie chart">
+							<input type="button" id="GPA_Pie" value="GPA pie chart">&nbsp;&nbsp;<input
+								type="button" id="GPA_Bar" value="GPA bar chart">
 						</div>
 						<div class="cell30">
 							<p class="singles">&nbsp;</p>
-							<input type="button" id="GPA_Bar" value="GPA bar chart"> <p>&nbsp;</p>
 							<input type="submit" value="Reset filters" id="lowbound"
 								onclick="resetTable()">
 						</div>
