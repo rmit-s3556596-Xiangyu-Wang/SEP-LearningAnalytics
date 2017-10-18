@@ -52,7 +52,7 @@
 					<p>
 						Information from the file header can be toggled by the user by
 						clicking on the <span class="monospace">Toggle header</span>
-						button, under the table. This information can be user to verify
+						button, under the table. This information can be used to verify
 						the time, date, and user who generated the data file.
 					</p>
 
