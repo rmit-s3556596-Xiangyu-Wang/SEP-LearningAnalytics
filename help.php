@@ -66,7 +66,7 @@
 							error message appears in the place of a chart on non-Chrome
 							browsers. This bug has been identified by Google engineers, and a
 							patch is being worked on. To get around this issue, the user can
-							click the same button again, or simply use the Chrome browser.
+							click the same button again.
 						</p>
 					</div>
 
