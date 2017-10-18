@@ -783,7 +783,7 @@
         }
     </script>
 
-<script language="JavaScript">
+<script>
 // show or hide header
     function toggle(id) {
         var state = document.getElementById(id).style.display;
