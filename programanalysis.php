@@ -19,7 +19,7 @@
         var TUPChart =[];
         var file_header = [];
         var hr_line = document.createElement("hr");
-        var description = "&nbsp;Sort columns by clicking on the desired column title";
+        var description = "Sort columns by clicking on the desired column title";
         $(function () {
             $("#fileUpload").on('change', function () {
                 $('#upload').click();
