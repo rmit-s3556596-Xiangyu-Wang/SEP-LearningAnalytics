@@ -162,26 +162,26 @@ h1 {
 
 h2 {
 	font: 1.429em museo300;
-	line-height: 1.2em;
-	margin-top: 15px;
+	margin-top: 30px;
+	margin-bottom: 9px;
 }
 
 h3 {
 	font: 1.286em museo300;
-	line-height: 1.222em;
-	margin-top: 15px;
+	margin-top: 30px;
+	margin-bottom: 9px;
 }
 
 h4 {
 	font: 1.143em museo500;
-	line-height: 1.25em;
-	margin-top: 15px;
+	margin-top: 30px;
+	margin-bottom: 9px;
 }
 
 h5 {
 	font: 1em museo500;
-	line-height: 1.286em;
-	margin-top: 15px;
+	margin-top: 30px;
+	margin-bottom: 9px;
 }
 
 .file_header {
