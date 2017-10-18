@@ -943,6 +943,10 @@
 				</div>
 
 				<p></p>
+				<div class="chartarea" id="piechart"></div>
+				<p></p>
+				<div id="div1" class="section"></div>
+				<p></p>
 				<div id="show_header">
 					<p>
 						<input type="button" onclick="toggle('file_header')"
@@ -950,11 +954,6 @@
 						<!-- <a href="#" onclick="toggle('file_header');">Show/hide header</a>  -->
 					</p>
 				</div>
-				<p></p>
-				<div class="chartarea" id="piechart"></div>
-				<p></p>
-				<div id="div1" class="section"></div>
-				<p></p>
 				<div id="file_header"></div>
 			</div>
 		</section>
