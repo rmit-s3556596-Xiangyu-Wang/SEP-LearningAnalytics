@@ -860,7 +860,7 @@
 
 						<div class="cell30">
 							<p class="singles">Apply filters:</p>
-							<p class="smalls">Students who took particular course:</p>
+							<p class="smalls">Students who took a particular course:</p>
 							<input type="text" name="courseID" id="course_id"
 								placeholder="Course number (e.g., 1114)">&nbsp; <input
 								type="submit" value="Filter" onclick="createCourseTab()">
