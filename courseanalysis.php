@@ -748,7 +748,6 @@
 					</p>
 				</div>
 				<div id="file_header"></div>
-
 			</div>
 		</section>
 		<footer id="footer">
