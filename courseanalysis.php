@@ -2,18 +2,18 @@
 <html>
 <head>
 
-    <link rel="stylesheet" href="css.css" type="text/css" />
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title><?php include("header.php"); ?> - Course Analysis
+<link rel="stylesheet" href="css.css" type="text/css" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title><?php include("header.php"); ?> - Course Analysis
     </title>
 
 
-    <script type="text/javascript"
-            src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript"
+	src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
-    <script type="text/javascript">
+<script type="text/javascript">
         var hideColum = [ 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
             19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31 ];
         //    var hideColum = [4, 5, 10, 11, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 27, 28];
@@ -215,7 +215,7 @@
         });
     </script>
 
-    <script type="text/javascript">
+<script type="text/javascript">
         function getFileHeader(array) {
             var message = "<br />";
             for (var i = 0; i < array.length; i ++){
@@ -228,7 +228,7 @@
         }
     </script>
 
-    <script type="text/javascript">
+<script type="text/javascript">
         $(document)
             .ready(
                 function() {
@@ -372,7 +372,7 @@
         }
     </script>
 
-    <script type="text/javascript">
+<script type="text/javascript">
         function onToggle(ckbox) {
             if (ckbox.checked) {
                 show(ckbox.value);
@@ -437,7 +437,7 @@
         }
     </script>
 
-    <script type="text/javascript">
+<script type="text/javascript">
         function drawProgramTable(pTable) {
             if (pTable.length == 0) {
                 return;
@@ -605,7 +605,7 @@
         }
     </script>
 
-    <script type="text/javascript">
+<script type="text/javascript">
         function hideALL() {
             var thead = document.getElementsByTagName('thead');
             var thr = thead[0];
@@ -630,7 +630,7 @@
         }
     </script>
 
-    <script type="text/javascript">
+<script type="text/javascript">
         function ckboxAll(ckbox) {
             var checkboxes = document.getElementsByName("xxx");
             for (var i = 0; i < checkboxes.length; i++) {
@@ -652,100 +652,107 @@
 </head>
 <body>
 
-<div class="container">
-    <header>
+	<div class="container">
+		<header>
         <?php include("header.php"); ?>
         - Course Analysis
     </header>
-    <section class="content">
-        <div class="main">
+		<section class="content">
+			<div class="main">
 
-            <div class="file_upload">
-                <div class="row">
-                    <div class="cell">
-                        <p class="singles">
-                            Upload a program file: <input type="file" id="file1" /> <input
-                                    type="button" id="upload1" value="Upload"
-                                    style="visibility: hidden; width: 1em" /> Upload a course file:
-                            <input type="file" id="file2" /> <input type="button"
-                                                                    id="upload2" value="Upload"
-                                                                    style="visibility: hidden; width: 1em" /> | <a
-                                    href="programanalysis.php">Go to Program Analysis</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
+				<div class="file_upload">
+					<div class="row">
+						<div class="cell">
+							<p class="singles">
+								Upload a program file: <input type="file" id="file1" /> <input
+									type="button" id="upload1" value="Upload"
+									style="visibility: hidden; width: 1em" /> Upload a course file:
+								<input type="file" id="file2" /> <input type="button"
+									id="upload2" value="Upload"
+									style="visibility: hidden; width: 1em" /> | <a
+									href="programanalysis.php">Go to Program Analysis</a>
+							</p>
+						</div>
+					</div>
+				</div>
 
-            <div class="top_display">
-                <div class="row">
-                    <div class="cell40">
-                        <p class="singles">Select which columns to display:</p>
-                        <div class="checkboxes">
-                            <div class="row">
-                                <div class="cell33">
-                                    <input type="checkbox" id="c3" name="xxx"
-                                           onclick="onToggle(this);" value="3" />Academic Career <br />
-                                    <br /> <input type="checkbox" id="c6" name="xxx"
-                                                  onclick="onToggle(this);" value="6" />Term <br /> <br /> <input
-                                            type="checkbox" id="c7" name="xxx" onclick="onToggle(this);"
-                                            value="7" />Program Code <br /> <br /> <input type="checkbox"
-                                                                                          id="c8" name="xxx" onclick="onToggle(this);" value="8" />Academic
-                                    Plan <br /> <br /> <input type="checkbox" id="selectAll"
-                                                              name="all" onclick="ckboxAll(this);" value="All" /><em>Select
-                                        All</em>
-                                </div>
-                                <div class="cell33">
-                                    <input type="checkbox" id="c9" name="xxx"
-                                           onclick="onToggle(this);" value="9" />Admit Term <br /> <br />
-                                    <input type="checkbox" id="c14" name="xxx"
-                                           onclick="onToggle(this);" value="14" />Catalogue Number <br />
-                                    <br /> <input type="checkbox" id="c24" name="xxx"
-                                                  onclick="onToggle(this);" value="24" />Program GPA <br /> <br />
-                                    <input type="checkbox" id="c25" name="xxx"
-                                           onclick="onToggle(this);" value="25" />Total Units Attempted
-                                </div>
-                                <div class="cell33">
-                                    <input type="checkbox" id="c26" name="xxx"
-                                           onclick="onToggle(this);" value="26" />Total Units Passed <br />
-                                    <br /> <input type="checkbox" id="c29" name="xxx"
-                                                  onclick="onToggle(this);" value="29" />Total Units Credit <br />
-                                    <br /> <input type="checkbox" id="c30" name="xxx"
-                                                  onclick="onToggle(this);" value="30" />Cumulative Units <br />
-                                    <br /> <input type="checkbox" id="c31" name="xxx"
-                                                  onclick="onToggle(this);" value="31" />Student Email Address
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cell30">
-                        <p class="singles">Visualise data:</p>
-                        <input type="button" id="GPA_Pie" value="GPA pie chart">
-                    </div>
-                    <div class="cell30">
-                        <p class="singles">&nbsp;</p>
-                        <input type="button" id="GPA_Bar" value="GPA bar chart">
-                    </div>
-                    <input type="submit" value="Reset filters" id="lowbound"
-                           onclick="resetTable()">
-                </div>
+				<div class="top_display">
+					<div class="row">
+						<div class="cell40">
+							<p class="singles">Select which columns to display:</p>
+							<div class="checkboxes">
+								<div class="row">
+									<div class="cell33">
+										<input type="checkbox" id="c3" name="xxx"
+											onclick="onToggle(this);" value="3" />Academic Career <br />
+										<br /> <input type="checkbox" id="c6" name="xxx"
+											onclick="onToggle(this);" value="6" />Term <br /> <br /> <input
+											type="checkbox" id="c7" name="xxx" onclick="onToggle(this);"
+											value="7" />Program Code <br /> <br /> <input type="checkbox"
+											id="c8" name="xxx" onclick="onToggle(this);" value="8" />Academic
+										Plan <br /> <br /> <input type="checkbox" id="selectAll"
+											name="all" onclick="ckboxAll(this);" value="All" /><em>Select
+											All</em>
+									</div>
+									<div class="cell33">
+										<input type="checkbox" id="c9" name="xxx"
+											onclick="onToggle(this);" value="9" />Admit Term <br /> <br />
+										<input type="checkbox" id="c14" name="xxx"
+											onclick="onToggle(this);" value="14" />Catalogue Number <br />
+										<br /> <input type="checkbox" id="c24" name="xxx"
+											onclick="onToggle(this);" value="24" />Program GPA <br /> <br />
+										<input type="checkbox" id="c25" name="xxx"
+											onclick="onToggle(this);" value="25" />Total Units Attempted
+									</div>
+									<div class="cell33">
+										<input type="checkbox" id="c26" name="xxx"
+											onclick="onToggle(this);" value="26" />Total Units Passed <br />
+										<br /> <input type="checkbox" id="c29" name="xxx"
+											onclick="onToggle(this);" value="29" />Total Units Credit <br />
+										<br /> <input type="checkbox" id="c30" name="xxx"
+											onclick="onToggle(this);" value="30" />Cumulative Units <br />
+										<br /> <input type="checkbox" id="c31" name="xxx"
+											onclick="onToggle(this);" value="31" />Student Email Address
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="cell30">
+							<p class="singles">Visualise data:</p>
+							<input type="button" id="GPA_Pie" value="GPA pie chart">
+						</div>
+						<div class="cell30">
+							<p class="singles">&nbsp;</p>
+							<input type="button" id="GPA_Bar" value="GPA bar chart">
+						</div>
+						<input type="submit" value="Reset filters" id="lowbound"
+							onclick="resetTable()">
+					</div>
 
-            </div>
+				</div>
 
-            <p></p>
-            <p></p>
-            <div id="piechart"></div>
-            <p></p>
-            <div id="file_header"></div>
-            <div id="div1"></div>
-            <div id="div2">
-                <span id="text"></span>
-            </div>
+				<p></p>
+				<div id="piechart"></div>
+				<p></p>
+				<div id="div1"></div>
+				<div id="div2">
+					<span id="text"></span>
+				</div>
+				<p></p>
+				<div id="show_header">
+					<p>
+						<input type="button" onclick="toggle('file_header')"
+							value="Toggle header">
+						<!-- <a href="#" onclick="toggle('file_header');">Show/hide header</a>  -->
+					</p>
+				</div>
+				<div id="file_header"></div>
 
-        </div>
-    </section>
-    <footer id="footer">
+			</div>
+		</section>
+		<footer id="footer">
         <?php include("footer.php"); ?>
     </footer>
-</div>
+	</div>
 </body>
 </html>
