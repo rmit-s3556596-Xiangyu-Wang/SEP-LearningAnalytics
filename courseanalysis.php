@@ -723,10 +723,11 @@
 						</div>
 						<div class="cell30">
 							<p class="singles">&nbsp;</p>
-							<input type="button" id="GPA_Bar" value="GPA bar chart">
+							<input type="button" id="GPA_Bar" value="GPA bar chart"> <p>&nbsp;</p>
+							<input type="submit" value="Reset filters" id="lowbound"
+								onclick="resetTable()">
 						</div>
-						<input type="submit" value="Reset filters" id="lowbound"
-							onclick="resetTable()">
+
 					</div>
 
 				</div>
