@@ -67,11 +67,12 @@
 					</div>
 
 				</div>
-				<p></p>
+				<p>&nbsp;</p>
 				<hr>
-				<p class="center_bold">End of document.<br />
+				<p class="center_bold">
 					Click <a href="javascript:history.back()">here</a> to go back.
 				</p>
+				<hr>
 			</div>
 		</section>
 		<footer>
