@@ -44,7 +44,7 @@
 						displayed from the dropdown menus under the <span
 							class="monospace">Visualise data</span> heading, and by clicking
 						the <span class="monospace">Draw chart</span> button. Once the
-						data is charted, the checkboxes under the <span class="monospace">Apply
+						data is plotted, the checkboxes under the <span class="monospace">Apply
 							filters</span> heading become disabled. To re-enable these
 						checkboxes, the user must click on the <span class="monospace">Reset
 							filters</span> button.
