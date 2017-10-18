@@ -116,6 +116,19 @@
 <script>
         $(document).ready(function(){
             $("#DrawChart").click(function(){
+            	document.getElementById("c3").disabled=true;
+                document.getElementById("c6").disabled=true;
+                document.getElementById("c7").disabled=true;
+                document.getElementById("c8").disabled=true;
+                document.getElementById("c9").disabled=true;
+                document.getElementById("c14").disabled=true;
+                document.getElementById("c24").disabled=true;
+                document.getElementById("c25").disabled=true;
+                document.getElementById("c26").disabled=true;
+                document.getElementById("c29").disabled=true;
+                document.getElementById("c30").disabled=true;
+                document.getElementById("c31").disabled=true;
+                document.getElementById("selectAll").disabled=true;
                 if(document.getElementById('content').value=='Units') {
                     google.load("visualization", "1", {packages: ["corechart"], "callback": drawTUPChart});
                     google.setOnLoadCallback(drawTUPChart);
@@ -733,6 +746,19 @@
     </script>
 <script type="text/javascript">
         function resetTable() {
+        	document.getElementById("c3").disabled=false;
+            document.getElementById("c6").disabled=false;
+            document.getElementById("c7").disabled=false;
+            document.getElementById("c8").disabled=false;
+            document.getElementById("c9").disabled=false;
+            document.getElementById("c14").disabled=false;
+            document.getElementById("c24").disabled=false;
+            document.getElementById("c25").disabled=false;
+            document.getElementById("c26").disabled=false;
+            document.getElementById("c29").disabled=false;
+            document.getElementById("c30").disabled=false;
+            document.getElementById("c31").disabled=false;
+            document.getElementById("selectAll").disabled=false;
             var read = sessionStorage.getItem("stuTab");
             var unitTab = JSON.parse(read);
             document.getElementById("div1").innerHTML = '';
