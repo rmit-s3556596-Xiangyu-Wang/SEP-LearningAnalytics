@@ -799,6 +799,7 @@
             document.getElementById("c29").disabled=false;
             document.getElementById("c30").disabled=false;
             document.getElementById("c31").disabled=false;
+            document.getElementById("c32").disabled=false;
             document.getElementById("selectAll").disabled=false;
             var read = sessionStorage.getItem("stuTab");
             var unitTab = JSON.parse(read);
