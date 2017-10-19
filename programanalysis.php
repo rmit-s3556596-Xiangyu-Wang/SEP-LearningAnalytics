@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="css.css" type="text/css" />
-<title><?php include("header.php"); ?> - Program Analysis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css.css" type="text/css" />
+    <title><?php include("header.php"); ?> - Program Analysis</title>
 
-<script type="text/javascript"
-	src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript"
+            src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
 
-<script type="text/javascript">
+    <script type="text/javascript">
         var hideColum = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28,
-            29, 30, 31];
+            29, 30, 31, 32];
         //    var hideColum = [4, 5, 10, 11, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 27, 28];
         var combArr = [3, 6, 7, 8, 9, 14, 24, 25, 26, 29, 30, 31];
+        var ckboxArr = [3, 6, 7, 8, 9, 14, 24, 25, 26, 29, 30, 31, 32];
         var pieChart = [];
         var TUPChart =[];
         var file_header = [];
@@ -36,15 +37,11 @@
                             var tHead = $("<thead/>");
                             var theadtr = $("<tr />");
                             var thcells = rows[5].split(",");
+                            thcells.push("Final Term Course");
                             for (var i = 0; i < thcells.length; i++) {
                                 var cell = $("<th />");
                                 cell.html(thcells[i]);
                                 theadtr.append(cell);
-//                                if (i == 14){
-//                                    cell = $("<th />");
-//                                    cell.html("Bull Shit");
-//                                    theadtr.append(cell);
-//                                }
                             }
                             tHead.append(theadtr);
                             table.append(tHead);
@@ -67,8 +64,7 @@
                             var stuTab = combine(rows, combArr);
                             pieChart = calGPA(stuTab);
                             TUPChart = calUnits(stuTab);
-                            stuTab.unshift(rows[0].split("" +
-                                ","));
+                            stuTab.unshift(thcells);
                             saveStudent(stuTab);
                             stuTab.shift();
                             var tBody = $("<tbody/>");
@@ -100,7 +96,7 @@
         });
     </script>
 
-<script type="text/javascript">
+    <script type="text/javascript">
         function getFileHeader(array) {
             var message = "<br />";
             for (var i = 0; i < array.length; i ++){
@@ -113,10 +109,10 @@
         }
     </script>
 
-<script>
+    <script>
         $(document).ready(function(){
             $("#DrawChart").click(function(){
-            	document.getElementById("c3").disabled=true;
+                document.getElementById("c3").disabled=true;
                 document.getElementById("c6").disabled=true;
                 document.getElementById("c7").disabled=true;
                 document.getElementById("c8").disabled=true;
@@ -303,7 +299,7 @@
             var thead = document.getElementsByTagName('thead');
             var thr = thead[0];
             var j;
-            for (j = 0; j < 32; j++) {
+            for (j = 0; j < 33; j++) {
                 if (hideColum.indexOf(j) >= 0) {
                     thr.getElementsByTagName('th')[j].style.display = 'none';
                     //thr.getElementsByTagName('th')[j].style.visibility='hidden';
@@ -313,7 +309,7 @@
             var i;
             for (i = 1; i < tr.length; i++) {
                 var j;
-                for (j = 0; j < 32; j++) {
+                for (j = 0; j < 33; j++) {
                     if (hideColum.indexOf(j) >= 0) {
                         tr[i].getElementsByTagName('td')[j].style.display = 'none';
                         //tr[i].getElementsByTagName('td')[j].style.visibility='hidden';
@@ -383,6 +379,11 @@
         }
         function combine(rows, combArr) {
             var stuTab = [];
+            var maxTerm = 0;
+            var stuid;
+            var final_courses = '';
+            var stuNum = 0;
+            var addcolumn = false;
             for (var i = 1; i < rows.length - 1; i++) {
                 var stucells = rows[i].split(",");
                 var stuinfo = [];
@@ -416,6 +417,36 @@
                     stuTab.push(stuinfo);
                 }
             }
+            for (i = 1; i < rows.length - 1; i ++){
+                stuid = stuTab[stuNum][0];
+                var line = rows[i].split(",");
+                if (line[0] == stuid){
+                    if (line[6] > maxTerm){
+                        maxTerm = line[6];
+                    }
+                }else {
+                    addcolumn = true;
+                }
+                if (i == rows.length - 2){
+                    addcolumn = true;
+                }
+
+                if (addcolumn){
+                    for (j = 1; j < rows.length - 1; j ++){
+                        var lines = rows[j].split(",");
+                        if (lines[0] == stuid){
+                            if (lines[6] == maxTerm){
+                                final_courses += lines[14] + ",";
+                            }
+                        }
+                    }
+                    stuTab[stuNum].push(final_courses);
+                    final_courses = '';
+                    maxTerm = 0;
+                    stuNum++;
+                    addcolumn = false;
+                }
+            }
             return stuTab;
         }
         function contains(value, arr) {
@@ -428,7 +459,7 @@
             return false;
         }
     </script>
-<script type="text/javascript">
+    <script type="text/javascript">
         function saveFile(rows) {
             if (rows != null) {
                 var data = [];
@@ -449,7 +480,7 @@
             sessionStorage.setItem("stuTab", sentTab);
         }
     </script>
-<script type="text/javascript">
+    <script type="text/javascript">
         var refresh = true;
         function createStudentTab() {
             var data = sessionStorage.getItem("stuTab");
@@ -507,10 +538,12 @@
         }
     </script>
 
-<script type="text/javascript">
+    <script type="text/javascript">
         function createCourseTab() {
             var data = sessionStorage.getItem("tab");
+            var newTab = sessionStorage.getItem("stuTab");
             var read = JSON.parse(data);
+            var readNewTab = JSON.parse(newTab);
             document.getElementById("div1").innerHTML = '';
             var userInput = document.getElementById("course_id").value;
             if (read != null) {
@@ -530,6 +563,9 @@
                         location.reload();
                     }
                     var tab = combines(stuTab, [12, 13, 14]);
+                    for (i = 1; i < tab.length; i ++){
+                        tab[i].push(readNewTab[i][32]);
+                    }
                     var table = document.createElement("table");
                     table.setAttribute("id", "courseTable");
                     for (i = 1; i < tab.length; i++) {
@@ -542,6 +578,7 @@
                     }
                     var thead = table.createTHead();
                     var tRow = thead.insertRow();
+                    tab[0].push("Final Term Course")
                     for (i = 0; i < tab[0].length; i++) {
                         var tCell = document.createElement("th");
                         tCell.innerHTML = tab[0][i];
@@ -596,7 +633,7 @@
             return false;
         }
     </script>
-<script type="text/javascript">
+    <script type="text/javascript">
         function hideColumns(value) {
             var table;
             if (value == "course") {
@@ -613,7 +650,7 @@
                 table = document.getElementById("resetTable");
             }
             for (var i = 0; i < table.rows.length; i++) {
-                for (var j = 0; j < 32; j++) {
+                for (var j = 0; j < 33; j++) {
                     if (hideColum.indexOf(j) >= 0) {
                         table.rows[i].cells[j].style.display = 'none';
                     }
@@ -621,7 +658,7 @@
             }
         }
     </script>
-<script type="text/javascript">
+    <script type="text/javascript">
         function createTermTab() {
             var read = sessionStorage.getItem("stuTab");
             var termTab = JSON.parse(read);
@@ -654,11 +691,13 @@
                     document.getElementById("num_of_term").value = '';
                     hideColumns("term");
                     uncheckAll();
+                }else {
+                    alert("Please enter a number!");
                 }
             }
         }
     </script>
-<script type="text/javascript">
+    <script type="text/javascript">
         function createUnitPassTab() {
             var read = sessionStorage.getItem("stuTab");
             var unitTab = JSON.parse(read);
@@ -691,11 +730,13 @@
                     document.getElementById("total_unit_pass").value = '';
                     hideColumns("total_unit_pass");
                     uncheckAll();
+                }else {
+                    alert("Please enter a value!")
                 }
             }
         }
     </script>
-<script type="text/javascript">
+    <script type="text/javascript">
         function createTermCourseTab() {
             var read1 = sessionStorage.getItem("tab");
             var read2 = sessionStorage.getItem("stuTab");
@@ -744,9 +785,9 @@
             uncheckAll();
         }
     </script>
-<script type="text/javascript">
+    <script type="text/javascript">
         function resetTable() {
-        	document.getElementById("c3").disabled=false;
+            document.getElementById("c3").disabled=false;
             document.getElementById("c6").disabled=false;
             document.getElementById("c7").disabled=false;
             document.getElementById("c8").disabled=false;
@@ -788,11 +829,11 @@
             }
         }
     </script>
-<script type="text/javascript">
+    <script type="text/javascript">
         function ckboxAll(ckbox) {
             //var checkboxes = document.getElementsByName("xxx");
-            for (var i = 0; i < combArr.length; i ++){
-                var checkbox = document.getElementById("c" + combArr[i]);
+            for (var i = 0; i < ckboxArr.length; i ++){
+                var checkbox = document.getElementById("c" + ckboxArr[i]);
                 checkbox.checked = ckbox.checked;
                 if (ckbox.checked){
                     show(checkbox.value);
@@ -809,156 +850,158 @@
         }
     </script>
 
-<script>
-// show or hide header
-    function toggle(id) {
-        var state = document.getElementById(id).style.display;
+    <script>
+        // show or hide header
+        function toggle(id) {
+            var state = document.getElementById(id).style.display;
             if (state == 'block') {
                 document.getElementById(id).style.display = 'none';
             } else {
                 document.getElementById(id).style.display = 'block';
             }
         }
-</script>
+    </script>
 
 </head>
 
 <body>
-	<div class="container">
-		<header><?php include("header.php"); ?> - Program Analysis</header>
-		<section class="content">
-			<div class="main">
+<div class="container">
+    <header><?php include("header.php"); ?> - Program Analysis</header>
+    <section class="content">
+        <div class="main">
 
-				<div class="file_upload">
-					<div class="row">
-						<div class="cell">
-							<p class="singles">
-								Start by uploading a file: <input type="file" id="fileUpload" />
-								<input type="button" class="upload" id="upload" value="Upload"
-									style="visibility: hidden; width: 1em" /> | <a
-									href="courseanalysis.php">Go to Course Analysis</a>
-							</p>
-						</div>
-					</div>
-				</div>
+            <div class="file_upload">
+                <div class="row">
+                    <div class="cell">
+                        <p class="singles">
+                            Start by uploading a file: <input type="file" id="fileUpload" />
+                            <input type="button" class="upload" id="upload" value="Upload"
+                                   style="visibility: hidden; width: 1em" /> | <a
+                                    href="courseanalysis.php">Go to Course Analysis</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-				<div class="top_display">
-					<div class="row">
-						<div class="cell40">
-							<p class="singles">Select which columns to display:</p>
-							<div class="checkboxes">
-								<div class="row">
-									<div class="cell33">
-										<input type="checkbox" id="c3" name="xxx"
-											onclick="onToggle(this);" value="3" />Academic Career <br />
-										<br /> <input type="checkbox" id="c6" name="xxx"
-											onclick="onToggle(this);" value="6" />Term <br /> <br /> <input
-											type="checkbox" id="c7" name="xxx" onclick="onToggle(this);"
-											value="7" />Program Code <br /> <br /> <input type="checkbox"
-											id="c8" name="xxx" onclick="onToggle(this);" value="8" />Academic
-										Plan <br /> <br /> <input type="checkbox" id="selectAll"
-											name="xxx" onclick="ckboxAll(this);" value="All" /><em>Select
-											All</em>
-									</div>
-									<div class="cell33">
-										<input type="checkbox" id="c9" name="xxx"
-											onclick="onToggle(this);" value="9" />Admit Term <br /> <br />
-										<input type="checkbox" id="c14" name="xxx"
-											onclick="onToggle(this);" value="14" />Catalogue Number <br />
-										<br /> <input type="checkbox" id="c24" name="xxx"
-											onclick="onToggle(this);" value="24" />Program GPA <br /> <br />
-										<input type="checkbox" id="c25" name="xxx"
-											onclick="onToggle(this);" value="25" />Total Units Attempted
-									</div>
-									<div class="cell33">
-										<input type="checkbox" id="c26" name="xxx"
-											onclick="onToggle(this);" value="26" />Total Units Passed <br />
-										<br /> <input type="checkbox" id="c29" name="xxx"
-											onclick="onToggle(this);" value="29" />Total Units Credit <br />
-										<br /> <input type="checkbox" id="c30" name="xxx"
-											onclick="onToggle(this);" value="30" />Cumulative Units <br />
-										<br /> <input type="checkbox" id="c31" name="xxx"
-											onclick="onToggle(this);" value="31" />Student Email Address
-									</div>
-								</div>
-							</div>
-						</div>
+            <div class="top_display">
+                <div class="row">
+                    <div class="cell40">
+                        <p class="singles">Select which columns to display:</p>
+                        <div class="checkboxes">
+                            <div class="row">
+                                <div class="cell33">
+                                    <input type="checkbox" id="c3" name="xxx"
+                                           onclick="onToggle(this);" value="3" />Academic Career <br />
+                                    <br /> <input type="checkbox" id="c6" name="xxx"
+                                                  onclick="onToggle(this);" value="6" />Term <br /> <br /> <input
+                                            type="checkbox" id="c7" name="xxx" onclick="onToggle(this);"
+                                            value="7" />Program Code <br /> <br /> <input type="checkbox"
+                                                                                          id="c8" name="xxx" onclick="onToggle(this);" value="8" />Academic
+                                    Plan <br /> <br /> <input type="checkbox"
+                                                              id="c32" name="xxx" onclick="onToggle(this);" value="32" />Final
+                                    Term Courses <br /> <br /><input type="checkbox" id="selectAll"
+                                                                     name="xxx" onclick="ckboxAll(this);" value="All" /><em>Select
+                                        All</em>
+                                </div>
+                                <div class="cell33">
+                                    <input type="checkbox" id="c9" name="xxx"
+                                           onclick="onToggle(this);" value="9" />Admit Term <br /> <br />
+                                    <input type="checkbox" id="c14" name="xxx"
+                                           onclick="onToggle(this);" value="14" />Catalogue Number <br />
+                                    <br /> <input type="checkbox" id="c24" name="xxx"
+                                                  onclick="onToggle(this);" value="24" />Program GPA <br /> <br />
+                                    <input type="checkbox" id="c25" name="xxx"
+                                           onclick="onToggle(this);" value="25" />Total Units Attempted
+                                </div>
+                                <div class="cell33">
+                                    <input type="checkbox" id="c26" name="xxx"
+                                           onclick="onToggle(this);" value="26" />Total Units Passed <br />
+                                    <br /> <input type="checkbox" id="c29" name="xxx"
+                                                  onclick="onToggle(this);" value="29" />Total Units Credit <br />
+                                    <br /> <input type="checkbox" id="c30" name="xxx"
+                                                  onclick="onToggle(this);" value="30" />Cumulative Units <br />
+                                    <br /> <input type="checkbox" id="c31" name="xxx"
+                                                  onclick="onToggle(this);" value="31" />Student Email Address
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-						<div class="cell30">
-							<p class="singles">Apply filters:</p>
-							<p class="smalls">Students who took a particular course:</p>
-							<input type="text" name="courseID" id="course_id"
-								placeholder="Course number (e.g., 1114)">&nbsp; <input
-								type="submit" value="Filter" onclick="createCourseTab()">
-							<p></p>
-							<p class="smalls">Students who studied over a particular number
-								of terms greater or equal to:</p>
-							<input type="text" name="num_of_term" id="num_of_term"
-								placeholder="Number of terms">&nbsp; <input type="submit"
-								value="Filter" onclick="createTermTab()">
-							<p></p>
-							<p class="smalls">Students who passed a number of units greater
-								or equal to:</p>
-							<input type="text" name="num_of_term" id="total_unit_pass"
-								placeholder="Number of total units passed">&nbsp; <input
-								type="submit" value="Filter" onclick="createUnitPassTab()">
-							<p></p>
-							<p class="smalls">Students who took a particular course during a
-								particular term:</p>
-							<input type="text" name="num_of_term" id="catalog_number"
-								placeholder="Course number (e.g., 1114)">&nbsp;<input
-								type="text" name="num_of_term" id="term_number"
-								placeholder="Term number (e.g., 1150):">&nbsp; <input
-								type="submit" value="Filter" onclick="createTermCourseTab()">
-							<p></p>
-							<p></p>
-							<div class="centerbutton">
-								<input type="submit" value="Reset filters" id="lowbound"
-									onclick="resetTable()">
-							</div>
-						</div>
+                    <div class="cell30">
+                        <p class="singles">Apply filters:</p>
+                        <p class="smalls">Students who took a particular course:</p>
+                        <input type="text" name="courseID" id="course_id"
+                               placeholder="Course number (e.g., 1114)">&nbsp; <input
+                                type="submit" value="Filter" onclick="createCourseTab()">
+                        <p></p>
+                        <p class="smalls">Students who studied over a particular number
+                            of terms greater or equal to:</p>
+                        <input type="text" name="num_of_term" id="num_of_term"
+                               placeholder="Number of terms">&nbsp; <input type="submit"
+                                                                           value="Filter" onclick="createTermTab()">
+                        <p></p>
+                        <p class="smalls">Students who passed a number of units greater
+                            or equal to:</p>
+                        <input type="text" name="num_of_term" id="total_unit_pass"
+                               placeholder="Number of total units passed">&nbsp; <input
+                                type="submit" value="Filter" onclick="createUnitPassTab()">
+                        <p></p>
+                        <p class="smalls">Students who took a particular course during a
+                            particular term:</p>
+                        <input type="text" name="num_of_term" id="catalog_number"
+                               placeholder="Course number (e.g., 1114)">&nbsp;<input
+                                type="text" name="num_of_term" id="term_number"
+                                placeholder="Term number (e.g., 1150):">&nbsp; <input
+                                type="submit" value="Filter" onclick="createTermCourseTab()">
+                        <p></p>
+                        <p></p>
+                        <div class="centerbutton">
+                            <input type="submit" value="Reset filters" id="lowbound"
+                                   onclick="resetTable()">
+                        </div>
+                    </div>
 
-						<div class="cell30">
-							<p class="singles">Visualise data:</p>
-							<div class="graph">
-								<select id="content">
-									<optgroup label="Choose what to display">
-										<option value="Units">Total Units Passed</option>
-										<option value="GPA">GPA</option>
-									</optgroup>
-								</select>
-								<p></p>
-								<select id="chartType">
-									<optgroup label="Choose chart type">
-										<option value="PieChart">Pie chart</option>
-										<option value="BarChart">Bar chart</option>
-									</optgroup>
-								</select>
-								<p></p>
-								<input type="button" id="DrawChart" value="Draw chart">
-							</div>
+                    <div class="cell30">
+                        <p class="singles">Visualise data:</p>
+                        <div class="graph">
+                            <select id="content">
+                                <optgroup label="Choose what to display">
+                                    <option value="Units">Total Units Passed</option>
+                                    <option value="GPA">GPA</option>
+                                </optgroup>
+                            </select>
+                            <p></p>
+                            <select id="chartType">
+                                <optgroup label="Choose chart type">
+                                    <option value="PieChart">Pie chart</option>
+                                    <option value="BarChart">Bar chart</option>
+                                </optgroup>
+                            </select>
+                            <p></p>
+                            <input type="button" id="DrawChart" value="Draw chart">
+                        </div>
 
-						</div>
-					</div>
-				</div>
+                    </div>
+                </div>
+            </div>
 
-				<p></p>
-				<div class="chartarea" id="piechart"></div>
-				<p></p>
-				<div id="show_header">
-					<p>
-						<input type="button" onclick="toggle('file_header')"
-							value="Show or hide header of the uploaded file">
-					</p>
-				</div>
-				<div id="file_header"></div>
-				<p></p>
-				<div id="div1" class="section"></div>
-			</div>
-		</section>
-		<footer id="footer">
+            <p></p>
+            <div class="chartarea" id="piechart"></div>
+            <p></p>
+            <div id="show_header">
+                <p>
+                    <input type="button" onclick="toggle('file_header')"
+                           value="Show or hide header of the uploaded file">
+                </p>
+            </div>
+            <div id="file_header"></div>
+            <p></p>
+            <div id="div1" class="section"></div>
+        </div>
+    </section>
+    <footer id="footer">
         <?php include("footer.php"); ?>
     </footer>
-	</div>
+</div>
 </body>
 </html>

@@ -122,10 +122,10 @@
                                     var text = getFileHeader(file_header);
                                     document.getElementById("file_header").innerHTML = text;
                                     document.getElementById("file_header").append(hr_line);
-                                    drawProgramTable(pTables);
-                                    calculate(cTables);
-                                    hideALL();
-                                    uncheckAll();
+//                                    drawProgramTable(pTables);
+//                                    calculate(cTables);
+//                                    hideALL();
+//                                    uncheckAll();
                                 }
                             } else {
                                 alert("This browser does not support HTML5.");
