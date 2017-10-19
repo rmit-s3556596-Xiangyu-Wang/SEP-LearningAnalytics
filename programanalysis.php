@@ -124,6 +124,7 @@
                 document.getElementById("c29").disabled=true;
                 document.getElementById("c30").disabled=true;
                 document.getElementById("c31").disabled=true;
+                document.getElementById("c32").disabled=true;
                 document.getElementById("selectAll").disabled=true;
                 if(document.getElementById('content').value=='Units') {
                     google.load("visualization", "1", {packages: ["corechart"], "callback": drawTUPChart});
