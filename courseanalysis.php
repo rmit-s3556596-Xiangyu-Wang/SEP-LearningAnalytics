@@ -533,7 +533,7 @@
                 exist = false;
             }
             chartsData = calGPA(getChartData(programTab));
-            var message = "<br />" + "Following students are not in program: ";
+            var message = "<br />" + "The following students are not enrolled in any program: ";
             for (i = 1; i < courseTab[0].length; i++) {
                 message += ("<br />" + courseTab[0][i][0]
                     + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + courseTab[0][i][1]
