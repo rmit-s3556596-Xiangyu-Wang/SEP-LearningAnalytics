@@ -112,6 +112,9 @@
     <script>
         $(document).ready(function(){
             $("#DrawChart").click(function(){
+                if (document.getElementById("div1").innerHTML == ''){
+                    return;
+                }
                 document.getElementById("c3").disabled=true;
                 document.getElementById("c6").disabled=true;
                 document.getElementById("c7").disabled=true;
@@ -856,10 +859,10 @@
         // show or hide header
         function toggle(id) {
             var state = document.getElementById(id).style.display;
-            if (state == 'none') {
-                document.getElementById(id).style.display = 'block';
-            } else {
+            if (state == 'block') {
                 document.getElementById(id).style.display = 'none';
+            } else {
+                document.getElementById(id).style.display = 'block';
             }
         }
     </script>
