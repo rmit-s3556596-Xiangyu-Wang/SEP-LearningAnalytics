@@ -83,18 +83,16 @@
 					</p>
 
 
-					<div class="indent_text">
-						<h3>Known bugs and issues</h3>
-						<p>
-							There is one known bug in the system that concerns the
-							visualisation of data. When the user clicks the <span
-								class="monospace">Draw chart</span> button the first time, an
-							error message appears in the place of a chart on non-Chrome
-							browsers. This bug has been identified by Google engineers, and a
-							patch is being worked on. To get around this issue, the user can
-							click the same button again.
-						</p>
-					</div>
+					<h2>Known bugs and issues</h2>
+					<p>
+						There is one known bug in the system that concerns the
+						visualisation of data. When the user clicks the <span
+							class="monospace">Draw chart</span> button the first time, an
+						error message appears in the place of a chart on non-Chrome
+						browsers. This bug has been identified by Google engineers, and a
+						patch is being worked on. To get around this issue, the user can
+						click the same button again.
+					</p>
 
 				</div>
 				<p>&nbsp;</p>
