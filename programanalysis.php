@@ -60,6 +60,7 @@
                             var text = getFileHeader(file_header);
                             document.getElementById("file_header").innerHTML = text;
                             document.getElementById("file_header").append(hr_line);
+                            document.getElementById("file_header").style.display = 'block';
                             file_header = [];
                             var stuTab = combine(rows, combArr);
                             pieChart = calGPA(stuTab);
@@ -861,7 +862,9 @@
             var state = document.getElementById(id).style.display;
             if (state == 'block') {
                 document.getElementById(id).style.display = 'none';
+                //document.getElementById(id).style.display = 'block';
             } else {
+                //document.getElementById(id).style.display = 'none';
                 document.getElementById(id).style.display = 'block';
             }
         }
