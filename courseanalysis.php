@@ -122,10 +122,10 @@
                                     var text = getFileHeader(file_header);
                                     document.getElementById("file_header").innerHTML = text;
                                     document.getElementById("file_header").append(hr_line);
-//                                    drawProgramTable(pTables);
-//                                    calculate(cTables);
-//                                    hideALL();
-//                                    uncheckAll();
+                                    drawProgramTable(pTables, cTables);
+                                    calculate(cTables, pTables);
+                                    hideALL();
+                                    uncheckAll();
                                 }
                             } else {
                                 alert("This browser does not support HTML5.");
@@ -229,10 +229,12 @@
                                     var text = getFileHeader(file_header);
                                     document.getElementById("file_header").innerHTML = text;
                                     document.getElementById("file_header").append(hr_line);
-                                    drawProgramTable(pTables);
-                                    calculate(cTables);
+                                    drawProgramTable(pTables, cTables);
+                                    calculate(cTables, pTables);
                                     hideALL();
                                     uncheckAll();
+                                    document.getElementById("file1").disabled="disabled";
+                                    document.getElementById("file2").disabled="disabled";
                                 }
                             } else {
                                 alert("This browser does not support HTML5.");
@@ -467,8 +469,11 @@
     </script>
 
     <script type="text/javascript">
-        function drawProgramTable(pTable) {
+        function drawProgramTable(pTable, cTable) {
             if (pTable.length == 0) {
+                return;
+            }
+            if (cTable.length == 0){
                 return;
             }
             var table = document.createElement("table");
@@ -492,8 +497,11 @@
             }
             document.getElementById("div1").appendChild(table);
         }
-        function calculate(courseTab) {
+        function calculate(courseTab, programTable) {
             if (courseTab.length == 0) {
+                return;
+            }
+            if (programTable.length == 0){
                 return;
             }
             var exist = false;
@@ -517,7 +525,7 @@
                 exist = false;
             }
             chartsData = calGPA(getChartData(programTab));
-            var message = "<br />" + "The following students are not enrolled in a program: ";
+            var message = "<br />" + "Following students are not in program: ";
             for (i = 1; i < courseTab[0].length; i++) {
                 message += ("<br />" + courseTab[0][i][0]
                     + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + courseTab[0][i][1]
@@ -683,10 +691,10 @@
         // show or hide header
         function toggle(id) {
             var state = document.getElementById(id).style.display;
-            if (state == 'none') {
-                document.getElementById(id).style.display = 'block';
-            } else {
+            if (state == 'block') {
                 document.getElementById(id).style.display = 'none';
+            } else {
+                document.getElementById(id).style.display = 'block';
             }
         }
     </script>
@@ -765,8 +773,8 @@
                                 type="button" id="GPA_Bar" value="GPA bar chart">
                     </div>
                     <div class="cell30">
-                        <p class="singles">Reset view:</p>
-                        <input type="submit" value="Clear charts" id="lowbound"
+                        <p class="singles">Reset filters:</p>
+                        <input type="submit" value="Reset filters" id="lowbound"
                                onclick="resetTable()">
                     </div>
 
