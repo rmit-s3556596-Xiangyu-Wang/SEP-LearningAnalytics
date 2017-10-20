@@ -2,11 +2,19 @@ html {
 	height: 100%;
 }
 
-#text, div2 {
+#text {
 	margin-left: 10px;
 }
 
-.text, div2 {
+#text {
+	margin-left: 10px;
+}
+
+.div2 {
+	margin-left: 10px;
+}
+
+#div2 {
 	margin-left: 10px;
 }
 
