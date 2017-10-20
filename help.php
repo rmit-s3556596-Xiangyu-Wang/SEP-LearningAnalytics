@@ -14,9 +14,9 @@
 				<div class="indent_text">
 					<h2>Course Analysis</h2>
 					<p>The user should start the session by uploading a program CSV
-						file and a course CSV file at the top of the screen, highlighted
-						in blue. Once both files are uploaded, they will be displayed in
-						the table at the bottom of the page.</p>
+						file and a course CSV file at the top of the screen, in the
+						section highlighted in blue. Once both files are uploaded, the
+						data will be displayed in the table at the bottom of the page.</p>
 					<p>
 						The page will automatically upload the contents of the file
 						provided it is in the right format. The user can choose which
