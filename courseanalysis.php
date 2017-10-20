@@ -30,6 +30,7 @@
         var result = '';
         var file_header = [];
         var hr_line = document.createElement("hr");
+        var description = "Sort columns by clicking on the desired column title";
         $(function() {
             $("#file1").on('change', function() {
                 $('#upload1').click();
@@ -122,6 +123,7 @@
                                     var text = getFileHeader(file_header);
                                     document.getElementById("file_header").innerHTML = text;
                                     document.getElementById("file_header").append(hr_line);
+                                    document.getElementById("file_header").style.display = 'block';
                                     drawProgramTable(pTables, cTables);
                                     calculate(cTables, pTables);
                                     hideALL();
@@ -500,6 +502,7 @@
                 ptcell.innerHTML = pTable[0][0][i];
                 ptRow.appendChild(ptcell);
             }
+            document.getElementById("div1").append(description);
             document.getElementById("div1").appendChild(table);
         }
         function calculate(courseTab, programTable) {
