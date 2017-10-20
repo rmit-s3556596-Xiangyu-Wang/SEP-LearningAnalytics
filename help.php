@@ -13,6 +13,32 @@
 
 				<div class="indent_text">
 					<h2>Course Analysis</h2>
+					<p>The user should start the session by uploading a program CSV
+						file and a course CSV file at the top of the screen, highlighted
+						in blue. Once both files are uploaded, they will be displayed in
+						the table at the bottom of the page.</p>
+					<p>
+						The page will automatically upload the contents of the file
+						provided it is in the right format. The user can choose which
+						columns to display in the table by ticking one or more checkboxes
+						under the <span class="monospace">Select which columns to display</span>
+						heading, or show all columns by ticking the <span
+							class="monospace">Select All</span> checkbox.
+					</p>
+					<p>
+						GPA information can be displayed in a bar chart or a pie chart.
+						The user needs to click the right button and a chart will appear
+						above the table. Once the data is plotted, the checkboxes under
+						the <span class="monospace">Apply filters</span> heading become
+						disabled. To re-enable these checkboxes, the user must click on
+						the <span class="monospace">Clear charts</span> button.
+					</p>
+					<p>
+						Information from the file header can be toggled by the user by
+						clicking on the <span class="monospace">Toggle header</span>
+						button, under the table. This information can be used to verify
+						the time, date, and user who generated the data file.
+					</p>
 					<p></p>
 
 					<h2>Program Analysis</h2>
