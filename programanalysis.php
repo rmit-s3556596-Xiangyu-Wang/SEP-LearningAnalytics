@@ -856,10 +856,10 @@
         // show or hide header
         function toggle(id) {
             var state = document.getElementById(id).style.display;
-            if (state == 'block') {
-                document.getElementById(id).style.display = 'none';
-            } else {
+            if (state == 'none') {
                 document.getElementById(id).style.display = 'block';
+            } else {
+                document.getElementById(id).style.display = 'none;
             }
         }
     </script>
