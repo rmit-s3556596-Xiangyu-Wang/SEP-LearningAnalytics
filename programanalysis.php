@@ -956,7 +956,7 @@
                         <input type="text" name="num_of_term" id="catalog_number"
                                placeholder="Course number (e.g., 1114)">&nbsp;<input
                                 type="text" name="num_of_term" id="term_number"
-                                placeholder="Term number (e.g., 1150):">&nbsp; <input
+                                placeholder="Term number (e.g., 1750):">&nbsp; <input
                                 type="submit" value="Filter" onclick="createTermCourseTab()">
                         <p></p>
                         <p></p>
