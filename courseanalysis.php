@@ -144,6 +144,11 @@
                 .bind(
                     "click",
                     function() {
+                        if (pTables.length == 0){
+                            alert("Please upload program file first!");
+                            location.reload();
+                            return;
+                        }
                         var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
                         if (regex.test($("#file2").val().toLowerCase())) {
                             if (typeof (FileReader) != "undefined") {
