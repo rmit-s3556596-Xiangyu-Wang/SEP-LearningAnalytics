@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="css.css" type="text/css" />
-    <title><?php include("header.php"); ?> - Program Analysis</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="css.css" type="text/css" />
+<title><?php include("header.php"); ?> - Program Analysis</title>
 
-    <script type="text/javascript"
-            src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript"
+	src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
 
-    <script type="text/javascript">
+<script type="text/javascript">
         var hideColum = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28,
             29, 30, 31, 32];
         //    var hideColum = [4, 5, 10, 11, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 27, 28];
@@ -97,7 +97,7 @@
         });
     </script>
 
-    <script type="text/javascript">
+<script type="text/javascript">
         function getFileHeader(array) {
             var message = "<br />";
             for (var i = 0; i < array.length; i ++){
@@ -110,7 +110,7 @@
         }
     </script>
 
-    <script>
+<script>
         $(document).ready(function(){
             $("#DrawChart").click(function(){
                 if (document.getElementById("div1").innerHTML == ''){
@@ -464,7 +464,7 @@
             return false;
         }
     </script>
-    <script type="text/javascript">
+<script type="text/javascript">
         function saveFile(rows) {
             if (rows != null) {
                 var data = [];
@@ -485,7 +485,7 @@
             sessionStorage.setItem("stuTab", sentTab);
         }
     </script>
-    <script type="text/javascript">
+<script type="text/javascript">
         var refresh = true;
         function createStudentTab() {
             var data = sessionStorage.getItem("stuTab");
@@ -543,7 +543,7 @@
         }
     </script>
 
-    <script type="text/javascript">
+<script type="text/javascript">
         function createCourseTab() {
             var data = sessionStorage.getItem("tab");
             var newTab = sessionStorage.getItem("stuTab");
@@ -638,7 +638,7 @@
             return false;
         }
     </script>
-    <script type="text/javascript">
+<script type="text/javascript">
         function hideColumns(value) {
             var table;
             if (value == "course") {
@@ -663,7 +663,7 @@
             }
         }
     </script>
-    <script type="text/javascript">
+<script type="text/javascript">
         function createTermTab() {
             var read = sessionStorage.getItem("stuTab");
             var termTab = JSON.parse(read);
@@ -702,7 +702,7 @@
             }
         }
     </script>
-    <script type="text/javascript">
+<script type="text/javascript">
         function createUnitPassTab() {
             var read = sessionStorage.getItem("stuTab");
             var unitTab = JSON.parse(read);
@@ -741,7 +741,7 @@
             }
         }
     </script>
-    <script type="text/javascript">
+<script type="text/javascript">
         function createTermCourseTab() {
             var read1 = sessionStorage.getItem("tab");
             var read2 = sessionStorage.getItem("stuTab");
@@ -790,7 +790,7 @@
             uncheckAll();
         }
     </script>
-    <script type="text/javascript">
+<script type="text/javascript">
         function resetTable() {
             document.getElementById("c3").disabled=false;
             document.getElementById("c6").disabled=false;
@@ -835,7 +835,7 @@
             }
         }
     </script>
-    <script type="text/javascript">
+<script type="text/javascript">
         function ckboxAll(ckbox) {
             //var checkboxes = document.getElementsByName("xxx");
             for (var i = 0; i < ckboxArr.length; i ++){
@@ -856,160 +856,158 @@
         }
     </script>
 
-    <script>
-        // show or hide header
-        function toggle(id) {
-            var state = document.getElementById(id).style.display;
-            if (state == 'block') {
-                document.getElementById(id).style.display = 'none';
-                //document.getElementById(id).style.display = 'block';
-            } else {
-                //document.getElementById(id).style.display = 'none';
+<script>
+// show or hide header
+    function toggle(id) {
+        var state = document.getElementById(id).style.display;
+            if (state == 'none') {
                 document.getElementById(id).style.display = 'block';
+            } else {
+                document.getElementById(id).style.display = 'none';
             }
         }
-    </script>
+</script>
 
 </head>
 
 <body>
-<div class="container">
-    <header><?php include("header.php"); ?> - Program Analysis</header>
-    <section class="content">
-        <div class="main">
+	<div class="container">
+		<header><?php include("header.php"); ?> - Program Analysis</header>
+		<section class="content">
+			<div class="main">
 
-            <div class="file_upload">
-                <div class="row">
-                    <div class="cell">
-                        <p class="singles">
-                            Start by uploading a file: <input type="file" id="fileUpload" />
-                            <input type="button" class="upload" id="upload" value="Upload"
-                                   style="visibility: hidden; width: 1em" /> | <a
-                                    href="courseanalysis.php">Go to Course Analysis</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
+				<div class="file_upload">
+					<div class="row">
+						<div class="cell">
+							<p class="singles">
+								Start by uploading a file: <input type="file" id="fileUpload" />
+								<input type="button" class="upload" id="upload" value="Upload"
+									style="visibility: hidden; width: 1em" /> | <a
+									href="courseanalysis.php">Go to Course Analysis</a>
+							</p>
+						</div>
+					</div>
+				</div>
 
-            <div class="top_display">
-                <div class="row">
-                    <div class="cell40">
-                        <p class="singles">Select which columns to display:</p>
-                        <div class="checkboxes">
-                            <div class="row">
-                                <div class="cell33">
-                                    <input type="checkbox" id="c3" name="xxx"
-                                           onclick="onToggle(this);" value="3" />Academic Career <br />
-                                    <br /> <input type="checkbox" id="c6" name="xxx"
-                                                  onclick="onToggle(this);" value="6" />Term <br /> <br /> <input
-                                            type="checkbox" id="c7" name="xxx" onclick="onToggle(this);"
-                                            value="7" />Program Code <br /> <br /> <input type="checkbox"
-                                                                                          id="c8" name="xxx" onclick="onToggle(this);" value="8" />Academic
-                                    Plan <br /> <br /> <input type="checkbox"
-                                                              id="c32" name="xxx" onclick="onToggle(this);" value="32" />Final
-                                    Term Courses <br /> <br /><input type="checkbox" id="selectAll"
-                                                                     name="xxx" onclick="ckboxAll(this);" value="All" /><em>Select
-                                        All</em>
-                                </div>
-                                <div class="cell33">
-                                    <input type="checkbox" id="c9" name="xxx"
-                                           onclick="onToggle(this);" value="9" />Admit Term <br /> <br />
-                                    <input type="checkbox" id="c14" name="xxx"
-                                           onclick="onToggle(this);" value="14" />Catalogue Number <br />
-                                    <br /> <input type="checkbox" id="c24" name="xxx"
-                                                  onclick="onToggle(this);" value="24" />Program GPA <br /> <br />
-                                    <input type="checkbox" id="c25" name="xxx"
-                                           onclick="onToggle(this);" value="25" />Total Units Attempted
-                                </div>
-                                <div class="cell33">
-                                    <input type="checkbox" id="c26" name="xxx"
-                                           onclick="onToggle(this);" value="26" />Total Units Passed <br />
-                                    <br /> <input type="checkbox" id="c29" name="xxx"
-                                                  onclick="onToggle(this);" value="29" />Total Units Credit <br />
-                                    <br /> <input type="checkbox" id="c30" name="xxx"
-                                                  onclick="onToggle(this);" value="30" />Cumulative Units <br />
-                                    <br /> <input type="checkbox" id="c31" name="xxx"
-                                                  onclick="onToggle(this);" value="31" />Student Email Address
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+				<div class="top_display">
+					<div class="row">
+						<div class="cell40">
+							<p class="singles">Select which columns to display:</p>
+							<div class="checkboxes">
+								<div class="row">
+									<div class="cell33">
+										<input type="checkbox" id="c3" name="xxx"
+											onclick="onToggle(this);" value="3" />Academic Career <br />
+										<br /> <input type="checkbox" id="c6" name="xxx"
+											onclick="onToggle(this);" value="6" />Term <br /> <br /> <input
+											type="checkbox" id="c7" name="xxx" onclick="onToggle(this);"
+											value="7" />Program Code <br /> <br /> <input type="checkbox"
+											id="c8" name="xxx" onclick="onToggle(this);" value="8" />Academic
+										Plan <br /> <br /> <input type="checkbox" id="c32" name="xxx"
+											onclick="onToggle(this);" value="32" />Final Term Courses <br />
+										<br />
+										<input type="checkbox" id="selectAll" name="xxx"
+											onclick="ckboxAll(this);" value="All" /><em>Select All</em>
+									</div>
+									<div class="cell33">
+										<input type="checkbox" id="c9" name="xxx"
+											onclick="onToggle(this);" value="9" />Admit Term <br /> <br />
+										<input type="checkbox" id="c14" name="xxx"
+											onclick="onToggle(this);" value="14" />Catalogue Number <br />
+										<br /> <input type="checkbox" id="c24" name="xxx"
+											onclick="onToggle(this);" value="24" />Program GPA <br /> <br />
+										<input type="checkbox" id="c25" name="xxx"
+											onclick="onToggle(this);" value="25" />Total Units Attempted
+									</div>
+									<div class="cell33">
+										<input type="checkbox" id="c26" name="xxx"
+											onclick="onToggle(this);" value="26" />Total Units Passed <br />
+										<br /> <input type="checkbox" id="c29" name="xxx"
+											onclick="onToggle(this);" value="29" />Total Units Credit <br />
+										<br /> <input type="checkbox" id="c30" name="xxx"
+											onclick="onToggle(this);" value="30" />Cumulative Units <br />
+										<br /> <input type="checkbox" id="c31" name="xxx"
+											onclick="onToggle(this);" value="31" />Student Email Address
+									</div>
+								</div>
+							</div>
+						</div>
 
-                    <div class="cell30">
-                        <p class="singles">Apply filters:</p>
-                        <p class="smalls">Students who took a particular course:</p>
-                        <input type="text" name="courseID" id="course_id"
-                               placeholder="Course number (e.g., 1114)">&nbsp; <input
-                                type="submit" value="Filter" onclick="createCourseTab()">
-                        <p></p>
-                        <p class="smalls">Students who studied over a particular number
-                            of terms greater or equal to:</p>
-                        <input type="text" name="num_of_term" id="num_of_term"
-                               placeholder="Number of terms">&nbsp; <input type="submit"
-                                                                           value="Filter" onclick="createTermTab()">
-                        <p></p>
-                        <p class="smalls">Students who passed a number of units greater
-                            or equal to:</p>
-                        <input type="text" name="num_of_term" id="total_unit_pass"
-                               placeholder="Number of total units passed">&nbsp; <input
-                                type="submit" value="Filter" onclick="createUnitPassTab()">
-                        <p></p>
-                        <p class="smalls">Students who took a particular course during a
-                            particular term:</p>
-                        <input type="text" name="num_of_term" id="catalog_number"
-                               placeholder="Course number (e.g., 1114)">&nbsp;<input
-                                type="text" name="num_of_term" id="term_number"
-                                placeholder="Term number (e.g., 1750):">&nbsp; <input
-                                type="submit" value="Filter" onclick="createTermCourseTab()">
-                        <p></p>
-                        <p></p>
-                        <div class="centerbutton">
-                            <input type="submit" value="Reset filters" id="lowbound"
-                                   onclick="resetTable()">
-                        </div>
-                    </div>
+						<div class="cell30">
+							<p class="singles">Apply filters:</p>
+							<p class="smalls">Students who took a particular course:</p>
+							<input type="text" name="courseID" id="course_id"
+								placeholder="Course number (e.g., 1114)">&nbsp; <input
+								type="submit" value="Filter" onclick="createCourseTab()">
+							<p></p>
+							<p class="smalls">Students who studied over a particular number
+								of terms greater or equal to:</p>
+							<input type="text" name="num_of_term" id="num_of_term"
+								placeholder="Number of terms">&nbsp; <input type="submit"
+								value="Filter" onclick="createTermTab()">
+							<p></p>
+							<p class="smalls">Students who passed a number of units greater
+								or equal to:</p>
+							<input type="text" name="num_of_term" id="total_unit_pass"
+								placeholder="Number of total units passed">&nbsp; <input
+								type="submit" value="Filter" onclick="createUnitPassTab()">
+							<p></p>
+							<p class="smalls">Students who took a particular course during a
+								particular term:</p>
+							<input type="text" name="num_of_term" id="catalog_number"
+								placeholder="Course number (e.g., 1114)">&nbsp;<input
+								type="text" name="num_of_term" id="term_number"
+								placeholder="Term number (e.g., 1750):">&nbsp; <input
+								type="submit" value="Filter" onclick="createTermCourseTab()">
+							<p></p>
+							<p></p>
+							<div class="centerbutton">
+								<input type="submit" value="Reset filters" id="lowbound"
+									onclick="resetTable()">
+							</div>
+						</div>
 
-                    <div class="cell30">
-                        <p class="singles">Visualise data:</p>
-                        <div class="graph">
-                            <select id="content">
-                                <optgroup label="Choose what to display">
-                                    <option value="Units">Total Units Passed</option>
-                                    <option value="GPA">GPA</option>
-                                </optgroup>
-                            </select>
-                            <p></p>
-                            <select id="chartType">
-                                <optgroup label="Choose chart type">
-                                    <option value="PieChart">Pie chart</option>
-                                    <option value="BarChart">Bar chart</option>
-                                </optgroup>
-                            </select>
-                            <p></p>
-                            <input type="button" id="DrawChart" value="Draw chart">
-                        </div>
+						<div class="cell30">
+							<p class="singles">Visualise data:</p>
+							<div class="graph">
+								<select id="content">
+									<optgroup label="Choose what to display">
+										<option value="Units">Total Units Passed</option>
+										<option value="GPA">GPA</option>
+									</optgroup>
+								</select>
+								<p></p>
+								<select id="chartType">
+									<optgroup label="Choose chart type">
+										<option value="PieChart">Pie chart</option>
+										<option value="BarChart">Bar chart</option>
+									</optgroup>
+								</select>
+								<p></p>
+								<input type="button" id="DrawChart" value="Draw chart">
+							</div>
 
-                    </div>
-                </div>
-            </div>
+						</div>
+					</div>
+				</div>
 
-            <p></p>
-            <div class="chartarea" id="piechart"></div>
-            <p></p>
-            <div id="show_header">
-                <p>
-                    <input type="button" onclick="toggle('file_header')"
-                           value="Show or hide header of the uploaded file">
-                </p>
-            </div>
-            <div id="file_header"></div>
-            <p></p>
-            <div id="div1" class="section"></div>
-        </div>
-    </section>
-    <footer id="footer">
+				<p></p>
+				<div class="chartarea" id="piechart"></div>
+				<p></p>
+				<div id="show_header">
+					<p>
+						<input type="button" onclick="toggle('file_header')"
+							value="Show or hide header of the uploaded file">
+					</p>
+				</div>
+				<div id="file_header"></div>
+				<p></p>
+				<div id="div1" class="section"></div>
+			</div>
+		</section>
+		<footer id="footer">
         <?php include("footer.php"); ?>
     </footer>
-</div>
+	</div>
 </body>
 </html>
