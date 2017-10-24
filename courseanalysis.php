@@ -2,22 +2,22 @@
 <html lang="en">
 <head>
 
-<link rel="stylesheet" href="css.css" type="text/css" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title><?php include("header.php"); ?> - Course Analysis
+    <link rel="stylesheet" href="css.css" type="text/css"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title><?php include("header.php"); ?> - Course Analysis
     </title>
 
 
-<script type="text/javascript"
-	src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript"
+            src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
-<script type="text/javascript">
-        var hideColum = [ 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
-            19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31 ];
+    <script type="text/javascript">
+        var hideColum = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+            19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
         //    var hideColum = [4, 5, 10, 11, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 27, 28];
-        var combArr = [ 6, 7, 8, 9, 14, 24, 25, 26, 29, 30, 31 ];
+        var combArr = [6, 7, 8, 9, 14, 24, 25, 26, 29, 30, 31];
         var fileNum = 1;
         var programFile = 0;
         var tables = [];
@@ -31,64 +31,50 @@
         var file_header = [];
         var hr_line = document.createElement("hr");
         var description = "Sort columns by clicking on the desired column title";
-        $(function() {
-            $("#file1").on('change', function() {
+        $(function () {
+            $("#file1").on('change', function () {
                 $('#upload1').click();
             });
             $("#upload1")
                 .bind(
                     "click",
-                    function() {
+                    function () {
                         var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
                         if (regex.test($("#file1").val().toLowerCase())) {
                             if (typeof (FileReader) != "undefined") {
-                                //alert("Success!");
                                 var preader = new FileReader();
                                 preader.readAsText($("#file1")[0].files[0]);
-                                preader.onload = function(e) {
-                                    var table = $("<table id=fileNum />");
+                                preader.onload = function (e) {
                                     var rows = e.target.result.split("\n");
-                                    var tHead = $("<thead/>");
-                                    var theadtr = $("<tr />");
                                     var thcells = rows[5].split(",");
                                     for (var i = 0; i < thcells.length; i++) {
-                                        var cell = $("<th />");
-                                        cell.html(thcells[i]);
                                         tableCells.push(thcells[i]);
-                                        theadtr.append(cell);
                                     }
-                                    tHead.append(theadtr);
-                                    table.append(tHead);
                                     tableRows.push(tableCells);
                                     tableCells = [];
 
-                                    for (i = 0; i < 5; i ++){
+                                    for (i = 0; i < 5; i++) {
                                         var line = rows[i].split(",");
                                         var header_line = [];
-                                        for (j = 0; j < line.length; j ++){
+                                        for (j = 0; j < line.length; j++) {
                                             header_line.push(line[j]);
                                         }
                                         file_header.push(header_line);
                                     }
-                                    for (i = 0; i < 5; i ++){
+
+                                    for (i = 0; i < 5; i++) {
                                         rows.shift();
                                     }
-                                    var tBody = $("<tbody/>");
+
                                     for (var i = 1; i < rows.length - 1; i++) {
-                                        var row = $("<tr />");
                                         var cells = rows[i].split(",");
                                         for (var j = 0; j < cells.length; j++) {
-                                            var cell = $("<td />");
-                                            cell.html(cells[j]);
                                             tableCells.push(cells[j]);
-                                            row.append(cell);
                                         }
-                                        tBody.append(row);
                                         tableRows.push(tableCells);
                                         tableCells = [];
                                     }
-                                    table.append(tBody);
-                                    //                        alert("Tables length: " + tables.length);
+
                                     if (!containsTable(tableRows,
                                             tablesRows)) {
                                         if (tableRows[0].length == 32) {
@@ -99,20 +85,15 @@
                                             tablesRows.push(tableRows);
                                             tableRows = [];
                                         } else {
-                                            for (i = 0; i < 5; i++){
+                                            for (i = 0; i < 5; i++) {
                                                 file_header.splice(file_header.length - 1, 1);
                                             }
                                             tableRows = [];
-                                            //document.getElementById("file_header").innerHTML = '';
                                             alert("Program file should contain 32 columns!");
                                             return;
                                         }
-                                        //                            tablesRows.push(tableRows);
-                                        //                            tableRows = [];
-                                        tables.push(table);
-                                        //                            alert("table added!");
                                     } else {
-                                        for (i = 0; i < 5; i++){
+                                        for (i = 0; i < 5; i++) {
                                             file_header.splice(file_header.length - 1, 1);
                                         }
                                         tableRows = [];
@@ -126,7 +107,7 @@
                                     document.getElementById("file_header").style.display = 'block';
                                     drawProgramTable(pTables, cTables);
                                     calculate(cTables, pTables);
-                                    hideALL();
+                                    hideALL(cTables, pTables);
                                     uncheckAll();
                                 }
                             } else {
@@ -138,15 +119,15 @@
                         }
                     });
         });
-        $(function() {
-            $("#file2").on('change', function() {
+        $(function () {
+            $("#file2").on('change', function () {
                 $('#upload2').click();
             });
             $("#upload2")
                 .bind(
                     "click",
-                    function() {
-                        if (pTables.length == 0){
+                    function () {
+                        if (pTables.length == 0) {
                             alert("Please upload program file first!");
                             location.reload();
                             return;
@@ -156,60 +137,42 @@
                             if (typeof (FileReader) != "undefined") {
                                 var creader = new FileReader();
                                 creader.readAsText($("#file2")[0].files[0]);
-                                creader.onload = function(e) {
-                                    var table = $("<table/>");
+                                creader.onload = function (e) {
                                     var rows = e.target.result.split("\n");
-                                    var tHead = $("<thead/>");
-                                    var theadtr = $("<tr />");
-                                    var thcells = rows[6].split(",");
+                                    var thcells = rows[5].split(",");
                                     for (var i = 0; i < thcells.length; i++) {
-                                        var cell = $("<th />");
-                                        cell.html(thcells[i]);
                                         tableCells.push(thcells[i]);
-                                        theadtr.append(cell);
                                     }
-
-                                    tHead.append(theadtr);
-                                    table.append(tHead);
                                     tableRows.push(tableCells);
                                     tableCells = [];
 
-                                    for (i = 0; i < 6; i ++){
+                                    for (i = 0; i < 6; i++) {
                                         var line = rows[i].split(",");
                                         var header_line = [];
-                                        for (j = 0; j < line.length; j ++){
+                                        for (j = 0; j < line.length; j++) {
                                             header_line.push(line[j]);
                                         }
                                         file_header.push(header_line);
                                     }
-                                    for (i = 0; i < 6; i ++){
+                                    for (i = 0; i < 6; i++) {
                                         rows.shift();
                                     }
 
-                                    var tBody = $("<tbody/>");
                                     for (var i = 1; i < rows.length - 1; i++) {
-                                        var row = $("<tr />");
                                         var cells = rows[i].split(",");
                                         for (var j = 0; j < cells.length; j++) {
-                                            var cell = $("<td />");
-                                            cell.html(cells[j]);
                                             tableCells.push(cells[j]);
-                                            row.append(cell);
                                         }
-                                        tBody.append(row);
                                         tableRows.push(tableCells);
                                         tableCells = [];
                                     }
-                                    table.append(tBody);
-                                    //                        alert("Tables length: " + tables.length);
-                                    //                        if (!containsTable(tableRows, tablesRows)) {
                                     if (tableRows[0].length == 34) {
                                         if (cTables.length == 0) {
                                             cTables.push(tableRows);
                                             tablesRows.push(tableRows);
                                             tableRows = [];
                                         } else {
-                                            for (i = 0; i < 6; i++){
+                                            for (i = 0; i < 6; i++) {
                                                 file_header.splice(file_header.length - 1, 1);
                                             }
                                             tableRows = [];
@@ -217,31 +180,24 @@
                                             return;
                                         }
                                     } else {
-                                        for (i = 0; i < 6; i++){
+                                        for (i = 0; i < 6; i++) {
                                             file_header.splice(file_header.length - 1, 1);
                                         }
                                         tableRows = [];
                                         alert("Course file must contain 34 columns!");
                                         return;
                                     }
-                                    //                            tablesRows.push(tableRows);
-                                    //                            tableRows = [];
-                                    tables.push(table);
-                                    //                            alert("table added!");
-                                    //                        } else {
-                                    //                            tableRows = [];
-                                    //                            alert("File already exist!");
-                                    //                        }
+
                                     $("#div1").html('');
                                     var text = getFileHeader(file_header);
                                     document.getElementById("file_header").innerHTML = text;
                                     document.getElementById("file_header").append(hr_line);
                                     drawProgramTable(pTables, cTables);
                                     calculate(cTables, pTables);
-                                    hideALL();
+                                    hideALL(cTables, pTables);
                                     uncheckAll();
-                                    document.getElementById("file1").disabled="disabled";
-                                    document.getElementById("file2").disabled="disabled";
+                                    document.getElementById("file1").disabled = "disabled";
+                                    document.getElementById("file2").disabled = "disabled";
                                 }
                             } else {
                                 alert("This browser does not support HTML5.");
@@ -253,11 +209,11 @@
         });
     </script>
 
-<script type="text/javascript">
+    <script type="text/javascript">
         function getFileHeader(array) {
             var message = "<br />";
-            for (var i = 0; i < array.length; i ++){
-                for (var j = 0; j < array[i].length; j ++){
+            for (var i = 0; i < array.length; i++) {
+                for (var j = 0; j < array[i].length; j++) {
                     message += (array[i][j].toString() + "&nbsp;");
                 }
                 message += "<br />";
@@ -266,31 +222,19 @@
         }
     </script>
 
-<script type="text/javascript">
+    <script type="text/javascript">
         $(document)
             .ready(
-                function() {
+                function () {
                     $("#GPA_Pie")
                         .click(
-                            function() {
-                                document.getElementById("c3").disabled=true;
-                                document.getElementById("c6").disabled=true;
-                                document.getElementById("c7").disabled=true;
-                                document.getElementById("c8").disabled=true;
-                                document.getElementById("c9").disabled=true;
-                                document.getElementById("c14").disabled=true;
-                                document.getElementById("c24").disabled=true;
-                                document.getElementById("c25").disabled=true;
-                                document.getElementById("c26").disabled=true;
-                                document.getElementById("c29").disabled=true;
-                                document.getElementById("c30").disabled=true;
-                                document.getElementById("c31").disabled=true;
-                                document.getElementById("selectAll").disabled=true;
+                            function () {
                                 google.load("visualization", "1", {
-                                    packages : [ "corechart" ],
-                                    "callback" : drawChart
+                                    packages: ["corechart"],
+                                    "callback": drawChart
                                 });
                                 google.setOnLoadCallback(drawChart);
+
                                 function drawChart() {
                                     var data = new google.visualization.DataTable();
                                     data.addColumn('string',
@@ -299,16 +243,16 @@
                                         'Count');
                                     data.addRows(chartsData);
                                     var options = {
-                                        chartArea : {
-                                            width : '100%',
-                                            height : '100%'
+                                        chartArea: {
+                                            width: '100%',
+                                            height: '100%'
                                         },
-                                        forceIFrame : 'false',
-                                        is3D : 'true',
-                                        pieSliceText : 'value',
+                                        forceIFrame: 'false',
+                                        is3D: 'true',
+                                        pieSliceText: 'value',
                                         //                    sliceVisibilityThreshold: 1/20, // Only > 5% will be shown.
-                                        title : 'Program GPA allocation',
-                                        titlePosition : 'none'
+                                        title: 'Program GPA allocation',
+                                        titlePosition: 'none'
                                     };
                                     var chart = new google.visualization.PieChart(
                                         document
@@ -319,28 +263,16 @@
                 });
         $(document)
             .ready(
-                function() {
+                function () {
                     $("#GPA_Bar")
                         .click(
-                            function() {
-                                document.getElementById("c3").disabled=true;
-                                document.getElementById("c6").disabled=true;
-                                document.getElementById("c7").disabled=true;
-                                document.getElementById("c8").disabled=true;
-                                document.getElementById("c9").disabled=true;
-                                document.getElementById("c14").disabled=true;
-                                document.getElementById("c24").disabled=true;
-                                document.getElementById("c25").disabled=true;
-                                document.getElementById("c26").disabled=true;
-                                document.getElementById("c29").disabled=true;
-                                document.getElementById("c30").disabled=true;
-                                document.getElementById("c31").disabled=true;
-                                document.getElementById("selectAll").disabled=true;
+                            function () {
                                 google.load("visualization", "1", {
-                                    packages : [ "corechart" ],
-                                    "callback" : drawChart
+                                    packages: ["corechart"],
+                                    "callback": drawChart
                                 });
                                 google.setOnLoadCallback(drawChart);
+
                                 function drawChart() {
                                     var data = new google.visualization.DataTable();
                                     data.addColumn('string',
@@ -349,14 +281,14 @@
                                         'Count');
                                     data.addRows(chartsData);
                                     var options = {
-                                        chartArea : {
-                                            width : '60%',
-                                            height : '60%'
+                                        chartArea: {
+                                            width: '60%',
+                                            height: '60%'
                                         },
-                                        forceIFrame : 'false',
+                                        forceIFrame: 'false',
                                         //                    sliceVisibilityThreshold: 1/20, // Only > 5% will be shown.
-                                        title : 'Program GPA allocation',
-                                        titlePosition : 'none'
+                                        title: 'Program GPA allocation',
+                                        titlePosition: 'none'
                                     };
                                     var chart = new google.visualization.ColumnChart(
                                         document
@@ -365,6 +297,7 @@
                                 }
                             });
                 });
+
         function calGPA(array) {
             var a = 0;
             var b = 0;
@@ -401,16 +334,16 @@
             }
             var gpa = [
                 //            ['GPA=0',parseInt(zero)],
-                [ 'GPA < 1', parseInt(a) ], [ '1 <= GPA < 2', parseInt(b) ],
-                [ '2 <= GPA < 3', parseInt(c) ],
-                [ '3 <= GPA < 4', parseInt(d) ], [ 'GPA = 4', parseInt(e) ],
+                ['GPA < 1', parseInt(a)], ['1 <= GPA < 2', parseInt(b)],
+                ['2 <= GPA < 3', parseInt(c)],
+                ['3 <= GPA < 4', parseInt(d)], ['GPA = 4', parseInt(e)],
                 //            ['no GPA currently',parseInt(f)]
             ];
             return gpa;
         }
     </script>
 
-<script type="text/javascript">
+    <script type="text/javascript">
         function onToggle(ckbox) {
             if (ckbox.checked) {
                 show(ckbox.value);
@@ -418,42 +351,29 @@
                 hide(ckbox.value);
             }
         }
-        function hide(col) {
-            var thead = document.getElementsByTagName('thead');
-            if (!thead.length == 0) {
-                var thr = thead[0];
-                thr.getElementsByTagName('th')[col].style.display = 'none';
-                //thr.getElementsByTagName('th')[col].style.visibility='hidden';
-            }
-            var tr = document.getElementsByTagName('tr');
-            if (!tr.length == 0) {
-                var i;
-                for (i = 1; i < tr.length; i++) {
-                    tr[i].getElementsByTagName('td')[col].style.display = 'none';
-                    //tr[i].getElementsByTagName('td')[col].style.visibility='hidden';
-                }
-            }
-        }
+
         function show(col) {
-            var thead = document.getElementsByTagName('thead');
-            if (!thead.length == 0) {
-                var thr = thead[0];
-                thr.getElementsByTagName('th')[col].style.display = 'table-cell';
-                //thr.getElementsByTagName('th')[col].style.visibility='visible';
-            }
-            var tr = document.getElementsByTagName('tr');
-            if (!tr.length == 0) {
-                var i;
-                for (i = 1; i < tr.length; i++) {
-                    tr[i].getElementsByTagName('td')[col].style.display = 'table-cell';
-                    //tr[i].getElementsByTagName('td')[col].style.visibility='visible';
+            var table = document.getElementById("pTab");
+            if (table != null) {
+                for (var j = 0; j < table.rows.length; j++) {
+                    table.rows[j].cells[col].style.display = 'table-cell';
                 }
             }
         }
+
+        function hide(col) {
+            var table = document.getElementById("pTab");
+            if (table != null) {
+                for (var j = 0; j < table.rows.length; j++) {
+                    table.rows[j].cells[col].style.display = 'none';
+                }
+            }
+        }
+
         $(document).on(
             'click',
             'th',
-            function() {
+            function () {
                 var table = $(this).parents('table').eq(0);
                 var rows = table.find('tr:gt(0)').toArray().sort(
                     comparer($(this).index()));
@@ -463,24 +383,26 @@
                 }
                 table.children('tbody').empty().html(rows);
             });
+
         function comparer(index) {
-            return function(a, b) {
+            return function (a, b) {
                 var valA = getCellValue(a, index), valB = getCellValue(b, index);
                 return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA
                     .localeCompare(valB);
             };
         }
+
         function getCellValue(row, index) {
             return $(row).children('td').eq(index).text();
         }
     </script>
 
-<script type="text/javascript">
+    <script type="text/javascript">
         function drawProgramTable(pTable, cTable) {
             if (pTable.length == 0) {
                 return;
             }
-            if (cTable.length == 0){
+            if (cTable.length == 0) {
                 return;
             }
             var table = document.createElement("table");
@@ -505,11 +427,12 @@
             document.getElementById("div1").append(description);
             document.getElementById("div1").appendChild(table);
         }
+
         function calculate(courseTab, programTable) {
             if (courseTab.length == 0) {
                 return;
             }
-            if (programTable.length == 0){
+            if (programTable.length == 0) {
                 return;
             }
             var exist = false;
@@ -533,7 +456,7 @@
                 exist = false;
             }
             chartsData = calGPA(getChartData(programTab));
-            var message = "<br />" + "The following students are not enrolled in any program: ";
+            var message = "<br />" + "Following students are not in program: ";
             for (i = 1; i < courseTab[0].length; i++) {
                 message += ("<br />" + courseTab[0][i][0]
                     + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + courseTab[0][i][1]
@@ -544,19 +467,6 @@
         }
 
         function resetTable() {
-            document.getElementById("c3").disabled=false;
-            document.getElementById("c6").disabled=false;
-            document.getElementById("c7").disabled=false;
-            document.getElementById("c8").disabled=false;
-            document.getElementById("c9").disabled=false;
-            document.getElementById("c14").disabled=false;
-            document.getElementById("c24").disabled=false;
-            document.getElementById("c25").disabled=false;
-            document.getElementById("c26").disabled=false;
-            document.getElementById("c29").disabled=false;
-            document.getElementById("c30").disabled=false;
-            document.getElementById("c31").disabled=false;
-            document.getElementById("selectAll").disabled=false;
             var programTab = document.getElementById("pTab");
             document.getElementById("piechart").innerHTML = '';
             document.getElementById("div1").appendChild(programTab);
@@ -574,6 +484,7 @@
             }
             return charData;
         }
+
         function combine(rows, combArr) {
             var stuTab = [];
             for (var i = 0; i < rows.length; i++) {
@@ -611,8 +522,25 @@
                     stuTab.push(stuinfo);
                 }
             }
+            for (i = 0; i < stuTab.length; i++) {
+                for (j = 0; j < combArr.length; j++) {
+                    if (combArr[j] == 24 || combArr[j] == 25 || combArr[j] == 26 || combArr[j] == 29
+                        || combArr[j] == 30) {
+                        continue;
+                    }
+
+                    var termArr = stuTab[i][combArr[j]].split(",");
+                    var term = '';
+                    for (k = 0; k < termArr.length; k++) {
+                        term += termArr[k] + "<br />";
+                    }
+                    stuTab[i][combArr[j]] = term;
+                }
+            }
+
             return stuTab;
         }
+
         function contains(value, arr) {
             var i = arr.length;
             while (i--) {
@@ -622,6 +550,7 @@
             }
             return false;
         }
+
         function containsTable(table, tables) {
             var result = true;
             var file_not_equal = 0;
@@ -650,32 +579,25 @@
         }
     </script>
 
-<script type="text/javascript">
-        function hideALL() {
-            var thead = document.getElementsByTagName('thead');
-            var thr = thead[0];
-            var j;
-            for (j = 0; j < 32; j++) {
-                if (hideColum.indexOf(j) >= 0) {
-                    thr.getElementsByTagName('th')[j].style.display = 'none';
-                    //thr.getElementsByTagName('th')[j].style.visibility='hidden';
-                }
+    <script type="text/javascript">
+        function hideALL(courseTab, programTable) {
+            if (courseTab.length == 0) {
+                return;
             }
-            var tr = document.getElementsByTagName('tr');
-            var i;
-            for (i = 1; i < tr.length; i++) {
-                var j;
-                for (j = 0; j < 32; j++) {
-                    if (hideColum.indexOf(j) >= 0) {
-                        tr[i].getElementsByTagName('td')[j].style.display = 'none';
-                        //tr[i].getElementsByTagName('td')[j].style.visibility='hidden';
-                    }
+            if (programTable.length == 0) {
+                return;
+            }
+            alert("both table");
+            var table = document.getElementById("pTab");
+            for (var i = 0; i < table.rows.length; i++) {
+                for (var j = 0; j < hideColum.length; j++) {
+                    table.rows[i].cells[hideColum[j]].style.display = 'none';
                 }
             }
         }
     </script>
 
-<script type="text/javascript">
+    <script type="text/javascript">
         function ckboxAll(ckbox) {
             var checkboxes = document.getElementsByName("xxx");
             for (var i = 0; i < checkboxes.length; i++) {
@@ -687,6 +609,7 @@
                 }
             }
         }
+
         function uncheckAll() {
             var checkboxes = document.getElementsByName("xxx");
             for (var i = 0; i < checkboxes.length; i++) {
@@ -695,121 +618,186 @@
         }
     </script>
 
-<script>
-// show or hide header
-    function toggle(id) {
-        var state = document.getElementById(id).style.display;
-            if (state == 'none') {
-                document.getElementById(id).style.display = 'block';
-            } else {
+    <script>
+        // show or hide header
+        function toggle(id) {
+            var state = document.getElementById(id).style.display;
+            if (state == 'block') {
                 document.getElementById(id).style.display = 'none';
+            } else {
+                document.getElementById(id).style.display = 'block';
             }
         }
-</script>
+    </script>
+
+    <script type="text/javascript" src="./html2canvas.js"></script>
+    <script type="text/javascript" src="./jsPdf.debug.js"></script>
+    <script type="text/javascript">
+        function downLoadPDF() {
+            document.getElementById("header_pdf").style.display = 'block';
+            var emailAdd = document.getElementById("c31");
+            emailAdd.checked = false;
+            var table = document.getElementById("pTab");
+            hideEmail(table);
+            html2canvas(document.getElementById("pdf_file"), {
+                onrendered: function (canvas) {
+
+                    var contentWidth = canvas.width;
+                    var contentHeight = canvas.height;
+
+                    var pageHeight = contentWidth / 592.28 * 841.89;
+                    var leftHeight = contentHeight;
+                    var position = 0;
+                    var imgWidth = 595.28;
+                    var imgHeight = 592.28 / contentWidth * contentHeight;
+
+                    var pageData = canvas.toDataURL('image/jpeg', 1.0);
+
+                    var pdf = new jsPDF('', 'pt', 'a4');
+
+                    if (leftHeight < pageHeight) {
+                        pdf.addImage(pageData, 'JPEG', 0, 0, imgWidth, imgHeight);
+                    } else {
+                        while (leftHeight > 0) {
+                            pdf.addImage(pageData, 'JPEG', 0, position, imgWidth, imgHeight)
+                            leftHeight -= pageHeight;
+                            position -= 841.89;
+
+                            if (leftHeight > 0) {
+                                pdf.addPage();
+                            }
+                        }
+                    }
+
+                    pdf.save('content.pdf');
+                },
+                background: "#fff",
+            })
+            document.getElementById("header_pdf").style.display = 'none';
+        }
+    </script>
+    <script type="text/javascript">
+        function hideEmail(table) {
+            for (var i = 0; i < table.rows.length; i++) {
+                table.rows[i].cells[31].style.display = 'none';
+            }
+        }
+    </script>
 
 </head>
 <body>
 
-	<div class="container">
-		<header>
+<div class="container">
+    <header>
         <?php include("header.php"); ?>
         - Course Analysis
     </header>
-		<section class="content">
-			<div class="main">
+    <section class="content">
+        <div class="main">
 
-				<div class="file_upload">
-					<div class="row">
-						<div class="cell">
-							<p class="singles">
-								Upload a program file: <input type="file" id="file1" /> <input
-									type="button" id="upload1" value="Upload"
-									style="visibility: hidden; width: 1em" /> Upload a course file:
-								<input type="file" id="file2" /> <input type="button"
-									id="upload2" value="Upload"
-									style="visibility: hidden; width: 1em" /> | <a
-									href="programanalysis.php">Go to Program Analysis</a>
-							</p>
-						</div>
-					</div>
-				</div>
+            <div class="file_upload">
+                <div class="row">
+                    <div class="cell">
+                        <p class="singles">
+                            Upload a program file: <input type="file" id="file1"/> <input
+                                    type="button" id="upload1" value="Upload"
+                                    style="visibility: hidden; width: 1em"/> Upload a course file:
+                            <input type="file" id="file2"/> <input type="button"
+                                                                   id="upload2" value="Upload"
+                                                                   style="visibility: hidden; width: 1em"/> | <a
+                                    href="programanalysis.php">Go to Program Analysis</a>
+                            <button id="renderPDF" class="button"
+                                    onclick="downLoadPDF()">
+                                Download PDF
+                            </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-				<div class="top_display">
-					<div class="row">
-						<div class="cell40">
-							<p class="singles">Select which columns to display:</p>
-							<div class="checkboxes">
-								<div class="row">
-									<div class="cell33">
-										<input type="checkbox" id="c3" name="xxx"
-											onclick="onToggle(this);" value="3" />Academic Career <br />
-										<br /> <input type="checkbox" id="c6" name="xxx"
-											onclick="onToggle(this);" value="6" />Term <br /> <br /> <input
-											type="checkbox" id="c7" name="xxx" onclick="onToggle(this);"
-											value="7" />Program Code <br /> <br /> <input type="checkbox"
-											id="c8" name="xxx" onclick="onToggle(this);" value="8" />Academic
-										Plan <br /> <br /> <input type="checkbox" id="selectAll"
-											name="all" onclick="ckboxAll(this);" value="All" /><em>Select
-											All</em>
-									</div>
-									<div class="cell33">
-										<input type="checkbox" id="c9" name="xxx"
-											onclick="onToggle(this);" value="9" />Admit Term <br /> <br />
-										<input type="checkbox" id="c14" name="xxx"
-											onclick="onToggle(this);" value="14" />Catalogue Number <br />
-										<br /> <input type="checkbox" id="c24" name="xxx"
-											onclick="onToggle(this);" value="24" />Program GPA <br /> <br />
-										<input type="checkbox" id="c25" name="xxx"
-											onclick="onToggle(this);" value="25" />Total Units Attempted
-									</div>
-									<div class="cell33">
-										<input type="checkbox" id="c26" name="xxx"
-											onclick="onToggle(this);" value="26" />Total Units Passed <br />
-										<br /> <input type="checkbox" id="c29" name="xxx"
-											onclick="onToggle(this);" value="29" />Total Units Credit <br />
-										<br /> <input type="checkbox" id="c30" name="xxx"
-											onclick="onToggle(this);" value="30" />Cumulative Units <br />
-										<br /> <input type="checkbox" id="c31" name="xxx"
-											onclick="onToggle(this);" value="31" />Student Email Address
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="cell30">
-							<p class="singles">Visualise data:</p>
-							<input type="button" id="GPA_Pie" value="GPA pie chart">&nbsp;&nbsp;<input
-								type="button" id="GPA_Bar" value="GPA bar chart">
-						</div>
-						<div class="cell30">
-							<p class="singles">Reset views:</p>
-							<input type="submit" value="Clear charts" id="lowbound"
-								onclick="resetTable()">
-						</div>
+            <div class="top_display">
+                <div class="row">
+                    <div class="cell40">
+                        <p class="singles">Select which columns to display:</p>
+                        <div class="checkboxes">
+                            <div class="row">
+                                <div class="cell33">
+                                    <input type="checkbox" id="c3" name="xxx"
+                                           onclick="onToggle(this);" value="3"/>Academic Career <br/>
+                                    <br/> <input type="checkbox" id="c6" name="xxx"
+                                                 onclick="onToggle(this);" value="6"/>Term <br/> <br/> <input
+                                            type="checkbox" id="c7" name="xxx" onclick="onToggle(this);"
+                                            value="7"/>Program Code <br/> <br/> <input type="checkbox"
+                                                                                       id="c8" name="xxx"
+                                                                                       onclick="onToggle(this);" value="8"/>Academic
+                                    Plan <br/> <br/> <input type="checkbox" id="selectAll"
+                                                            name="all" onclick="ckboxAll(this);" value="All"/><em>Select
+                                        All</em>
+                                </div>
+                                <div class="cell33">
+                                    <input type="checkbox" id="c9" name="xxx"
+                                           onclick="onToggle(this);" value="9"/>Admit Term <br/> <br/>
+                                    <input type="checkbox" id="c14" name="xxx"
+                                           onclick="onToggle(this);" value="14"/>Catalogue Number <br/>
+                                    <br/> <input type="checkbox" id="c24" name="xxx"
+                                                 onclick="onToggle(this);" value="24"/>Program GPA <br/> <br/>
+                                    <input type="checkbox" id="c25" name="xxx"
+                                           onclick="onToggle(this);" value="25"/>Total Units Attempted
+                                </div>
+                                <div class="cell33">
+                                    <input type="checkbox" id="c26" name="xxx"
+                                           onclick="onToggle(this);" value="26"/>Total Units Passed <br/>
+                                    <br/> <input type="checkbox" id="c29" name="xxx"
+                                                 onclick="onToggle(this);" value="29"/>Total Units Credit <br/>
+                                    <br/> <input type="checkbox" id="c30" name="xxx"
+                                                 onclick="onToggle(this);" value="30"/>Cumulative Units <br/>
+                                    <br/> <input type="checkbox" id="c31" name="xxx"
+                                                 onclick="onToggle(this);" value="31"/>Student Email Address
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cell30">
+                        <p class="singles">Visualise data:</p>
+                        <input type="button" id="GPA_Pie" value="GPA pie chart">&nbsp;&nbsp;<input
+                                type="button" id="GPA_Bar" value="GPA bar chart">
+                    </div>
+                    <div class="cell30">
+                        <p class="singles">Reset filters:</p>
+                        <input type="submit" value="Reset filters" id="lowbound"
+                               onclick="resetTable()">
+                    </div>
 
-					</div>
+                </div>
 
-				</div>
+            </div>
 
-				<p></p>
-				<div id="piechart"></div>
-				<p></p>
-				<div id="show_header">
-					<p>
-						<input type="button" onclick="toggle('file_header')"
-							value="Show or hide header of the uploaded file">
-					</p>
-				</div>
-				<div id="file_header"></div>
-				<p></p>
-				<div id="div1"></div>
-				<div id="div2">
-					<span id="text"></span>
-				</div>
-			</div>
-		</section>
-		<footer id="footer">
+            <p></p>
+            <div id="pdf_file">
+                <header id="header_pdf" style="display: none">
+                    <?php include("header.php"); ?>
+                    - Course Analysis
+                </header>
+                <div id="piechart"></div>
+                <p></p>
+                <div id="show_header">
+                    <p>
+                        <input type="button" onclick="toggle('file_header')"
+                               value="Show or hide header of the uploaded file">
+                    </p>
+                </div>
+                <div id="file_header"></div>
+                <p></p>
+                <div id="div1"></div>
+                <div id="div2" style="text-align: center">
+                    <span id="text"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer id="footer">
         <?php include("footer.php"); ?>
     </footer>
-	</div>
+</div>
 </body>
 </html>
