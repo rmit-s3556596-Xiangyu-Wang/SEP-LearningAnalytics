@@ -45,7 +45,7 @@
                                 var preader = new FileReader();
                                 preader.readAsText($("#file1")[0].files[0]);
                                 preader.onload = function (e) {
-                                    var rows = e.target.result.split("\n");
+                                    var rows = e.target.result.split("\r");
                                     var thcells = rows[5].split(",");
                                     for (var i = 0; i < thcells.length; i++) {
                                         tableCells.push(thcells[i]);
@@ -54,12 +54,12 @@
                                     tableCells = [];
 
                                     for (i = 0; i < 5; i++) {
-                                    	 var lines = rows[i].split("\r");
-                                         var sline = '';
-                                         for (j=0; j<lines.length; j++) {
-                                             sline+= lines[j] + ",";
-                                         }
-                                         var line = sline.split(',');
+                                        var lines = rows[i].split("\r");
+                                        var sline = '';
+                                        for (j=0; j<lines.length; j++) {
+                                            sline+= lines[j] + ",";
+                                        }
+                                        var line = sline.split(',');
                                         var header_line = [];
                                         for (j = 0; j < line.length; j++) {
                                             header_line.push(line[j]);
@@ -143,7 +143,7 @@
                                 var creader = new FileReader();
                                 creader.readAsText($("#file2")[0].files[0]);
                                 creader.onload = function (e) {
-                                    var rows = e.target.result.split("\n");
+                                    var rows = e.target.result.split("\r");
                                     var thcells = rows[5].split(",");
                                     for (var i = 0; i < thcells.length; i++) {
                                         tableCells.push(thcells[i]);
@@ -152,12 +152,12 @@
                                     tableCells = [];
 
                                     for (i = 0; i < 6; i++) {
-                                    	 var lines = rows[i].split("\r");
-                                         var sline = '';
-                                         for (j=0; j<lines.length; j++) {
-                                             sline+= lines[j] + ",";
-                                         }
-                                         var line = sline.split(',');
+                                        var lines = rows[i].split("\r");
+                                        var sline = '';
+                                        for (j=0; j<lines.length; j++) {
+                                            sline+= lines[j] + ",";
+                                        }
+                                        var line = sline.split(',');
                                         var header_line = [];
                                         for (j = 0; j < line.length; j++) {
                                             header_line.push(line[j]);
@@ -595,7 +595,6 @@
             if (programTable.length == 0) {
                 return;
             }
-            alert("both table");
             var table = document.getElementById("pTab");
             for (var i = 0; i < table.rows.length; i++) {
                 for (var j = 0; j < hideColum.length; j++) {
@@ -708,12 +707,12 @@
                     <div class="cell">
                         <p class="singles">
                             Upload a program file: <input type="file" id="file1"/> <input
-                                    type="button" id="upload1" value="Upload"
-                                    style="visibility: hidden; width: 1em"/> Upload a course file:
+                                type="button" id="upload1" value="Upload"
+                                style="visibility: hidden; width: 1em"/> Upload a course file:
                             <input type="file" id="file2"/> <input type="button"
                                                                    id="upload2" value="Upload"
                                                                    style="visibility: hidden; width: 1em"/> | <a
-                                    href="programanalysis.php">Go to Program Analysis</a>
+                                href="programanalysis.php">Go to Program Analysis</a>
                             <button id="renderPDF" class="button"
                                     onclick="downLoadPDF()">
                                 Download PDF
@@ -734,13 +733,13 @@
                                            onclick="onToggle(this);" value="3"/>Academic Career <br/>
                                     <br/> <input type="checkbox" id="c6" name="xxx"
                                                  onclick="onToggle(this);" value="6"/>Term <br/> <br/> <input
-                                            type="checkbox" id="c7" name="xxx" onclick="onToggle(this);"
-                                            value="7"/>Program Code <br/> <br/> <input type="checkbox"
-                                                                                       id="c8" name="xxx"
-                                                                                       onclick="onToggle(this);" value="8"/>Academic
+                                        type="checkbox" id="c7" name="xxx" onclick="onToggle(this);"
+                                        value="7"/>Program Code <br/> <br/> <input type="checkbox"
+                                                                                   id="c8" name="xxx"
+                                                                                   onclick="onToggle(this);" value="8"/>Academic
                                     Plan <br/> <br/> <input type="checkbox" id="selectAll"
                                                             name="all" onclick="ckboxAll(this);" value="All"/><em>Select
-                                        All</em>
+                                    All</em>
                                 </div>
                                 <div class="cell33">
                                     <input type="checkbox" id="c9" name="xxx"
@@ -768,7 +767,7 @@
                     <div class="cell30">
                         <p class="singles">Visualise data:</p>
                         <input type="button" id="GPA_Pie" value="GPA pie chart">&nbsp;&nbsp;<input
-                                type="button" id="GPA_Bar" value="GPA bar chart">
+                            type="button" id="GPA_Bar" value="GPA bar chart">
                     </div>
                     <div class="cell30">
                         <p class="singles">Reset filters:</p>
