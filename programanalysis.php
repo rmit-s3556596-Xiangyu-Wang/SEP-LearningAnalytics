@@ -51,7 +51,7 @@
 //                            table.append(tHead);
                             //start
                             for (i = 0; i < 5; i++) {
-                                var lines = rows[i].split("\r\n");
+                                var lines = rows[i].split("\r");
                                 var sline = '';
                                 for (j=0; j<lines.length; j++) {
                                     sline+= lines[j] + ",";
