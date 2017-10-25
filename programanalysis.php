@@ -38,7 +38,7 @@
                             if (!contains(table.id, allTables)) {
                                 allTables.push(table.id);
                             }
-                            var rows = e.target.result.split("\n");
+                            var rows = e.target.result.split("\r");
                             var tHead = table.createTHead();
                             var theadtr = tHead.insertRow();
                             var thcells = rows[5].split(",");
@@ -385,6 +385,12 @@
             var stuNum = 0;
             var addcolumn = false;
             for (var i = 1; i < rows.length - 1; i++) {
+                if (contains(",", rows[i][0])){
+                    break;
+                }
+                if (rows[i][0].trim() == ''){
+                    break;
+                }
                 var stucells = rows[i].split(",");
                 var stuinfo = [];
                 for (var j = 0; j < stucells.length; j++) {
