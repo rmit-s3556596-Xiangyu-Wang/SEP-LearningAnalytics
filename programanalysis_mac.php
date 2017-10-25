@@ -952,7 +952,7 @@
                         }
                     }
 
-                    pdf.save('content.pdf');
+                    pdf.save('Learning Analytics-program.pdf');
                 },
                 background: "#fff",
             })
@@ -981,7 +981,7 @@
                             Start by uploading a file: <input type="file" id="fileUpload"/>
                             <input type="button" class="upload" id="upload" value="Upload"
                                    style="visibility: hidden; width: 1em"/> | <a
-                                href="courseanalysis.php">Go to Course Analysis</a>
+                                href="courseanalysis_mac.php">Go to Course Analysis</a>
                             <button id="renderPDF" class="button"
                                     onclick="downLoadPDF()">
                                 Download PDF
@@ -1011,7 +1011,7 @@
                                     Term Courses <br/> <br/><input type="checkbox" id="selectAll"
                                                                    name="xxx" onclick="ckboxAll(this);"
                                                                    value="All"/><em>Select
-                                    All</em>
+                                        All</em>
                                 </div>
                                 <div class="cell33">
                                     <input type="checkbox" id="c9" name="xxx"
@@ -1098,6 +1098,8 @@
             <p></p>
             <div id="pdf_file">
                 <header id="header_pdf" style="display: none"><?php include("header.php"); ?> - Program Analysis</header>
+                <br />
+                <br />
                 <div class="chartarea" id="piechart"></div>
                 <p></p>
                 <div id="show_header">
