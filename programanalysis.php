@@ -6,7 +6,7 @@
     <title><?php include("header.php"); ?> - Program Analysis</title>
 
     <script type="text/javascript"
-            src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
 
@@ -54,10 +54,10 @@
                             for (i = 0; i < 5; i++) {
                                 var lines = rows[i].split("\r");
                                 var sline = '';
-                                for (j = 0; j < lines.length;j ++){
-                                    sline += lines[j] + ",";
+                                for (j=0; j<lines.length; j++) {
+                                    sline+= lines[j] + ",";
                                 }
-                                var line = sline.split(",");
+                                var line = sline.split(',');
                                 var header_line = [];
                                 for (j = 0; j < line.length; j++) {
                                     header_line.push(line[j]);
@@ -358,7 +358,7 @@
             var table = $(this).parents('table').eq(0);
             var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()));
             this.asc = !this.asc;
-            if (this.asc) {
+            if (!this.asc) {
                 rows = rows.reverse();
             }
             table.children('tfoot').empty().html(rows);
@@ -386,9 +386,6 @@
             var addcolumn = false;
             for (var i = 1; i < rows.length - 1; i++) {
                 if (contains(",", rows[i][0])){
-                    break;
-                }
-                if (rows[i][0].trim() == ''){
                     break;
                 }
                 var stucells = rows[i].split(",");
@@ -981,7 +978,7 @@
                             Start by uploading a file: <input type="file" id="fileUpload"/>
                             <input type="button" class="upload" id="upload" value="Upload"
                                    style="visibility: hidden; width: 1em"/> | <a
-                                href="courseanalysis.php">Go to Course Analysis</a>
+                                    href="courseanalysis.php">Go to Course Analysis</a>
                             <button id="renderPDF" class="button"
                                     onclick="downLoadPDF()">
                                 Download PDF
@@ -1002,16 +999,16 @@
                                            onclick="onToggle(this);" value="3"/>Academic Career <br/>
                                     <br/> <input type="checkbox" id="c6" name="xxx"
                                                  onclick="onToggle(this);" value="6"/>Term <br/> <br/> <input
-                                        type="checkbox" id="c7" name="xxx" onclick="onToggle(this);"
-                                        value="7"/>Program Code <br/> <br/> <input type="checkbox"
-                                                                                   id="c8" name="xxx"
-                                                                                   onclick="onToggle(this);" value="8"/>Academic
+                                            type="checkbox" id="c7" name="xxx" onclick="onToggle(this);"
+                                            value="7"/>Program Code <br/> <br/> <input type="checkbox"
+                                                                                       id="c8" name="xxx"
+                                                                                       onclick="onToggle(this);" value="8"/>Academic
                                     Plan <br/> <br/> <input type="checkbox"
                                                             id="c32" name="xxx" onclick="onToggle(this);" value="32"/>Final
                                     Term Courses <br/> <br/><input type="checkbox" id="selectAll"
                                                                    name="xxx" onclick="ckboxAll(this);"
                                                                    value="All"/><em>Select
-                                    All</em>
+                                        All</em>
                                 </div>
                                 <div class="cell33">
                                     <input type="checkbox" id="c9" name="xxx"
@@ -1042,7 +1039,7 @@
                         <p class="smalls">Students who took a particular course:</p>
                         <input type="text" name="courseID" id="course_id"
                                placeholder="Course number (e.g., 1114)">&nbsp; <input
-                            type="submit" value="Filter" onclick="createCourseTab()">
+                                type="submit" value="Filter" onclick="createCourseTab()">
                         <p></p>
                         <p class="smalls">Students who studied over a particular number
                             of terms greater or equal to:</p>
@@ -1054,15 +1051,15 @@
                             or equal to:</p>
                         <input type="text" name="num_of_term" id="total_unit_pass"
                                placeholder="Number of total units passed">&nbsp; <input
-                            type="submit" value="Filter" onclick="createUnitPassTab()">
+                                type="submit" value="Filter" onclick="createUnitPassTab()">
                         <p></p>
                         <p class="smalls">Students who took a particular course during a
                             particular term:</p>
                         <input type="text" name="num_of_term" id="catalog_number"
                                placeholder="Course number (e.g., 1114)">&nbsp;<input
-                            type="text" name="num_of_term" id="term_number"
-                            placeholder="Term number (e.g., 1750):">&nbsp; <input
-                            type="submit" value="Filter" onclick="createTermCourseTab()">
+                                type="text" name="num_of_term" id="term_number"
+                                placeholder="Term number (e.g., 1750):">&nbsp; <input
+                                type="submit" value="Filter" onclick="createTermCourseTab()">
                         <p></p>
                         <p></p>
                         <div class="centerbutton">
