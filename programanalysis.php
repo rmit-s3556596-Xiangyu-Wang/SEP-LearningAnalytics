@@ -5,8 +5,7 @@
     <link rel="stylesheet" href="css.css" type="text/css"/>
     <title><?php include("header.php"); ?> - Program Analysis</title>
 
-    <script type="text/javascript"
-            src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
 
@@ -38,7 +37,7 @@
                             if (!contains(table.id, allTables)) {
                                 allTables.push(table.id);
                             }
-                            var rows = e.target.result.split("\n");
+                            var rows = e.target.result.split("\r");
                             var tHead = table.createTHead();
                             var theadtr = tHead.insertRow();
                             var thcells = rows[5].split(",");
@@ -52,7 +51,12 @@
 //                            table.append(tHead);
                             //start
                             for (i = 0; i < 5; i++) {
-                                var line = rows[i].split(",");
+                                var lines = rows[i].split("\r");
+                                var sline = '';
+                                for (j=0; j<lines.length; j++) {
+                                    sline+= lines[j] + ",";
+                                }
+                                var line = sline.split(',');
                                 var header_line = [];
                                 for (j = 0; j < line.length; j++) {
                                     header_line.push(line[j]);

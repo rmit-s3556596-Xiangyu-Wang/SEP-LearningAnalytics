@@ -54,7 +54,12 @@
                                     tableCells = [];
 
                                     for (i = 0; i < 5; i++) {
-                                        var line = rows[i].split(",");
+                                    	 var lines = rows[i].split("\r");
+                                         var sline = '';
+                                         for (j=0; j<lines.length; j++) {
+                                             sline+= lines[j] + ",";
+                                         }
+                                         var line = sline.split(',');
                                         var header_line = [];
                                         for (j = 0; j < line.length; j++) {
                                             header_line.push(line[j]);
@@ -147,7 +152,12 @@
                                     tableCells = [];
 
                                     for (i = 0; i < 6; i++) {
-                                        var line = rows[i].split(",");
+                                    	 var lines = rows[i].split("\r");
+                                         var sline = '';
+                                         for (j=0; j<lines.length; j++) {
+                                             sline+= lines[j] + ",";
+                                         }
+                                         var line = sline.split(',');
                                         var header_line = [];
                                         for (j = 0; j < line.length; j++) {
                                             header_line.push(line[j]);
@@ -250,7 +260,6 @@
                                         forceIFrame: 'false',
                                         is3D: 'true',
                                         pieSliceText: 'value',
-                                        //                    sliceVisibilityThreshold: 1/20, // Only > 5% will be shown.
                                         title: 'Program GPA allocation',
                                         titlePosition: 'none'
                                     };
@@ -286,7 +295,6 @@
                                             height: '60%'
                                         },
                                         forceIFrame: 'false',
-                                        //                    sliceVisibilityThreshold: 1/20, // Only > 5% will be shown.
                                         title: 'Program GPA allocation',
                                         titlePosition: 'none'
                                     };
