@@ -22,9 +22,9 @@
 			<div class="main">
 				<div class="middle">
 					<h1>
-						Enter <a href="programanalysis.php">Program Analysis</a> or <a
-							href="courseanalysis.php">Course Analysis</a> page
-					</h1>
+						Enter Program Analysis <a href="programanalysis.php">Windows</a>/<a href="programanalysis_.php">Mac OS</a> page<br/>
+                        &nbsp;&nbsp;or Course Analysis <a href="courseanalysis.php">Windows</a>/<a href="courseanalysis_mac.php">Mac OS</a> page
+                    </h1>
 				</div>
 			</div>
 		</section>
