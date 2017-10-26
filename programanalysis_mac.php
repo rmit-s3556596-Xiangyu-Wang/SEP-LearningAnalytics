@@ -456,7 +456,7 @@
                     addcolumn = false;
                 }
             }
-            alert(stuTab.length);
+
             for (i = 0; i < stuTab.length; i ++){
                 for (j = 0; j < ckboxArr.length; j ++) {
                     if (ckboxArr[j] == 24 || ckboxArr[j] == 25 || ckboxArr[j] == 26 || ckboxArr[j] == 29

@@ -461,12 +461,19 @@
                         continue;
                     }
 
-                    var termArr = stuTab[i][ckboxArr[j]].split(",");
-                    var term = '';
-                    for (k = 0; k < termArr.length; k++) {
-                        term += termArr[k] + "<br />";
+                    if (rows.length - stuTab.length > 2) {
+                        //alert("contains2");
+                        var termArr = stuTab[i][ckboxArr[j]].split(",");
+                        var term = '';
+                        for (k = 0; k < termArr.length; k++) {
+                            term += termArr[k] + "<br />";
+                        }
+                        stuTab[i][ckboxArr[j]] = term;
+                    }else {
+                        for (j = 0; j < stuTab.length; j ++){
+                            stuTab[j][32] = stuTab[j][14];
+                        }
                     }
-                    stuTab[i][ckboxArr[j]] = term;
                 }
             }
 
