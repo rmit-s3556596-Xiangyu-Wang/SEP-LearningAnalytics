@@ -713,10 +713,7 @@
                                                                    id="upload2" value="Upload"
                                                                    style="visibility: hidden; width: 1em"/> | <a
                                 href="programanalysis_mac.php">Go to Program Analysis</a>
-                            <button id="renderPDF" class="button"
-                                    onclick="downLoadPDF()">
-                                Download PDF
-                            </button>
+                            
                         </p>
                     </div>
                 </div>
@@ -801,6 +798,11 @@
                 <div id="div2" style="text-align: center">
                     <span id="text"></span>
                 </div>
+                <p></p>
+                <button id="renderPDF" class="button"
+                                    onclick="downLoadPDF()">
+                                Download PDF
+                            </button>
             </div>
         </div>
     </section>
