@@ -388,9 +388,6 @@
                 if (contains(",", rows[i][0])){
                     break;
                 }
-                if (rows[i][0].trim() == ''){
-                    break;
-                }
                 var stucells = rows[i].split(",");
                 var stuinfo = [];
                 for (var j = 0; j < stucells.length; j++) {
