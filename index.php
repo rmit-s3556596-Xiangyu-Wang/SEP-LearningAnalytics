@@ -28,11 +28,6 @@
 <!--        if (navigator.appVersion.indexOf("Linux")!=-1) OSName="Linux";-->
 <!--    </script>-->
 
-    <script type="text/javascript">
-        var isMac = (navigator.platform.indexOf("MacPPC") != -1) ? true : false;
-        if(isMac) location.href = "index_mac.php";
-        else location.href = "index.php";
-    </script>
 </head>
 <body>
 	<div class="container">
