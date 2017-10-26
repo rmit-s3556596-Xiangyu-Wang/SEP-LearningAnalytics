@@ -456,7 +456,7 @@
                     addcolumn = false;
                 }
             }
-
+            alert(stuTab.length);
             for (i = 0; i < stuTab.length; i ++){
                 for (j = 0; j < ckboxArr.length; j ++) {
                     if (ckboxArr[j] == 24 || ckboxArr[j] == 25 || ckboxArr[j] == 26 || ckboxArr[j] == 29
@@ -464,12 +464,21 @@
                         continue;
                     }
 
-                    var termArr = stuTab[i][ckboxArr[j]].split(",");
-                    var term = '';
-                    for (k = 0; k < termArr.length; k++) {
-                        term += termArr[k] + "<br />";
+                    //alert(stuTab[i][ckboxArr[j]].length);
+                    //alert("contains1");
+                    if (rows.length - stuTab.length > 2) {
+                        //alert("contains2");
+                        var termArr = stuTab[i][ckboxArr[j]].split(",");
+                        var term = '';
+                        for (k = 0; k < termArr.length; k++) {
+                            term += termArr[k] + "<br />";
+                        }
+                        stuTab[i][ckboxArr[j]] = term;
+                    }else {
+                        for (j = 0; j < stuTab.length; j ++){
+                            stuTab[j][32] = stuTab[j][14];
+                        }
                     }
-                    stuTab[i][ckboxArr[j]] = term;
                 }
             }
 
@@ -991,7 +1000,7 @@
                             Start by uploading a file: <input type="file" id="fileUpload"/>
                             <input type="button" class="upload" id="upload" value="Upload"
                                    style="visibility: hidden; width: 1em"/> | <a
-                                href="courseanalysis_mac.php">Go to Course Analysis</a>
+                                    href="courseanalysis_mac.php">Go to Course Analysis</a>
 
                         </p>
                     </div>
@@ -1009,10 +1018,10 @@
                                            onclick="onToggle(this);" value="3"/>Academic Career <br/>
                                     <br/> <input type="checkbox" id="c6" name="xxx"
                                                  onclick="onToggle(this);" value="6"/>Term <br/> <br/> <input
-                                        type="checkbox" id="c7" name="xxx" onclick="onToggle(this);"
-                                        value="7"/>Program Code <br/> <br/> <input type="checkbox"
-                                                                                   id="c8" name="xxx"
-                                                                                   onclick="onToggle(this);" value="8"/>Academic
+                                            type="checkbox" id="c7" name="xxx" onclick="onToggle(this);"
+                                            value="7"/>Program Code <br/> <br/> <input type="checkbox"
+                                                                                       id="c8" name="xxx"
+                                                                                       onclick="onToggle(this);" value="8"/>Academic
                                     Plan <br/> <br/> <input type="checkbox"
                                                             id="c32" name="xxx" onclick="onToggle(this);" value="32"/>Final
                                     Term Courses <br/> <br/><input type="checkbox" id="selectAll"
@@ -1049,7 +1058,7 @@
                         <p class="smalls">Students who took a particular course:</p>
                         <input type="text" name="courseID" id="course_id"
                                placeholder="Course number (e.g., 1114)">&nbsp; <input
-                            type="submit" value="Filter" onclick="createCourseTab()">
+                                type="submit" value="Filter" onclick="createCourseTab()">
                         <p></p>
                         <p class="smalls">Students who studied over a particular number
                             of terms greater or equal to:</p>
@@ -1061,15 +1070,15 @@
                             or equal to:</p>
                         <input type="text" name="num_of_term" id="total_unit_pass"
                                placeholder="Number of total units passed">&nbsp; <input
-                            type="submit" value="Filter" onclick="createUnitPassTab()">
+                                type="submit" value="Filter" onclick="createUnitPassTab()">
                         <p></p>
                         <p class="smalls">Students who took a particular course during a
                             particular term:</p>
                         <input type="text" name="num_of_term" id="catalog_number"
                                placeholder="Course number (e.g., 1114)">&nbsp;<input
-                            type="text" name="num_of_term" id="term_number"
-                            placeholder="Term number (e.g., 1750):">&nbsp; <input
-                            type="submit" value="Filter" onclick="createTermCourseTab()">
+                                type="text" name="num_of_term" id="term_number"
+                                placeholder="Term number (e.g., 1750):">&nbsp; <input
+                                type="submit" value="Filter" onclick="createTermCourseTab()">
                         <p></p>
                         <p></p>
                         <div class="centerbutton">
