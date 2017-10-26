@@ -12,7 +12,7 @@
     </script>
     <script type="text/javascript">
         var isChrome = navigator.userAgent.toLowerCase().match(/chrome/) != null;
-        var message = "It is recommended that you use the Google Chrome browser to get best experience!";
+        var message = "It is recommended that you use Google Chrome browser for the best experience!";
         var isIE = window.ActiveXObject != undefined && ua.indexOf("MSIE") != -1;
     </script>
     <script>
