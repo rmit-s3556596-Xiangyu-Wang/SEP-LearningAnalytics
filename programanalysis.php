@@ -980,10 +980,7 @@
                             <input type="button" class="upload" id="upload" value="Upload"
                                    style="visibility: hidden; width: 1em"/> | <a
                                     href="courseanalysis.php">Go to Course Analysis</a>
-                            <button id="renderPDF" class="button"
-                                    onclick="downLoadPDF()">
-                                Download PDF
-                            </button>
+                            
                         </p>
                     </div>
                 </div>
@@ -1109,6 +1106,11 @@
                 <div id="file_header"></div>
                 <p></p>
                 <div id="div1" class="section"></div>
+                <p></p>
+                <button id="renderPDF" class="button"
+                                    onclick="downLoadPDF()">
+                                Download PDF
+                            </button>
             </div>
         </div>
     </section>
