@@ -13,6 +13,7 @@
     <script type="text/javascript">
         var isChrome = navigator.userAgent.toLowerCase().match(/chrome/) != null;
         var message = "*We highly recommend you to use Google Chrome to get best experience.";
+        var isIE = window.ActiveXObject != undefined && ua.indexOf("MSIE") != -1;
     </script>
     <script>
 
@@ -44,7 +45,7 @@
         <div class="main">
             <p id="bversion" style="text-align: center">
                 <script type="text/javascript">
-                    if (!isChrome) {
+                    if (!isChrome||isIE) {
                         document.write(message);
                         document.write("<br/>");
                     }
