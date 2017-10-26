@@ -472,6 +472,7 @@
             }
             document.getElementById("text").innerHTML = message;
             result = message;
+            document.getElementById("renderPDF").disabled = false;
         }
 
         function resetTable() {
@@ -642,6 +643,8 @@
     <script type="text/javascript">
         function downLoadPDF() {
             document.getElementById("header_pdf").style.display = 'block';
+            document.getElementById("show_header").style.display = 'none';
+            $('html, body').scrollTop(0);
             var emailAdd = document.getElementById("c31");
             emailAdd.checked = false;
             var table = document.getElementById("pTab");
@@ -681,6 +684,7 @@
                 background: "#fff",
             })
             document.getElementById("header_pdf").style.display = 'none';
+            document.getElementById("show_header").style.display = 'block';
         }
     </script>
     <script type="text/javascript">
@@ -713,7 +717,7 @@
                                                                    id="upload2" value="Upload"
                                                                    style="visibility: hidden; width: 1em"/> | <a
                                     href="programanalysis.php">Go to Program Analysis</a>
-                            
+
                         </p>
                     </div>
                 </div>
@@ -790,8 +794,8 @@
                     <p>
                         <input type="button" onclick="toggle('file_header')"
                                value="Show or hide header of the uploaded file">
-                    &nbsp;
-                    <button id="renderPDF" class="button" onclick="downLoadPDF()">Download PDF</button>
+                        &nbsp;
+                        <button id="renderPDF" class="button" onclick="downLoadPDF()" disabled>Download PDF</button>
                     </p>
                 </div>
                 <div id="file_header"></div>
