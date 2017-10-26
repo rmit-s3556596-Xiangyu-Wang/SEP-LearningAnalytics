@@ -292,7 +292,7 @@ textarea {
 	overflow: auto;
 }
 
-.button, input[type=file], input[type=reset], input[type=submit], input[type=button],
+.button, #renderPDF, input[type=file], input[type=reset], input[type=submit], input[type=button],
 	.upload {
 	cursor: pointer;
 	font-family: inherit;
