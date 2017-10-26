@@ -595,6 +595,8 @@
                     for (i = 1; i < tab.length; i++) {
                         tab[i].push(readNewTab[i][32]);
                     }
+                    pieChart = calGPA(tab);
+                    TUPChart = calUnits(tab);
                     var table = document.createElement("table");
                     table.setAttribute("id", "courseTable");
                     for (i = 1; i < tab.length; i++) {
@@ -709,6 +711,8 @@
     </script>
     <script type="text/javascript">
         function createTermTab() {
+            var line = [];
+            var lines = [];
             var read = sessionStorage.getItem("stuTab");
             var termTab = JSON.parse(read);
             document.getElementById("div1").innerHTML = '';
@@ -725,9 +729,14 @@
                             for (var j = 0; j < stuinfo.length; j++) {
                                 var cell = row.insertCell();
                                 cell.innerHTML = stuinfo[j];
+                                line.push(stuinfo[j]);
                             }
+                            lines.push(line);
+                            line = [];
                         }
                     }
+                    pieChart = calGPA(lines);
+                    TUPChart = calUnits(lines);
                     var thead = table.createTHead();
                     var tRow = thead.insertRow();
                     for (i = 0; i < termTab[0].length; i++) {
@@ -748,6 +757,8 @@
     </script>
     <script type="text/javascript">
         function createUnitPassTab() {
+            var line = [];
+            var lines = [];
             var read = sessionStorage.getItem("stuTab");
             var unitTab = JSON.parse(read);
             document.getElementById("div1").innerHTML = '';
@@ -764,9 +775,14 @@
                             for (var j = 0; j < stuinfo.length; j++) {
                                 var cell = row.insertCell();
                                 cell.innerHTML = stuinfo[j];
+                                line.push(stuinfo[j]);
                             }
+                            lines.push(line);
+                            line = [];
                         }
                     }
+                    pieChart = calGPA(lines);
+                    TUPChart = calUnits(lines);
                     var thead = table.createTHead();
                     var tRow = thead.insertRow();
                     for (i = 0; i < unitTab[0].length; i++) {
@@ -809,6 +825,7 @@
                     }
                 }
             }
+
             var table = document.createElement("table");
             table.setAttribute("id", "CnTable");
             for (var i = 0; i < tabList.length; i++) {
@@ -819,6 +836,9 @@
                     cell.innerHTML = stuinfo[j];
                 }
             }
+            pieChart = calGPA(tabList);
+            TUPChart = calUnits(tabList);
+
             var thead = table.createTHead();
             var tRow = thead.insertRow();
             for (i = 0; i < CnTable[0].length; i++) {
@@ -836,20 +856,6 @@
     </script>
     <script type="text/javascript">
         function resetTable() {
-//            document.getElementById("c3").disabled = false;
-//            document.getElementById("c6").disabled = false;
-//            document.getElementById("c7").disabled = false;
-//            document.getElementById("c8").disabled = false;
-//            document.getElementById("c9").disabled = false;
-//            document.getElementById("c14").disabled = false;
-//            document.getElementById("c24").disabled = false;
-//            document.getElementById("c25").disabled = false;
-//            document.getElementById("c26").disabled = false;
-//            document.getElementById("c29").disabled = false;
-//            document.getElementById("c30").disabled = false;
-//            document.getElementById("c31").disabled = false;
-//            document.getElementById("c32").disabled = false;
-//            document.getElementById("selectAll").disabled = false;
             var read = sessionStorage.getItem("stuTab");
             var unitTab = JSON.parse(read);
             document.getElementById("div1").innerHTML = '';
@@ -876,6 +882,8 @@
                 document.getElementById("div1").appendChild(table);
                 hideColumns("resetTable");
                 uncheckAll();
+                pieChart = calGPA(unitTab);
+                TUPChart = calUnits(unitTab);
             }
         }
     </script>
