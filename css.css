@@ -353,12 +353,11 @@ table.checkboxes td, th {
 	padding: 0px;
 }
 
-#warning {
+#warning, #bversion {
 	color: #ff0000;
-	font-size: 0.75em;
-	font-style: italic;
+	font-size: 1em;
+	font-weight: 700;
 	margin: 0px;
-	text-indent: 10px;
 }
 
 .file_upload {
