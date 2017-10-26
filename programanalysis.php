@@ -1116,7 +1116,7 @@
                         <input type="button" onclick="toggle('file_header')"
                                value="Show or hide header of the uploaded file">
                         &nbsp;
-                        <button id="renderPDF" class="button" onclick="downLoadPDF()" disabled>Download PDF</button>
+                        <input id="renderPDF" type="button" onclick="downLoadPDF()" disabled value="Download PDF">
                     </p>
                 </div>
                 <div id="file_header"></div>
