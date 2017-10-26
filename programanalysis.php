@@ -38,7 +38,7 @@
                             if (!contains(table.id, allTables)) {
                                 allTables.push(table.id);
                             }
-                            var rows = e.target.result.split("\n");
+                            var rows = e.target.result.split("\r");
                             var tHead = table.createTHead();
                             var theadtr = tHead.insertRow();
                             var thcells = rows[5].split(",");

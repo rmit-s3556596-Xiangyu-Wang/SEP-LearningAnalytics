@@ -13,6 +13,25 @@
             }
         }
     </script>
+    <script>
+        var OSName="Unknown OS";
+        if (navigator.appVersion.indexOf("Win")!=-1) {
+            OSName = "Windows";
+            document.getElementById("program").attributes("href", "./programanalysis.php");
+        }
+        if (navigator.appVersion.indexOf("Mac")!=-1){
+            OSName="MacOS";
+            document.getElementById("course").attributes("href", "./programanalysis_mac.php");
+        }
+        if (navigator.appVersion.indexOf("X11")!=-1) OSName="UNIX";
+        if (navigator.appVersion.indexOf("Linux")!=-1) OSName="Linux";
+    </script>
+
+    <script type="text/javascript">
+        var isMac = (navigator.platform.indexOf("MacPPC") != -1) ? true : false;
+        if(isMac) location.href = "programanalysis_.php";
+        else location.href = "programanalysis.php";
+    </script>
 </head>
 <body>
 	<div class="container">
@@ -21,9 +40,8 @@
 		<section class="content">
 			<div class="main">
 				<div class="middle">
-					<h1>
-						Enter Program Analysis <a href="programanalysis.php">Windows</a>/<a href="programanalysis_mac.php">Mac OS</a> page<br/>
-                        &nbsp;&nbsp;or Course Analysis <a href="courseanalysis.php">Windows</a>/<a href="courseanalysis_mac.php">Mac OS</a> page
+                    <h1>
+                        Enter<a id="program" href="programanalysis.php">Program Analysis</a> page<br/> or <a id="course" href="courseanalysis.php">Course Analysis</a> page
                     </h1>
 				</div>
 			</div>
