@@ -36,8 +36,14 @@
 					<p>
 						Information from the file header can be toggled by the user by
 						clicking on the <span class="monospace">Toggle header</span>
-						button, under the table. This information can be used to verify
+						button. This information can be used to verify
 						the time, date, and user who generated the data file.
+					</p>
+					<p>
+						The user can also generate a PDF report of their output
+						by clicking on the <span class="monospace">Download PDF</span>
+						button, which will print the displayed table and
+						charts (if applicable).
 					</p>
 					<p></p>
 
@@ -78,8 +84,14 @@
 					<p>
 						Information from the file header can be toggled by the user by
 						clicking on the <span class="monospace">Toggle header</span>
-						button, under the table. This information can be used to verify
+						button. This information can be used to verify
 						the time, date, and user who generated the data file.
+					</p>
+					<p>
+						The user can also generate a PDF report of their output
+						by clicking on the <span class="monospace">Download PDF</span>
+						button, which will print the displayed table and
+						charts (if applicable).
 					</p>
 
 
@@ -92,6 +104,12 @@
 						browsers. This bug has been identified by Google engineers, and a
 						patch is being worked on. To get around this issue, the user can
 						click the same button again.
+					</p>
+					<p>
+						It has been determined that Google Chrome browser is best optimised
+						for the current application, so it is recommended that all users use this
+						browser, although other browswers will work too with the exception
+						of Internet Explorer.
 					</p>
 
 				</div>
