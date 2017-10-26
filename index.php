@@ -28,6 +28,37 @@
 <!--        if (navigator.appVersion.indexOf("Linux")!=-1) OSName="Linux";-->
 <!--    </script>-->
 
+<!--    <script type="text/javascript">-->
+<!--        var isMac = (navigator.platform.indexOf("MacPPC") != -1) ? true : false;-->
+<!--        if(isMac) location.href = "index_mac.php";-->
+<!--        else location.href = "index.php";-->
+<!--    </script>-->
+    <script>
+        var OSName="Unknown OS";
+        if (navigator.appVersion.indexOf("Win")!=-1) OSName="Windows";
+        if (navigator.appVersion.indexOf("Mac")!=-1) OSName="MacOS";
+        if (navigator.appVersion.indexOf("X11")!=-1) OSName="UNIX";
+        if (navigator.appVersion.indexOf("Linux")!=-1) OSName="Linux";
+    </script>
+    <script>
+        function navigatorProgram() {
+            if(OSName=="Windows") {
+                window.location="programanalysis.php"
+            }
+            else {
+                window.location="programanalysis_mac.php"
+            }
+        }
+
+        function navigatorCourse() {
+            if(OSName=="Windows") {
+                window.location="courseanalysis.php"
+            }
+            else {
+                window.location="courseanalysis_mac.php"
+            }
+        }
+    </script>
 </head>
 <body>
 	<div class="container">
@@ -37,7 +68,7 @@
 			<div class="main">
 				<div class="middle">
                     <h1>
-                        Enter<a id="program" href="programanalysis.php">Program Analysis</a> page or <a id="course" href="courseanalysis.php">Course Analysis</a> page
+                        Enter<a href="javascript:navigatorProgram();">Program Analysis</a> page or <a href="javascript:navigatorCourse();">Course Analysis</a> page
                     </h1>
 				</div>
 			</div>
