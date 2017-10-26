@@ -92,6 +92,7 @@
                             $(".section").html('');
                             $(".section").html(description);
                             $(".section").append(table);
+                            document.getElementById("renderPDF").disabled = false;
                             hideALL();
                             saveFile(rows);
                         }
@@ -917,6 +918,8 @@
     <script type="text/javascript">
         function downLoadPDF() {
             document.getElementById("header_pdf").style.display = 'block';
+            document.getElementById("show_header").style.display = 'none';
+            $('html, body').scrollTop(0);
             var emailAdd = document.getElementById("c31");
             emailAdd.checked = false;
             hide(31);
@@ -955,6 +958,7 @@
                 background: "#fff",
             })
             document.getElementById("header_pdf").style.display = 'none';
+            document.getElementById("show_header").style.display = 'block';
         }
     </script>
     <script type="text/javascript">
@@ -980,7 +984,7 @@
                             <input type="button" class="upload" id="upload" value="Upload"
                                    style="visibility: hidden; width: 1em"/> | <a
                                 href="courseanalysis_mac.php">Go to Course Analysis</a>
-                            
+
                         </p>
                     </div>
                 </div>
@@ -1102,7 +1106,7 @@
                         <input type="button" onclick="toggle('file_header')"
                                value="Show or hide header of the uploaded file">
                         &nbsp;
-                        <button id="renderPDF" class="button" onclick="downLoadPDF()">Download PDF</button>
+                        <button id="renderPDF" class="button" onclick="downLoadPDF()" disabled>Download PDF</button>
                     </p>
                 </div>
                 <div id="file_header"></div>
