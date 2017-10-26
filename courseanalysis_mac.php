@@ -790,6 +790,8 @@
                     <p>
                         <input type="button" onclick="toggle('file_header')"
                                value="Show or hide header of the uploaded file">
+                        &nbsp;
+                        <button id="renderPDF" class="button" onclick="downLoadPDF()">Download PDF</button>
                     </p>
                 </div>
                 <div id="file_header"></div>
@@ -798,11 +800,6 @@
                 <div id="div2" style="text-align: center">
                     <span id="text"></span>
                 </div>
-                <p></p>
-                <button id="renderPDF" class="button"
-                                    onclick="downLoadPDF()">
-                                Download PDF
-                            </button>
             </div>
         </div>
     </section>
