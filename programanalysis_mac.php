@@ -41,37 +41,36 @@
                             var rows = e.target.result.split("\n");
                             var tHead = table.createTHead();
                             var theadtr = tHead.insertRow();
-                            var thcells = rows[5].split(",");
+                            var thcells = rows[0].split(",");
                             thcells.push("Final Term Course");
                             for (var i = 0; i < thcells.length; i++) {
                                 var cell = document.createElement("th");
                                 cell.innerHTML = thcells[i];
                                 theadtr.appendChild(cell);
                             }
-//                            tHead.append(theadtr);
-//                            table.append(tHead);
-                            //start
-                            for (i = 0; i < 5; i++) {
-                                var lines = rows[i].split("\r");
-                                var sline = '';
-                                for (j = 0; j < lines.length;j ++){
-                                    sline += lines[j] + ",";
-                                }
-                                var line = sline.split(",");
-                                var header_line = [];
-                                for (j = 0; j < line.length; j++) {
-                                    header_line.push(line[j]);
-                                }
-                                file_header.push(header_line);
-                            }
-                            for (i = 0; i < 5; i++) {
-                                rows.shift();
-                            }
-                            var text = getFileHeader(file_header);
-                            document.getElementById("file_header").innerHTML = text;
-                            document.getElementById("file_header").append(hr_line);
-                            document.getElementById("file_header").style.display = 'block';
-                            file_header = [];
+
+//                            for (i = 0; i < 5; i++) {
+//                                var lines = rows[i].split("\r");
+//                                var sline = '';
+//                                for (j = 0; j < lines.length;j ++){
+//                                    sline += lines[j] + ",";
+//                                }
+//                                var line = sline.split(",");
+//                                var header_line = [];
+//                                for (j = 0; j < line.length; j++) {
+//                                    header_line.push(line[j]);
+//                                }
+//                                file_header.push(header_line);
+//                            }
+//                            for (i = 0; i < 5; i++) {
+//                                rows.shift();
+//                            }
+//                            var text = getFileHeader(file_header);
+//                            document.getElementById("file_header").innerHTML = text;
+//                            document.getElementById("file_header").append(hr_line);
+//                            document.getElementById("file_header").style.display = 'block';
+//                            file_header = [];
+
                             var stuTab = combine(rows, combArr);
                             pieChart = calGPA(stuTab);
                             TUPChart = calUnits(stuTab);
@@ -1120,13 +1119,13 @@
                 <p></p>
                 <div id="show_header">
                     <p>
-                        <input type="button" onclick="toggle('file_header')"
-                               value="Show or hide header of the uploaded file">
+<!--                        <input type="button" onclick="toggle('file_header')"-->
+<!--                               value="Show or hide header of the uploaded file">-->
                         &nbsp;
-                        <input id="renderPDF" type="button" onclick="downLoadPDF()" disabled value="Download PDF">
+                        <button id="renderPDF" class="button" onclick="downLoadPDF()" disabled>Download PDF</button>
                     </p>
                 </div>
-                <div id="file_header"></div>
+<!--                <div id="file_header"></div>-->
                 <p></p>
                 <div id="div1" class="section"></div>
             </div>
