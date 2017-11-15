@@ -46,30 +46,30 @@
                                 preader.readAsText($("#file1")[0].files[0]);
                                 preader.onload = function (e) {
                                     var rows = e.target.result.split("\n");
-                                    var thcells = rows[5].split(",");
+                                    var thcells = rows[0].split(",");
                                     for (var i = 0; i < thcells.length; i++) {
                                         tableCells.push(thcells[i]);
                                     }
                                     tableRows.push(tableCells);
                                     tableCells = [];
 
-                                    for (i = 0; i < 5; i++) {
-                                        var lines = rows[i].split("\r");
-                                        var sline = '';
-                                        for (j=0; j<lines.length; j++) {
-                                            sline+= lines[j] + ",";
-                                        }
-                                        var line = sline.split(',');
-                                        var header_line = [];
-                                        for (j = 0; j < line.length; j++) {
-                                            header_line.push(line[j]);
-                                        }
-                                        file_header.push(header_line);
-                                    }
-
-                                    for (i = 0; i < 5; i++) {
-                                        rows.shift();
-                                    }
+//                                    for (i = 0; i < 5; i++) {
+//                                        var lines = rows[i].split("\r");
+//                                        var sline = '';
+//                                        for (j=0; j<lines.length; j++) {
+//                                            sline+= lines[j] + ",";
+//                                        }
+//                                        var line = sline.split(',');
+//                                        var header_line = [];
+//                                        for (j = 0; j < line.length; j++) {
+//                                            header_line.push(line[j]);
+//                                        }
+//                                        file_header.push(header_line);
+//                                    }
+//
+//                                    for (i = 0; i < 5; i++) {
+//                                        rows.shift();
+//                                    }
 
                                     for (var i = 1; i < rows.length - 1; i++) {
                                         var cells = rows[i].split(",");
@@ -90,26 +90,26 @@
                                             tablesRows.push(tableRows);
                                             tableRows = [];
                                         } else {
-                                            for (i = 0; i < 5; i++) {
-                                                file_header.splice(file_header.length - 1, 1);
-                                            }
+//                                            for (i = 0; i < 5; i++) {
+//                                                file_header.splice(file_header.length - 1, 1);
+//                                            }
                                             tableRows = [];
                                             alert("Program file should contain 32 columns!");
                                             return;
                                         }
                                     } else {
-                                        for (i = 0; i < 5; i++) {
-                                            file_header.splice(file_header.length - 1, 1);
-                                        }
+//                                        for (i = 0; i < 5; i++) {
+//                                            file_header.splice(file_header.length - 1, 1);
+//                                        }
                                         tableRows = [];
                                         alert("File already exist!");
                                         return;
                                     }
                                     $("#div1").html('');
-                                    var text = getFileHeader(file_header);
-                                    document.getElementById("file_header").innerHTML = text;
-                                    document.getElementById("file_header").append(hr_line);
-                                    document.getElementById("file_header").style.display = 'block';
+//                                    var text = getFileHeader(file_header);
+//                                    document.getElementById("file_header").innerHTML = text;
+//                                    document.getElementById("file_header").append(hr_line);
+//                                    document.getElementById("file_header").style.display = 'block';
                                     drawProgramTable(pTables, cTables);
                                     calculate(cTables, pTables);
                                     hideALL(cTables, pTables);
@@ -144,29 +144,29 @@
                                 creader.readAsText($("#file2")[0].files[0]);
                                 creader.onload = function (e) {
                                     var rows = e.target.result.split("\n");
-                                    var thcells = rows[5].split(",");
+                                    var thcells = rows[0].split(",");
                                     for (var i = 0; i < thcells.length; i++) {
                                         tableCells.push(thcells[i]);
                                     }
                                     tableRows.push(tableCells);
                                     tableCells = [];
 
-                                    for (i = 0; i < 6; i++) {
-                                        var lines = rows[i].split("\r");
-                                        var sline = '';
-                                        for (j=0; j<lines.length; j++) {
-                                            sline+= lines[j] + ",";
-                                        }
-                                        var line = sline.split(',');
-                                        var header_line = [];
-                                        for (j = 0; j < line.length; j++) {
-                                            header_line.push(line[j]);
-                                        }
-                                        file_header.push(header_line);
-                                    }
-                                    for (i = 0; i < 6; i++) {
-                                        rows.shift();
-                                    }
+//                                    for (i = 0; i < 6; i++) {
+//                                        var lines = rows[i].split("\r");
+//                                        var sline = '';
+//                                        for (j=0; j<lines.length; j++) {
+//                                            sline+= lines[j] + ",";
+//                                        }
+//                                        var line = sline.split(',');
+//                                        var header_line = [];
+//                                        for (j = 0; j < line.length; j++) {
+//                                            header_line.push(line[j]);
+//                                        }
+//                                        file_header.push(header_line);
+//                                    }
+//                                    for (i = 0; i < 6; i++) {
+//                                        rows.shift();
+//                                    }
 
                                     for (var i = 1; i < rows.length - 1; i++) {
                                         var cells = rows[i].split(",");
@@ -182,26 +182,26 @@
                                             tablesRows.push(tableRows);
                                             tableRows = [];
                                         } else {
-                                            for (i = 0; i < 6; i++) {
-                                                file_header.splice(file_header.length - 1, 1);
-                                            }
+//                                            for (i = 0; i < 6; i++) {
+//                                                file_header.splice(file_header.length - 1, 1);
+//                                            }
                                             tableRows = [];
                                             alert("Maximum number of course files is one.");
                                             return;
                                         }
                                     } else {
-                                        for (i = 0; i < 6; i++) {
-                                            file_header.splice(file_header.length - 1, 1);
-                                        }
+//                                        for (i = 0; i < 6; i++) {
+//                                            file_header.splice(file_header.length - 1, 1);
+//                                        }
                                         tableRows = [];
                                         alert("Course file must contain 34 columns!");
                                         return;
                                     }
 
                                     $("#div1").html('');
-                                    var text = getFileHeader(file_header);
-                                    document.getElementById("file_header").innerHTML = text;
-                                    document.getElementById("file_header").append(hr_line);
+//                                    var text = getFileHeader(file_header);
+//                                    document.getElementById("file_header").innerHTML = text;
+//                                    document.getElementById("file_header").append(hr_line);
                                     drawProgramTable(pTables, cTables);
                                     calculate(cTables, pTables);
                                     hideALL(cTables, pTables);
@@ -792,13 +792,13 @@
                 <p></p>
                 <div id="show_header">
                     <p>
-                        <input type="button" onclick="toggle('file_header')"
-                               value="Show or hide header of the uploaded file">
+<!--                        <input type="button" onclick="toggle('file_header')"-->
+<!--                               value="Show or hide header of the uploaded file">-->
                         &nbsp;
-                        <input id="renderPDF" type="button" onclick="downLoadPDF()" disabled value="Download PDF">
+                        <button id="renderPDF" class="button" onclick="downLoadPDF()" disabled>Download PDF</button>
                     </p>
                 </div>
-                <div id="file_header"></div>
+<!--                <div id="file_header"></div>-->
                 <p></p>
                 <div id="div1"></div>
                 <div id="div2" style="text-align: center">
